@@ -1,0 +1,32 @@
+apply plugin:'groovy'
+apply plugin:'eclipse'
+
+repositories {
+    mavenCentral()
+}
+
+sourceSets {
+    main {
+        java { srcDirs = [] }
+        groovy { srcDir 'src' }
+        resources { srcDir 'resources' }
+    }
+    test {
+        java { srcDirs = [] }
+        groovy { srcDir 'test' }
+    }
+}
+
+def springVersion = '3.0.5.RELEASE'
+def spockVersion = '0.5-groovy-1.8'
+
+dependencies {
+    groovy "org.codehaus.groovy:groovy-all:1.8.1"
+    compile "org.springframework:spring-context:$springVersion"
+    compile "org.springframework:spring-jdbc:$springVersion"
+    runtime "cglib:cglib:2.2"
+    
+    testCompile "org.springframework:spring-test:$springVersion"
+    testCompile "org.spockframework:spock-core:$spockVersion"
+    testCompile "org.spockframework:spock-spring:$spockVersion"
+}

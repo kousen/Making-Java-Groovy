@@ -1,0 +1,30 @@
+apply plugin:'groovy'
+apply plugin:'eclipse'
+
+repositories {
+    mavenCentral()
+    mavenRepo urls:"http://repository.codehaus.org"
+}
+
+def springVersion = '3.0.5.RELEASE'
+def spockVersion = '0.5-groovy-1.8'
+
+dependencies {
+    groovy "org.codehaus.groovy:groovy-all:1.8.4"
+    compile "org.springframework:spring-context:$springVersion"
+    compile "org.springframework:spring-jdbc:$springVersion"
+    runtime "com.h2database:h2:1.3.148"
+    runtime "cglib:cglib:2.2"
+    
+    runtime "org.slf4j:slf4j-nop:1.5.8"
+    runtime "org.slf4j:slf4j-api:1.5.8"
+    testCompile "commons-dbcp:commons-dbcp:1.3"
+    testCompile "org.grails:grails-spring:1.3.7"
+    compile "aopalliance:aopalliance:1.0"
+    compile "org.aspectj:aspectjrt:1.6.10"
+    compile "org.aspectj:aspectjweaver:1.6.10"
+
+    testCompile "org.springframework:spring-test:$springVersion"
+    testCompile "org.spockframework:spock-core:$spockVersion"
+    testCompile "org.spockframework:spock-spring:$spockVersion"
+}
