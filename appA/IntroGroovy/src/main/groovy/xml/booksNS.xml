@@ -1,0 +1,13 @@
+<library 
+	xmlns:m="urn:manning" xmlns:p="urn:pragprog">
+	<book isbn="9781935182948">
+		<m:title>Making Java Groovy</m:title>
+		<author>Ken Kousen</author>
+		<price>35.99</price>
+	</book>
+	<book isbn="0978739299">
+		<p:title>Groovy Recipes</p:title>
+		<author>Scott Davis</author>
+		<price>34.95</price>
+	</book>
+</library>

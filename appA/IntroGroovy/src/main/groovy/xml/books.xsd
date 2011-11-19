@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema 
+    xmlns="http://www.w3.org/2001/XMLSchema" 
+    targetNamespace="http://www.kousenit.com/books" 
+    xmlns:tns="http://www.kousenit.com/books" 
+    elementFormDefault="qualified">
+
+    <element name="library" type="tns:LibraryType" />
+    <complexType name="LibraryType">
+        <sequence>
+            <element ref="tns:book" maxOccurs="unbounded" />
+        </sequence>
+    </complexType>
+    <element name="book">
+        <complexType>
+            <sequence>
+                <element name="title" type="string" />
+                <element name="author" type="string" maxOccurs="unbounded" />
+                <element name="price" type="tns:PriceType" />
+            </sequence>
+            <attribute name="isbn" type="tns:ISBNtype" />
+        </complexType>
+    </element>
+    <simpleType name="PriceType">
+        <restriction base="decimal">
+            <fractionDigits value="2" />
+        </restriction>
+    </simpleType>
+    <simpleType name="ISBNtype">
+        <restriction base="string">
+            <pattern value="\d{10}|\d{13}" />
+        </restriction>
+    </simpleType>
+</schema>
