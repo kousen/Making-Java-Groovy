@@ -27,7 +27,7 @@ class JavaUtililyMethodsTest extends GroovyTestCase {
         }
     }
 
-        void testIsPalindrome() {
+    void testIsPalindrome() {
         assert impl.isPalindrome("Madam, in Eden, I'm Adam")
         assert impl.isPalindrome('Sex at noon taxes')
         assert impl.isPalindrome('Flee to me, remote elf')
