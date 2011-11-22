@@ -1,9 +1,9 @@
 package mjg.dev;
 
-import groovy.util.GroovyTestCase;
+import groovy.util.GroovyTestCase
 
-class JavaUtililyMethodsTest extends GroovyTestCase {
-    UtililyMethods impl = new JavaUtilityMethods()
+class GroovyUtililyMethodsGTCTests extends GroovyTestCase {
+    UtililyMethods impl = new GroovyUtilityMethods()
 
     void testGetPositives() {
         // log.info('inside testMaxValue')
@@ -12,18 +12,16 @@ class JavaUtililyMethodsTest extends GroovyTestCase {
     }
 
     void testIsPrime() {
-        def primes = [2, 3, 5, 7, 11, 13, 17, 19, 23, 29]
+        def primes = [2, 3, 5, 7, 11, 13, 17, 19, 23]
         primes.each { num ->
             assert impl.isPrime(num)
         }
         assert !impl.isPrime(9)
     }
-
+    
     void testIsPrimeWithNegative() {
-        try {
+        shouldFail(IllegalArgumentException) {
             impl.isPrime(-3)
-            fail()
-        } catch (IllegalArgumentException e) {
         }
     }
 

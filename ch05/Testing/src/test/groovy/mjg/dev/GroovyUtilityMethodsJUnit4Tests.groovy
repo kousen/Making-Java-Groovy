@@ -1,16 +1,20 @@
 package mjg.dev;
 
-import groovy.util.GroovyTestCase
+import static org.junit.Assert.*;
 
-class GroovyUtililyMethodsTest extends GroovyTestCase {
+import org.junit.Before;
+import org.junit.Test;
+
+class GroovyUtilityMethodsJUnit4Tests {
     UtililyMethods impl = new GroovyUtilityMethods()
 
+    @Test
     void testGetPositives() {
-        // log.info('inside testMaxValue')
-        def correct = [1,2,3] as int[]
-        assertEquals(correct, impl.getPositives((-3..3) as int[]))
+        def correct = [1, 2, 3]as int[]
+        assert correct == impl.getPositives((-3..3) as int[])
     }
 
+    @Test
     void testIsPrime() {
         def primes = [2, 3, 5, 7, 11, 13, 17, 19, 23]
         primes.each { num ->
@@ -18,18 +22,17 @@ class GroovyUtililyMethodsTest extends GroovyTestCase {
         }
         assert !impl.isPrime(9)
     }
-    
+
+    @Test(expected=IllegalArgumentException)
     void testIsPrimeWithNegative() {
-        shouldFail(IllegalArgumentException) {
-            impl.isPrime(-3)
-        }
+        impl.isPrime(-3)
     }
 
+    @Test
     void testIsPalindrome() {
         assert impl.isPalindrome("Madam, in Eden, I'm Adam")
         assert impl.isPalindrome('Sex at noon taxes')
         assert impl.isPalindrome('Flee to me, remote elf')
         assert !impl.isPalindrome('This is not a palindrome')
     }
-
 }
