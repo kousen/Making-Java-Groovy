@@ -44,8 +44,8 @@ public class JavaUtilityMethodsJUnit3Tests extends TestCase {
 
     public void testIsPalindrome() {
         assertTrue(impl.isPalindrome("Madam, in Eden, I'm Adam"));
-        assertTrue(impl.isPalindrome("Sex at noon taxes"));
-        assertTrue(impl.isPalindrome("Flee to me, remote elf"));
+        assertTrue(impl.isPalindrome("Lisa Bonet ate no basil"));
+        assertTrue(impl.isPalindrome("Are we not drawn onward, we few, drawn onward to new era!"));
         assertFalse(impl.isPalindrome("This is not a palindrome"));
     }
 
