@@ -3,8 +3,8 @@ apply plugin:'eclipse'
 
 repositories {
     mavenCentral()
-    mavenRepo urls:["http://download.java.net/maven/1",
-        "http://download.java.net/maven/2"]
+    maven { url 'http://download.java.net/maven/1' }
+    maven { url 'http://download.java.net/maven/2' }
 }
 
 configurations {
@@ -24,20 +24,22 @@ sourceSets {
 }
 
 task wsimport(dependsOn: processResources)  {
+    genDir = 'build/generated-sources/java'
     doLast{
-        sourceSets.main.classesDir.mkdirs()
+        new File(genDir).mkdirs()
+        sourceSets.main.output.classesDir.mkdirs()
         ant {
             taskdef(name:'wsimport',
                 classname:'com.sun.tools.ws.ant.WsImport',
                 classpath:configurations.jaxws.asPath)
             wsimport(keep:true,
-                destdir: sourceSets.main.classesDir,
-                sourcedestdir:'src',
-            wsdl:'http://www.webservicex.net/GlobalWeather.asmx?wsdl')
+                destdir: sourceSets.main.output.classesDir,
+                sourcedestdir:genDir,
+                wsdl:'http://www.webservicex.net/GlobalWeather.asmx?wsdl')
         }
     }
 }
-wsimport.onlyIf { !(new File('src/net/webservicex')).exists() }
+wsimport.onlyIf { !(new File('build/generated-sources/java/net/webservicex')).exists() }
 compileJava.dependsOn(wsimport)
 
 def groovyVersion = '1.8.4'
