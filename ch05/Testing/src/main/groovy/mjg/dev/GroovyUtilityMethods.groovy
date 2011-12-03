@@ -1,6 +1,6 @@
 package mjg.dev
 
-class GroovyUtilityMethods implements UtililyMethods {
+class GroovyUtilityMethods implements UtilityMethods {
 
     @Override
     int[] getPositives(int[] values) {

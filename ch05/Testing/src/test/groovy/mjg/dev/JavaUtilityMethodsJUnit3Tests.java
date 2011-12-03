@@ -6,7 +6,7 @@ import java.util.List;
 import junit.framework.TestCase;
 
 public class JavaUtilityMethodsJUnit3Tests extends TestCase {
-    private UtililyMethods impl = new JavaUtilityMethods();
+    private UtilityMethods impl = new JavaUtilityMethods();
 
     public void testGetPositives() {
         int[] testValues = {-3, 1, 4, -1, 5, -2, 6};

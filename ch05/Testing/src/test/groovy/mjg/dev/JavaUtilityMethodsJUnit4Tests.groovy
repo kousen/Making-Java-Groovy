@@ -1,12 +1,11 @@
 package mjg.dev;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.*
 
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.Test
 
-class GroovyUtilityMethodsJUnit4Tests {
-    UtilityMethods impl = new GroovyUtilityMethods()
+class JavaUtilityMethodsJUnit4Tests {
+    UtilityMethods impl = new JavaUtilityMethods()
 
     @Test
     void testGetPositives() {

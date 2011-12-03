@@ -3,7 +3,7 @@ package mjg.dev;
 import groovy.util.GroovyTestCase
 
 class GroovyUtililyMethodsGTCTests extends GroovyTestCase {
-    UtililyMethods impl = new GroovyUtilityMethods()
+    UtilityMethods impl = new GroovyUtilityMethods()
 
     void testGetPositives() {
         // log.info('inside testMaxValue')

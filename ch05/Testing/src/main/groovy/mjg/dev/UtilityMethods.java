@@ -1,6 +1,6 @@
 package mjg.dev;
 
-public interface UtililyMethods {
+public interface UtilityMethods {
     int[] getPositives(int[] values);
     boolean isPrime(int x);
     boolean isPalindrome(String s);

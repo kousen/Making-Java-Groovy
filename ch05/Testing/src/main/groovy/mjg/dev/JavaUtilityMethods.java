@@ -3,7 +3,7 @@ package mjg.dev;
 import java.util.ArrayList;
 import java.util.List;
 
-public class JavaUtilityMethods implements UtililyMethods {
+public class JavaUtilityMethods implements UtilityMethods {
 
     public int[] getPositives(int[] values) {
         List<Integer> results = new ArrayList<Integer>();
