@@ -6,7 +6,7 @@ class JavaUtililyMethodsGTCTests extends GroovyTestCase {
     UtilityMethods impl = new JavaUtilityMethods()
 
     void testGetPositives() {
-        // log.info('inside testMaxValue')
+        log.info('inside testGetPositives')
         def correct = [1,2,3] as int[]
         assertEquals(correct, impl.getPositives((-3..3) as int[]))
     }
@@ -20,10 +20,8 @@ class JavaUtililyMethodsGTCTests extends GroovyTestCase {
     }
 
     void testIsPrimeWithNegative() {
-        try {
+        shouldFail(IllegalArgumentException) {
             impl.isPrime(-3)
-            fail()
-        } catch (IllegalArgumentException e) {
         }
     }
 
