@@ -28,7 +28,7 @@ class GetGameData {
 
     def fillInStadiumMap() {
         def db = groovy.sql.Sql.newInstance(
-            'jdbc:h2:~/build/baseball',
+            'jdbc:h2:build/baseball',
             'org.h2.Driver'
         )
         logger.info "Value of db after newInstance is $db"

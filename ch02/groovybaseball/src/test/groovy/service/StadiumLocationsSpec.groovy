@@ -10,7 +10,7 @@ class StadiumLocationsSpec extends Specification {
     
     def setupSpec() {
         db = Sql.newInstance(
-            'jdbc:h2:~/build/baseball', 
+            'jdbc:h2:build/baseball', 
             'org.h2.Driver')
     }
     
