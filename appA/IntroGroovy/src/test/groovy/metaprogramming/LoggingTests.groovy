@@ -1,5 +1,9 @@
 package metaprogramming;
 
+import metaprogramming.without_custom_levels
+import metaprogramming.use_slang_category
+import metaprogramming.use_emc
+
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
