@@ -1,6 +1,7 @@
 package mjg;
 
 import java.util.logging.Level;
+import mjg.calc_with_logger
 
 class CalcWithLoggerTests extends GroovyLogTestCase {
     
