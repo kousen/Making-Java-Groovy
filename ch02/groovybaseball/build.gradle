@@ -1,6 +1,7 @@
 apply plugin:'groovy'
 apply plugin:'war'
 apply plugin:'eclipse'
+apply plugin:'eclipse-wtp'
 
 repositories {
     mavenCentral()
