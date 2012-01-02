@@ -6,7 +6,7 @@ assert teams.class == java.util.ArrayList
 def names = teams as String[]
 assert names.class == String[]
 def set = teams as Set
-assert set.class == java.util.HashSet
+assert(set instanceof Set)
 
 def strings = ['hello','world','how','are','you','hello']
 assert strings.size() == 6

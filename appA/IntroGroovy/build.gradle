@@ -6,11 +6,11 @@ repositories {
 }
 
 task wrapper(type:Wrapper) {
-    gradleVersion = '1.0-milestone-5'
+    gradleVersion = '1.0-milestone-6'
 }
 
 dependencies {
-    groovy 'org.codehaus.groovy:groovy-all:1.8.4'
+    groovy 'org.codehaus.groovy:groovy-all:1.8.5'
 
     testCompile 'junit:junit:4.8.2'
     testCompile 'org.spockframework:spock-core:0.5-groovy-1.8'
