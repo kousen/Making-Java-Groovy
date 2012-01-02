@@ -12,7 +12,7 @@ class GeocoderUnitTest {
     public void testFillInLatLng() {
         Stadium wrongStadium = new Stadium(
             street:'1313 Mockingbird Lane',
-            city:'New York',state:'NY')
+            city:'Mockingbird Heights',state:'CA')
         
         String xml = '''
         <root><result><geometry>

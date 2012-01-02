@@ -9,7 +9,7 @@ class Geocoder {
                     URLEncoder.encode(it,'UTF-8')
                 }.join(',+')
             String url = base + [sensor:false,
-                address: urlEncodedAddress].collect {k,v -> "$k=$v"}.join('&')
+                address: urlEncodedAddress].collect { it }.join('&')
             def response = new XmlSlurper().parse(url)
             String latitude =
                 response.result.geometry.location.lat[0] ?: "0.0"
