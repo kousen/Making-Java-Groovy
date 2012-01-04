@@ -63,9 +63,9 @@ public class GroovyIntegrationTests {
         try {
             shell.evaluate(new File("src/geocode.groovy"));
             assertEquals(38.898,
-                Double.parseDouble((String) binding.getVariable("lat")),0.001);
+                Double.parseDouble((String) binding.getVariable("lat")),0.01);
             assertEquals(-77.037,
-                Double.parseDouble((String) binding.getVariable("lng")),0.001);
+                Double.parseDouble((String) binding.getVariable("lng")),0.01);
         } catch (CompilationFailedException e) {
             e.printStackTrace();
         } catch (IOException e) {
@@ -83,18 +83,18 @@ public class GroovyIntegrationTests {
         try {
             shell.evaluate(new File("src/geocode.groovy"));
             assertEquals(38.898,
-                Double.parseDouble((String) binding.getVariable("lat")),0.001);
+                Double.parseDouble((String) binding.getVariable("lat")),0.01);
             assertEquals(-77.037,
-                Double.parseDouble((String) binding.getVariable("lng")),0.001);
+                Double.parseDouble((String) binding.getVariable("lng")),0.01);
             
             binding.setVariable("street", "Blackheath Avenue");
             binding.setVariable("city","Greenwich");
             binding.setVariable("state","UK");
             shell.evaluate(new File("src/geocode.groovy"));
             assertEquals(51.476,
-                    Double.parseDouble((String) binding.getVariable("lat")),0.001);
+                    Double.parseDouble((String) binding.getVariable("lat")),0.01);
                 assertEquals(0.001,
-                    Double.parseDouble((String) binding.getVariable("lng")),0.001);
+                    Double.parseDouble((String) binding.getVariable("lng")),0.01);
                 
         } catch (CompilationFailedException e) {
             e.printStackTrace();
@@ -124,9 +124,9 @@ public class GroovyIntegrationTests {
             e.printStackTrace();
         }
         assertEquals(38.898,
-            Double.parseDouble((String) engine.get("lat")),0.001);
+            Double.parseDouble((String) engine.get("lat")),0.01);
         assertEquals(-77.037,
-            Double.parseDouble((String) engine.get("lng")),0.001);
+            Double.parseDouble((String) engine.get("lng")),0.01);
     }
     
     @Test
@@ -137,7 +137,7 @@ public class GroovyIntegrationTests {
         loc.setState("DC");
         Geocoder geocoder = new Geocoder();
         geocoder.fillInLatLong(loc);
-        assertEquals(38.895,loc.getLatitude(),0.001);
-        assertEquals(-77.037,loc.getLongitude(),0.001);
+        assertEquals(38.895,loc.getLatitude(),0.01);
+        assertEquals(-77.037,loc.getLongitude(),0.01);
     }
 }
