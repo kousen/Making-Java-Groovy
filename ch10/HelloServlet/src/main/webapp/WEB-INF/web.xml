@@ -14,4 +14,12 @@
         <servlet-name>hello</servlet-name>
         <url-pattern>/hello</url-pattern>
     </servlet-mapping>
+    <servlet>
+        <servlet-name>hellogs</servlet-name>
+        <servlet-class>mjg.HelloGroovyServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>hellogs</servlet-name>
+        <url-pattern>/hellogs</url-pattern>
+    </servlet-mapping>
 </web-app>

@@ -14,6 +14,20 @@ stopKey = 'foo'
 
 [jettyRun, jettyRunWar]*.daemon = true
 
+task integrationTest(dependsOn: jettyRun) << {
+    callServlets()
+    jettyStop.execute()
+}
+
+private void callServlets() {
+    String response = "http://localhost:$httpPort/HelloServlet/hello".toURL().text.trim()
+    assert response == 'Hello, Servlet!'
+    response = "http://localhost:$httpPort/HelloServlet/hellogs".toURL().text.trim()
+    assert response == 'Hello from a Groovy Servlet!'
+}
+
+build.dependsOn integrationTest
+
 task wrapper(type:Wrapper) {
     gradleVersion = '1.0-milestone-6'
 }
