@@ -32,9 +32,14 @@ task wrapper(type:Wrapper) {
     gradleVersion = '1.0-milestone-6'
 }
 
+def springVersion = '3.1.0.RELEASE'
+
 dependencies {
     groovy "org.codehaus.groovy:groovy-all:1.8.5"
     providedCompile 'javax.servlet:servlet-api:2.5'
     
     testCompile "junit:junit:4.9"
+    testCompile "org.springframework:spring-core:$springVersion"
+    testCompile "org.springframework:spring-test:$springVersion"
+    
 }
