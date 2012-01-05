@@ -1,0 +1,26 @@
+apply plugin:'groovy'
+apply plugin:'war'
+apply plugin:'jetty'
+apply plugin:'eclipse'
+apply plugin:'eclipse-wtp'
+
+repositories {
+    mavenCentral()
+}
+
+httpPort = 8163
+stopPort = 9451
+stopKey = 'foo'
+
+[jettyRun, jettyRunWar]*.daemon = true
+
+task wrapper(type:Wrapper) {
+    gradleVersion = '1.0-milestone-6'
+}
+
+dependencies {
+    groovy "org.codehaus.groovy:groovy-all:1.8.5"
+    providedCompile 'javax.servlet:servlet-api:2.5'
+    
+    testCompile "junit:junit:4.9"
+}
