@@ -6,3 +6,6 @@ Servers
 .classpath
 .settings
 .metadata
+*.iml
+*.ipr
+*.iws
