@@ -9,7 +9,7 @@ def springVersion = '3.1.0.RELEASE'
 def spockVersion = '0.5-groovy-1.8'
 
 dependencies {
-    groovy group:'org.codehaus.groovy', name:'groovy-all', version:'1.8.4'
+    groovy group:'org.codehaus.groovy', name:'groovy-all', version:'1.8.5'
     compile "org.springframework:spring-context:$springVersion"
     compile "aopalliance:aopalliance:1.0"
     compile "org.aspectj:aspectjrt:1.6.10"
