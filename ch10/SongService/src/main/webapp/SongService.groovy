@@ -32,7 +32,7 @@ switch (request.method) {
 		
 		if (!exists) {
 			dao.addSong s
-			response.addHeader 'Location',"http://localhost:8080/GroovySongs/SongService.groovy?id=${s.id}"
+			response.addHeader 'Location',"http://localhost:8163/GroovySongs/SongService.groovy?id=${s.id}"
 			out.print "${s.title} added with id ${s.id}"
 		} else {
 			out.print "${s.title} already exists"

@@ -30,13 +30,18 @@ task wrapper(type:Wrapper) {
     gradleVersion = '1.0-milestone-6'
 }
 
+def springVersion = '3.0.5.RELEASE'
+
 dependencies {
     groovy "org.codehaus.groovy:groovy-all:1.8.5"
     providedCompile 'javax.servlet:servlet-api:2.5'
     
+	testCompile "org.springframework:spring-context:$springVersion"
+	testCompile "org.springframework:spring-web:$springVersion"
+	testCompile "org.springframework:spring-tx:$springVersion"
+	testCompile "org.springframework:spring-test:$springVersion" 
+	
     testCompile "junit:junit:4.9"
-    
-    testCompile 'org.codehaus.groovy.modules.http-builder:http-builder:0.5.2'
     
     integrationTestCompile 'junit:junit:4.9',
         sourceSets.main.output, 
