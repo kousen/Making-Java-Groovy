@@ -5,5 +5,6 @@
 </head>
 <body>
     <h2>Hello, ${name}!</h2>
+    <h3>The servlet has been accessed ${session.count} times</h3>
 </body>
 </html>
