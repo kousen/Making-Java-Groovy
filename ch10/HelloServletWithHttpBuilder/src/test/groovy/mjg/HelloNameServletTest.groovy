@@ -11,15 +11,27 @@ class HelloNameServletTest {
     HelloNameServlet servlet = new HelloNameServlet()
 
     @Test
-    public void testDoGet() {
-        MockHttpServletRequest req = new MockHttpServletRequest()
-        MockHttpServletResponse resp = new MockHttpServletResponse()
+    public void testDoGetWithNoName() {
+        MockHttpServletRequest request = new MockHttpServletRequest()
+        MockHttpServletResponse response = new MockHttpServletResponse()
         MockHttpSession session = new MockHttpSession()
-        req.session = session
-		req.setParameter('name','Dolly')
-        servlet.doGet(req, resp)
-        assert 'hello.jsp' == resp.forwardedUrl
+        request.session = session
+        servlet.doGet(request, response)
+        assert 'hello.jsp' == response.forwardedUrl
+        assert request.getAttribute("name") == 'Hello, World'
         assert session.getValue("count") == 1
     }
 
+    @Test
+    public void testDoGetWithName() {
+        MockHttpServletRequest request = new MockHttpServletRequest()
+        MockHttpServletResponse response = new MockHttpServletResponse()
+        MockHttpSession session = new MockHttpSession()
+        request.session = session
+        request.setParameter('name','Dolly')
+        servlet.doGet(request, response)
+        assert 'hello.jsp' == response.forwardedUrl
+        assert request.getAttribute("name") == 'Hello, Dolly'
+        assert session.getValue("count") == 1
+    }
 }

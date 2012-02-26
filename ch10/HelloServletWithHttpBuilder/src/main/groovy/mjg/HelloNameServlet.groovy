@@ -11,10 +11,10 @@ import javax.servlet.http.HttpServletResponse
 class HelloNameServlet extends HttpServlet {
     void doGet(HttpServletRequest request, HttpServletResponse response)
         throws ServletException, IOException {
-		def session = request.session
+        def session = request.session
         use (ServletCategory) {
-            request.name = request.getParameter('name') ?: 'World'
-			session.count = (session.count ?: 0) + 1
+            request.name = 'Hello, ' + (request.getParameter('name') ?: 'World')
+            session['count'] = (session.count ?: 0) + 1
         }
         request.getRequestDispatcher('hello.jsp').forward(request,response)
     }
