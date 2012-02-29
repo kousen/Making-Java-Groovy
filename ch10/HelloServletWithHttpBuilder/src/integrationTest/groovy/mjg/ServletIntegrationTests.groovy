@@ -32,7 +32,17 @@ class ServletIntegrationTests {
     }
     
     @Test
-    void testHelloServletPost() {
+    void testHelloServletPostWithoutName() {
+        def http = new HTTPBuilder("http://localhost:$httpPort/")
+        def resp = http.post(path:'HelloServletWithHttpBuilder/hellogs',
+            requestContentType: ContentType.TEXT) { resp, reader ->
+            reader.text.trim()
+        }
+        assert resp == 'Hello, World!'
+    }
+
+    @Test
+    void testHelloServletPostWithName() {
         def http = new HTTPBuilder("http://localhost:$httpPort/")
         def resp = http.post(path:'HelloServletWithHttpBuilder/hellogs',
             requestContentType: ContentType.TEXT,

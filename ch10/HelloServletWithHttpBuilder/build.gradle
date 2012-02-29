@@ -40,7 +40,6 @@ dependencies {
     testCompile "junit:junit:4.9"
     testCompile "org.springframework:spring-core:$springVersion"
     testCompile "org.springframework:spring-test:$springVersion"
-    
     testCompile 'org.codehaus.groovy.modules.http-builder:http-builder:0.5.2'
     
     integrationTestCompile 'junit:junit:4.9',
