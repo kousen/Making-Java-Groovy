@@ -19,7 +19,7 @@ stopKey = 'foo'
 
 [jettyRun, jettyRunWar]*.daemon = true
 
-task integrationTest(type: Test, dependsOn: jettyRun) {
+task intTest(type: Test, dependsOn: jettyRun) {
     // callServlets()
     testClassesDir = sourceSets.integrationTest.output.classesDir
     classpath = sourceSets.integrationTest.runtimeClasspath
@@ -33,7 +33,7 @@ task integrationTest(type: Test, dependsOn: jettyRun) {
 //    assert response == 'Hello from a Groovy Servlet!'
 //}
 
-check.dependsOn integrationTest
+check.dependsOn intTest
 
 task wrapper(type:Wrapper) {
     gradleVersion = '1.0-milestone-6'
