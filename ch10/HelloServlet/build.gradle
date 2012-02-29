@@ -49,10 +49,7 @@ dependencies {
     testCompile "org.springframework:spring-core:$springVersion"
     testCompile "org.springframework:spring-test:$springVersion"
     
-    integrationTestCompile 'junit:junit:4.9',
-        sourceSets.main.output, 
-        sourceSets.test.output,
-        configurations.testCompile
+    integrationTestCompile configurations.testCompile
     integrationTestRuntime configurations.testRuntime
     
 }
