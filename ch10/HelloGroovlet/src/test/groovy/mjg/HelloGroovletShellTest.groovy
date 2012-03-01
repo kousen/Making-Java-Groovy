@@ -13,7 +13,6 @@ class HelloGroovletShellTest extends GroovyShellTestCase {
     void testGroovletWithNoName() {
         withBinding([out: capturedOut, params:[:]]) {
             shell.evaluate(new File("$groovlet"))
-            
         }
         assert 'Hello, World!' == content.toString().trim()
     }
