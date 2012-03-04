@@ -9,10 +9,9 @@ def year = params.year
 
 m = month.toInteger() < 10 ? '0' + month : month
 d = day.toInteger() < 10 ? '0' + day : day
-y = year.toInteger() + ''
+y = year
 
-ggd = new GetGameData(month:m,day:d,year:y)
-results = ggd.games
+results = new GetGameData(month:m,day:d,year:y).games
 
 html.games {
     results.each { g ->
