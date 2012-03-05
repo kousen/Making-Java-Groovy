@@ -13,4 +13,15 @@ class GameServiceIntegrationTests {
 		assert games.game[0].@outcome.toString().contains('Boston')
 		assert games.game[0].@outcome.toString().contains('Colorado')
 	}
+	
+	@Test
+	void testGameServiceJSON() {
+		String response = 
+			"http://localhost:8080/groovybaseball/GamesServiceJSON.groovy?month=10&day=28&year=2007".toURL().text
+		println response
+		def json = new groovy.json.JsonSlurper().parseText(response)
+		println json
+		assert json.games.game.outcome.toString().contains('Boston')
+		assert json.games.game.outcome.toString().contains('Colorado')
+	}
 }
