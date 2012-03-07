@@ -3,7 +3,6 @@ import beans.Stadium;
 import service.GetGameData;
 import groovy.json.JsonBuilder
 
-response.contentType = 'text/xml'
 def month = params.month
 def day = params.day
 def year = params.year
@@ -13,6 +12,8 @@ d = day.toInteger() < 10 ? '0' + day : day
 y = year
 
 results = new GetGameData(month:m,day:d,year:y).games
+
+response.contentType = 'application/json'
 
 def json = new JsonBuilder()
 json.games {
