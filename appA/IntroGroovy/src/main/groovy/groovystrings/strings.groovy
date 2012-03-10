@@ -1,4 +1,4 @@
-package strings
+package groovystrings
 
 def s = 'this is a string'
 assert s.class == java.lang.String

@@ -38,7 +38,7 @@ class ScriptTests extends GroovyTestCase {
     }
 	
 	void testStrings() {
-		shell.evaluate(new File("$baseDir/strings/strings.groovy"))
+		shell.evaluate(new File("$baseDir/groovystrings/strings.groovy"))
 	}
 
     void testMetaprogramming() {

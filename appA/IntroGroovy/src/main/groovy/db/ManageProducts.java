@@ -53,8 +53,11 @@ public class ManageProducts {
             pst = conn.prepareStatement("select * from product");
             ResultSet rs = pst.executeQuery();
             while (rs.next()) {
-                results.add(
-                    new Product(rs.getInt("id"),rs.getString("name"),rs.getDouble("price")));
+                Product p = new Product();
+                p.setId(rs.getInt("id"));
+                p.setName(rs.getString("name"));
+                p.setPrice(rs.getDouble("price"));
+                results.add(p);
             }
             rs.close();
         } catch (SQLException e) {
@@ -80,7 +83,10 @@ public class ManageProducts {
             pst.setInt(1, id);
             ResultSet rs = pst.executeQuery();
             if (rs.next()) {
-                p = new Product(rs.getInt("id"),rs.getString("name"),rs.getDouble("price"));
+                p = new Product();
+                p.setId(rs.getInt("id"));
+                p.setName(rs.getString("name"));
+                p.setPrice(rs.getDouble("price"));
             }
             rs.close();
         } catch (SQLException e) {
