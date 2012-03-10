@@ -1,5 +1,5 @@
 import mjg.spring.*
 
 class GroovyEvaluator implements Evaluator {
-    boolean approve(MortgageApplication application) { true }
+    boolean approve(MortgageApplication application) { false }
 }
