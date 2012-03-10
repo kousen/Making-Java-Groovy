@@ -1,7 +1,7 @@
 package mjg
 
 class Knight {
-    String title
+    String title = 'Sir'
     String name
     Quest quest
     Castle castle

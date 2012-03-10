@@ -26,22 +26,22 @@
 	<g:textField name="state" required="" value="${castleInstance?.state}"/>
 </div>
 
-<div class="fieldcontain ${hasErrors(bean: castleInstance, field: 'latitude', 'error')} required">
-	<label for="latitude">
-		<g:message code="castle.latitude.label" default="Latitude" />
-		<span class="required-indicator">*</span>
-	</label>
-	<g:field type="number" name="latitude" min="-90.0" max="90.0" required="" value="${fieldValue(bean: castleInstance, field: 'latitude')}"/>
-</div>
-
-<div class="fieldcontain ${hasErrors(bean: castleInstance, field: 'longitude', 'error')} required">
-	<label for="longitude">
-		<g:message code="castle.longitude.label" default="Longitude" />
-		<span class="required-indicator">*</span>
-	</label>
-	<g:field type="number" name="longitude" required="" value="${fieldValue(bean: castleInstance, field: 'longitude')}"/>
-</div>
-
+<%--<div class="fieldcontain ${hasErrors(bean: castleInstance, field: 'latitude', 'error')} required">--%>
+<%--	<label for="latitude">--%>
+<%--		<g:message code="castle.latitude.label" default="Latitude" />--%>
+<%--		<span class="required-indicator">*</span>--%>
+<%--	</label>--%>
+<%--	<g:field type="number" name="latitude" min="-90.0" max="90.0" required="" value="${fieldValue(bean: castleInstance, field: 'latitude')}"/>--%>
+<%--</div>--%>
+<%----%>
+<%--<div class="fieldcontain ${hasErrors(bean: castleInstance, field: 'longitude', 'error')} required">--%>
+<%--	<label for="longitude">--%>
+<%--		<g:message code="castle.longitude.label" default="Longitude" />--%>
+<%--		<span class="required-indicator">*</span>--%>
+<%--	</label>--%>
+<%--	<g:field type="number" name="longitude" required="" value="${fieldValue(bean: castleInstance, field: 'longitude')}"/>--%>
+<%--</div>--%>
+<%----%>
 <div class="fieldcontain ${hasErrors(bean: castleInstance, field: 'knights', 'error')} ">
 	<label for="knights">
 		<g:message code="castle.knights.label" default="Knights" />
