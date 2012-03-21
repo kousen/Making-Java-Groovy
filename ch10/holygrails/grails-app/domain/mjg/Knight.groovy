@@ -8,8 +8,6 @@ class Knight {
     
     String toString() { "$title $name" }
     
-    // static hasMany = [challenges:Challenge]
-
     static constraints = {
         title inList: ['Sir','King','Lord','Squire']
         name blank: false

@@ -11,8 +11,6 @@ class Task {
     
     static belongsTo = [quest:Quest]
     
-    // static hasMany = [challenges:Challenge]
-
     static constraints = {
         name blank:false
         priority range:1..5

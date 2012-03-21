@@ -3,7 +3,7 @@ package mjg
 import org.springframework.dao.DataIntegrityViolationException
 
 class CastleController {
-    GeocoderService geocoderService
+    def geocoderService
 
     static allowedMethods = [save: "POST", update: "POST", delete: "POST"]
 

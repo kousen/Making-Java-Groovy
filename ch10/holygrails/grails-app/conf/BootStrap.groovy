@@ -28,7 +28,7 @@ class BootStrap {
         geocoderService.fillInLatLng(camelot)
         camelot.save(failOnError:true)
         
-        Castle aarrgghh = new Castle(name:'Aaaarrrrggghhh',city:'Wakefield',state:'MA')
+        Castle aarrgghh = new Castle(name:'Aaaarrrrggghhh',city:'Hartford',state:'CT')
         geocoderService.fillInLatLng(aarrgghh)
         aarrgghh.save(failOnError:true)
     }
