@@ -10,7 +10,7 @@ class GroovyUtilityMethodsJUnit4Tests {
 
     @Test
     void testGetPositives() {
-        def correct = [1, 2, 3]as int[]
+        def correct = [1, 2, 3] as int[]
         assert correct == impl.getPositives((-3..3) as int[])
     }
 
@@ -18,7 +18,7 @@ class GroovyUtilityMethodsJUnit4Tests {
     void testIsPrime() {
         def primes = [2, 3, 5, 7, 11, 13, 17, 19, 23]
         primes.each { num ->
-            assert impl.isPrime(num)
+            assertTrue impl.isPrime(num)
         }
         assert !impl.isPrime(9)
     }

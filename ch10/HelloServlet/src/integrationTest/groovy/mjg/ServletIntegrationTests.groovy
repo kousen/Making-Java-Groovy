@@ -9,7 +9,8 @@ class ServletIntegrationTests {
     
     @Test
     void testHelloServlet() {
-        String response = "http://localhost:$httpPort/HelloServlet/hello".toURL().text.trim()
+        String response = 
+            "http://localhost:$httpPort/HelloServlet/hello".toURL().text.trim()
         assert response == 'Hello, Servlet!'
     }
     
