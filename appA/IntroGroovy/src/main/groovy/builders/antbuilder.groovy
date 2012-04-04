@@ -6,7 +6,9 @@ String dir = 'src/main/groovy/builders'
 assert !(new File("$dir/antbuildercopy.groovy").exists())
 
 ant.echo 'about to copy the source code'
-ant.copy file:"$dir/antbuilder.groovy", tofile:"$dir/antbuildercopy.groovy"
+ant.copy file:"$dir/antbuilder.groovy", 
+	tofile:"$dir/antbuildercopy.groovy"
+	
 assert (new File("$dir/antbuildercopy.groovy").exists())
 
 ant.echo 'deleting the copied file'

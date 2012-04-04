@@ -27,7 +27,7 @@ println total
 println total.class.name
 [5,10,15,20].each { println "$it: ${total[it]}" }
 
-def sdf = new SimpleDateFormat("MMM dd, yyyy")
+def sdf = new SimpleDateFormat("MMM dd, yyyy", Locale.US)
 def cal = Calendar.instance
 cal.set(2011,Calendar.FEBRUARY,27)
 def now = cal.time
