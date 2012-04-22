@@ -3,14 +3,14 @@ apply plugin:'eclipse'
 apply plugin:'idea'
 
 repositories {
-    flatDir {
-        dirs 'lib'
-    }
-//    mavenCentral()
+//    flatDir {
+//        dirs 'lib'
+//    }
+    mavenCentral()
 }
 
 task wrapper(type:Wrapper) {
-    gradleVersion = '1.0-milestone-8a'
+    gradleVersion = '1.0-milestone-9'
 }
 
 task collectJars(type: Copy) {
@@ -19,11 +19,8 @@ task collectJars(type: Copy) {
 }
 
 dependencies {
-    groovy ':groovy-all:1.8.6'
-
-    testCompile ':junit-dep:4.9'
-    testCompile ':spock-core:0.6-groovy-1.8'
-	
-    runtime ':ant:1.8.1'
-    runtime ':h2:1.2.140'
+    groovy 'org.codehaus.groovy:groovy-all:1.8.6'
+    testCompile 'org.spockframework:spock-core:0.6-groovy-1.8'
+    runtime 'com.h2database:h2:1.2.140'
+    runtime 'org.apache.ant:ant:1.8.1'
 }

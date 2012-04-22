@@ -18,6 +18,7 @@ ant.delete file:"$dir/antbuildercopy.groovy"
 ant.with {
     echo 'about to copy the source code'
     copy file:"$dir/antbuilder.groovy", tofile:"$dir/antbuildercopy.groovy"
+    assert true
     echo 'deleting the copied file'
     delete file:"$dir/antbuildercopy.groovy"
 }
