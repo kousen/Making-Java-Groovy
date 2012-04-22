@@ -14,8 +14,8 @@ class StadiumLocationsSpec extends Specification {
             'org.h2.Driver')
     }
     
-    @Unroll({"$name: $lat and $lng in range"})
-    def "lat and lngs are reasonable"() {
+    @Unroll
+    def "#name: #lat and #lng in range"() {
         expect:
         lat > 25 && lat < 48
         lng > -123 && lng < -71
