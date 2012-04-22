@@ -31,7 +31,7 @@ stadiums << new Stadium(name:'Safeco Field',street:'1516 First Avenue S',city:'S
 stadiums << new Stadium(name:'AT&T Park',street:'24 Willie Mays Plaza',city:'San Francisco',state:'CA',team:'sfn')
 stadiums << new Stadium(name:'Busch Stadium',street:'700 Clark Avenue',city:'St. Louis',state:'MO',team:'sln')
 stadiums << new Stadium(name:'Tropicana Field',street:'One Tropicana Drive',city:'St. Petersburg',state:'FL',team:'tba')
-stadiums << new Stadium(name:'Rangers Ballpark in Arlington',street:'1000 Ballpark Way',city:'Arlington',state:'TX',team:'tex')
+stadiums << new Stadium(name:'Rangers Ballpark in Arlington',street:'Ballpark Way',city:'Arlington',state:'TX',team:'tex')
 stadiums << new Stadium(name:'Rogers Centre',street:'One Blue Jays Way',city:'Toronto',state:'ON',team:'tor')
 stadiums << new Stadium(name:'Nationals Park',street:'1500 South Capitol Street SE',city:'Washington',state:'DC',team:'was')
 
@@ -53,7 +53,7 @@ db.execute '''
 Geocoder geo = new Geocoder()
 stadiums.each { s ->
     geo.fillInLatLng s
-    sleep 100
+    sleep 200
     println s
     db.execute """
         insert into stadium(name,team,latitude,longitude)
