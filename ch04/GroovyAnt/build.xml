@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="Groovy Ant" default="info">
+	<description>
+        Demo of Groovy Ant tasks
+    </description>
+
+	<property environment="env" />
+	
+	<path id="groovy.classpath">
+		<fileset dir="${env.GROOVY_HOME}/embeddable" />
+	</path>
+	
+	<taskdef name="groovy" 
+		classname="org.codehaus.groovy.ant.Groovy" 
+		classpathref="groovy.classpath"
+	/>
+	
+	<taskdef name="groovyc" 
+	    classname="org.codehaus.groovy.ant.Groovyc" 
+	    classpathref="groovy.classpath"
+	 />
+
+	<target name="info" description="Demo of Groovy Ant tasks">
+		<groovy>
+	    	println 'Hello, World!'
+			ant.echo 'Hello, World!'
+	    </groovy>
+	</target>
+
+</project>
