@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<rss version="2.0" xmlns:yweather="http://xml.weather.yahoo.com/ns/rss/1.0" xmlns:geo="http://www.w3.org/2003/01/geo/wgs84_pos#">
+<channel>
+  <title>Yahoo! Weather - Sunnyvale, CA</title>
+  <link>http://us.rd.yahoo.com/dailynews/rss/weather/Sunnyvale__CA/*http://weather.yahoo.com/forecast/USCA1116_f.html</link>
+  <description>Yahoo! Weather for Sunnyvale, CA</description>
+  <language>en-us</language>
+  <lastBuildDate>Fri, 18 Dec 2009 9:38 am PST</lastBuildDate>
+  <ttl>60</ttl>
+  <yweather:location city="Sunnyvale" region="CA"   country="United States"/>
+  <yweather:units temperature="F" distance="mi" pressure="in" speed="mph"/>
+  <yweather:wind chill="50"   direction="0"   speed="0" />
+  <yweather:atmosphere humidity="94"  visibility="3"  pressure="30.27"  rising="1" />
+  <yweather:astronomy sunrise="7:17 am"   sunset="4:52 pm"/>
+  <image>
+    <title>Yahoo! Weather</title>
+    <width>142</width>
+    <height>18</height>
+    <link>http://weather.yahoo.com</link>
+    <url>http://l.yimg.com/a/i/us/nws/th/main_142b.gif</url>
+  </image>
+  <item>
+    <title>Conditions for Sunnyvale, CA at 9:38 am PST</title>
+    <geo:lat>37.37</geo:lat>
+    <geo:long>-122.04</geo:long>
+    <link>http://us.rd.yahoo.com/dailynews/rss/weather/Sunnyvale__CA/*http://weather.yahoo.com/forecast/USCA1116_f.html</link>
+    <pubDate>Fri, 18 Dec 2009 9:38 am PST</pubDate>
+    <yweather:condition  text="Mostly Cloudy"  code="28"  temp="50"  date="Fri, 18 Dec 2009 9:38 am PST" />
+    <description><![CDATA[
+<img src="http://l.yimg.com/a/i/us/we/52/28.gif"/><br />
+<b>Current Conditions:</b><br />
+Mostly Cloudy, 50 F<BR />
+<BR /><b>Forecast:</b><BR />
+Fri - Partly Cloudy. High: 62 Low: 49<br />
+Sat - Partly Cloudy. High: 65 Low: 49<br />
+<br />
+<a href="http://us.rd.yahoo.com/dailynews/rss/weather/Sunnyvale__CA/*http://weather.yahoo.com/forecast/USCA1116_f.html">Full Forecast at Yahoo! Weather</a><BR/><BR/>
+(provided by <a href="http://www.weather.com" >The Weather Channel</a>)<br/>
+]]></description>
+    <yweather:forecast day="Fri" date="18 Dec 2009" low="49" high="62" text="Partly Cloudy" code="30" />
+    <yweather:forecast day="Sat" date="19 Dec 2009" low="49" high="65" text="Partly Cloudy" code="30" />
+    <guid isPermaLink="false">USCA1116_2009_12_18_9_38_PST</guid>
+  </item>
+</channel>
+</rss>
