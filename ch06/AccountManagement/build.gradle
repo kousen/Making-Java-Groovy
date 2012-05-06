@@ -1,5 +1,6 @@
-apply plugin:'groovy'
-apply plugin:'eclipse'
+apply plugin: 'groovy'
+apply plugin: 'eclipse'
+apply plugin: 'idea'
 
 repositories {
     mavenCentral()
@@ -15,7 +16,7 @@ dependencies {
     compile "org.springframework:spring-jdbc:$springVersion"
     runtime "com.h2database:h2:1.3.148"
     runtime "cglib:cglib:2.2"
-    
+
     runtime "org.slf4j:slf4j-nop:1.5.8"
     runtime "org.slf4j:slf4j-api:1.5.8"
     testCompile "commons-dbcp:commons-dbcp:1.3"
@@ -28,3 +29,6 @@ dependencies {
     testCompile "org.spockframework:spock-core:$spockVersion"
     testCompile "org.spockframework:spock-spring:$spockVersion"
 }
+
+sourceSets.main.java.srcDirs = []
+sourceSets.main.groovy.srcDir 'src/main/java'
