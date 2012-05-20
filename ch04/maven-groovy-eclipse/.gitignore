@@ -1,0 +1,13 @@
+# Gradle
+.gradle
+.gradletasknamecache
+build
+
+# Maven
+target
+
+# Eclipse
+.project
+.classpath
+.settings
+bin
