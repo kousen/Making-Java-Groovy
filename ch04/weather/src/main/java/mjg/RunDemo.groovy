@@ -8,5 +8,5 @@ package mjg
 // Los Angeles, CA:  2442047
 // Brisbane, AU   :  1100661
 
-def woeid = args.size() ? args[0] : '2445916'
+def woeid = args.size() ? args[0] : '2367105'
 println new YahooParser(woeid:woeid).weather
