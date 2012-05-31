@@ -10,6 +10,6 @@ added here.
 
 Please send any questions or comments to:
 
-Ken Kousen ([email](ken.kousen@kousenit.com))  
+Ken Kousen ([email](mailto:ken.kousen@kousenit.com))  
 [Kousen IT, Inc.](http://www.kousenit.com)  
 [@kenkousen](http://twitter.com/kenkousen)
