@@ -17,8 +17,8 @@ html.games {
     results.each { g ->
         game(
             outcome:"$g.away $g.aScore, $g.home $g.hScore",
-            lat:g.stadium.latitude,
-            lng:g.stadium.longitude
+            lat:g.stadium?.latitude,
+            lng:g.stadium?.longitude
         )
     }
 }
