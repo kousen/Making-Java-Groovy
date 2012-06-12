@@ -42,8 +42,8 @@ task wsgen(dependsOn: compileGroovy)  {
 wsgen.onlyIf { !(new File('src/mjg/pp/service/jaxws')).exists() }
 classes.dependsOn wsgen
 
-def groovyVersion = '1.8.4'
-def spockVersion = '0.5-groovy-1.8'
+def groovyVersion = '1.8.6'
+def spockVersion = '0.6-groovy-1.8'
 
 dependencies {
     groovy "org.codehaus.groovy:groovy-all:$groovyVersion"

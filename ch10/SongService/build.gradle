@@ -27,19 +27,19 @@ task integrationTest(type: Test, dependsOn: jettyRun) {
 check.dependsOn integrationTest
 
 task wrapper(type:Wrapper) {
-    gradleVersion = '1.0-milestone-6'
+    gradleVersion = '1.0'
 }
 
-def springVersion = '3.0.5.RELEASE'
+def springVersion = '3.1.1.RELEASE'
 
 dependencies {
-    groovy "org.codehaus.groovy:groovy-all:1.8.5"
+    groovy "org.codehaus.groovy:groovy-all:1.8.6"
     providedCompile 'javax.servlet:servlet-api:2.5'
     
-	testCompile "org.springframework:spring-context:$springVersion"
-	testCompile "org.springframework:spring-web:$springVersion"
-	testCompile "org.springframework:spring-tx:$springVersion"
-	testCompile "org.springframework:spring-test:$springVersion" 
+    testCompile "org.springframework:spring-context:$springVersion"
+    testCompile "org.springframework:spring-web:$springVersion"
+    testCompile "org.springframework:spring-tx:$springVersion"
+    testCompile "org.springframework:spring-test:$springVersion" 
 	
     testCompile "junit:junit:4.9"
     
@@ -48,5 +48,4 @@ dependencies {
         sourceSets.test.output,
         configurations.testCompile
     integrationTestRuntime configurations.testRuntime
-    
 }
