@@ -1,4 +1,4 @@
-Source code for Chapter 1 of Making Java Groovy by Ken Kousen.
+Source code for Chapter 1 of _Making Java Groovy_ by Ken Kousen.
 
 The project is set up in typical Maven structure, with the
 Java source and the Groovy source separated in both the src
