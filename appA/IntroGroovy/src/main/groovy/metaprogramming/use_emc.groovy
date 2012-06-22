@@ -3,6 +3,7 @@ package metaprogramming
 import java.util.logging.*
 
 Logger.metaClass.methodMissing = { String name, args ->
+    println "inside methodMissing with $name"
     def impl = { Object... varArgs ->
         int val = Level.WARNING.intValue() +
             (Level.SEVERE.intValue() - Level.WARNING.intValue()) * Math.random()
@@ -18,3 +19,4 @@ Logger log = Logger.getLogger(this.class.name)
 log.wtf 'no effin way'
 log.whoa 'dude, seriously'
 log.rofl "you're kidding, right?"
+log.rofl 'rolling on the floor laughing'
