@@ -7,6 +7,7 @@ repositories {
 //        dirs 'lib'
 //    }
     mavenCentral()
+    maven { url "http://oss.sonatype.org/content/repositories/snapshots" }
 }
 
 task wrapper(type:Wrapper) {
@@ -19,8 +20,8 @@ task collectJars(type: Copy) {
 }
 
 dependencies {
-    groovy 'org.codehaus.groovy:groovy-all:1.8.6'
-    testCompile 'org.spockframework:spock-core:0.6-groovy-1.8'
+    groovy 'org.codehaus.groovy:groovy-all:2.0.0'
+    testCompile 'org.spockframework:spock-core:0.7-groovy-2.0-SNAPSHOT'
     runtime 'com.h2database:h2:1.2.140'
     runtime 'org.apache.ant:ant:1.8.1'
 }
