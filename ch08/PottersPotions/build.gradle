@@ -3,8 +3,8 @@ apply plugin:'eclipse'
 
 repositories {
     mavenCentral()
-    mavenRepo urls:["http://download.java.net/maven/1",
-        "http://download.java.net/maven/2"]
+    maven { url "http://download.java.net/maven/1"
+            url "http://download.java.net/maven/2" }
 }
 
 configurations {
@@ -34,7 +34,8 @@ task wsgen(dependsOn: compileGroovy)  {
                 sourcedestdir:'src',
                 resourcedestdir:'resources',
                 genwsdl:'true',
-                classpath:sourceSets.main.classes.asPath,
+                classpath:"${configurations.compile.asPath}:$buildDir/classes/main",
+                //classpath:configurations.compile.asPath,
                 sei:'mjg.pp.service.HogwartsWizard')
         }
     }
