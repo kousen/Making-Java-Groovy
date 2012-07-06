@@ -16,8 +16,7 @@ String license = '''/* ===================================================
  * limitations under the License.
  * ========================================================== */
 '''
-dir = '/Users/kousen/mjg'
-new File(dir).traverse(
+new File('.').traverse(
     type       : FILES, 
     nameFilter : ~/.*(java|groovy)$/,
     preDir     : { if (it.name == '.metadata') return SKIP_SUBTREE }) { file ->
