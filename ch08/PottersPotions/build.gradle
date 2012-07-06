@@ -34,14 +34,17 @@ task wsgen(dependsOn: compileGroovy)  {
                 sourcedestdir:'src',
                 resourcedestdir:'resources',
                 genwsdl:'true',
-                classpath:"${configurations.compile.asPath}:$buildDir/classes/main",
-                //classpath:configurations.compile.asPath,
+                classpath:"${configurations.compile.asPath}:${sourceSets.main.output.classesDir}",
                 sei:'mjg.pp.service.HogwartsWizard')
         }
     }
 }
 wsgen.onlyIf { !(new File('src/mjg/pp/service/jaxws')).exists() }
 classes.dependsOn wsgen
+
+task wrapper(type:Wrapper) {
+    gradleVersion = '1.0'
+}
 
 def groovyVersion = '1.8.6'
 def spockVersion = '0.6-groovy-1.8'
