@@ -17,9 +17,9 @@ package io
 
 def files = []
 new File('.').eachFileRecurse { file ->
-	if (file.name.endsWith('.groovy')) {
-		files << file
-	}
+    if (file.name.endsWith('.groovy')) {
+        files << file
+    }
 }
 assert files
 println "There are ${files.size()} groovy files"
@@ -30,13 +30,13 @@ String data = new File(base + '/files.groovy').text
 assert data.contains('text')
 
 List<String> lines = new File("$base/files.groovy").readLines()*.trim()
-assert lines[0] == "package io"
+assert lines[15] == "package io"
 
 lines.reverse().each { println it }
 
 List dataLines = []
 new File("$base/data.txt").splitEachLine(',') {
-	dataLines << it
+    dataLines << it
 }
 assert dataLines == [['1','2','3'],['a','b','c']]
 
