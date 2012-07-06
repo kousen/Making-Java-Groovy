@@ -32,7 +32,7 @@
         <mkdir dir="${classes.dir}" />
         <groovyc srcdir="${src.dir}" destdir="${classes.dir}"
             classpathref="classpath">
-            <javac source="1.5" target="1.5" />
+            <javac source="1.7" target="1.7" />
         </groovyc>
     </target>
 

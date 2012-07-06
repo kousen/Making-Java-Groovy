@@ -1,4 +1,6 @@
-/* ===================================================
+import static groovy.io.FileType.*
+import static groovy.io.FileVisitResult.*
+String license = '''/* ===================================================
  * Copyright 2012 Kousen IT, Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -13,16 +15,17 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  * ========================================================== */
-package mjg.pp.service
-
-
-import groovy.lang.Delegate;
-
-import javax.jws.HandlerChain;
-import javax.jws.WebService;
-
-@WebService(endpointInterface="mjg.pp.service.Wizard")
-@HandlerChain(file="handler-chain.xml")
-class HogwartsWizard {
-	@Delegate Wizard wizard
+'''
+dir = '/Users/kousen/mjg'
+new File(dir).traverse(
+    type       : FILES, 
+    nameFilter : ~/.*(java|groovy)$/,
+    preDir     : { if (it.name == '.metadata') return SKIP_SUBTREE }) { file ->
+    println file
+    // only add license if not already there
+    if (!file.text.contains(license)) {
+        def source = file.text
+        file.text = "$license$source"
+    }
+    assert file.text.contains(license)
 }
