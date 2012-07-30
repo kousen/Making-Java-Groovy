@@ -34,7 +34,7 @@ class GroovyUtilityMethods implements UtilityMethods {
     
     @Override
     boolean isPalindrome(String s) {
-        String str = s.toLowerCase().replaceAll(/[ ,']/,'')
+        String str = s.toLowerCase().replaceAll(/\W/,'')
         return str.reverse() == str
     }
 
