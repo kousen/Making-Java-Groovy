@@ -4,7 +4,8 @@ apply plugin:'eclipse'
 repositories {
     mavenCentral()
     maven { url "http://download.java.net/maven/1"
-            url "http://download.java.net/maven/2" }
+            url "http://download.java.net/maven/2" 
+            url 'http://oss.sonatype.org/content/repositories/snapshots' }
 }
 
 configurations {
@@ -46,8 +47,8 @@ task wrapper(type:Wrapper) {
     gradleVersion = '1.0'
 }
 
-def groovyVersion = '1.8.6'
-def spockVersion = '0.6-groovy-1.8'
+def groovyVersion = '2.0.0'
+def spockVersion = '0.7-groovy-2.0-SNAPSHOT'
 
 dependencies {
     groovy "org.codehaus.groovy:groovy-all:$groovyVersion"

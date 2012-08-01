@@ -14,7 +14,6 @@
  * limitations under the License.
  * ========================================================== */
 package mjg.pp.service
-;
 
 import javax.xml.namespace.QName 
 import javax.xml.ws.Endpoint;
