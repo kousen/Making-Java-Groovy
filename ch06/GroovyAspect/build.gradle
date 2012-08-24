@@ -3,13 +3,14 @@ apply plugin:'eclipse'
 
 repositories {
     mavenCentral()
+    maven { url "http://oss.sonatype.org/content/repositories/snapshots" }
 }
 
 def springVersion = '3.1.1.RELEASE'
-def spockVersion = '0.6-groovy-1.8'
+def spockVersion = '0.7-groovy-2.0-SNAPSHOT'
 
 dependencies {
-    groovy group:'org.codehaus.groovy', name:'groovy-all', version:'1.8.6'
+    groovy group:'org.codehaus.groovy', name:'groovy-all', version:'2.0.1'
     compile "org.springframework:spring-context:$springVersion"
     compile "aopalliance:aopalliance:1.0"
     compile "org.aspectj:aspectjrt:1.6.10"
