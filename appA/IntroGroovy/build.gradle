@@ -3,9 +3,6 @@ apply plugin:'eclipse'
 apply plugin:'idea'
 
 repositories {
-//    flatDir {
-//        dirs 'lib'
-//    }
     mavenCentral()
     maven { url "http://oss.sonatype.org/content/repositories/snapshots" }
 }
@@ -20,7 +17,7 @@ task collectJars(type: Copy) {
 }
 
 dependencies {
-    groovy 'org.codehaus.groovy:groovy-all:2.0.0'
+    groovy 'org.codehaus.groovy:groovy-all:2.0.1'
     compile 'org.apache.commons:commons-math3:3.0'
     testCompile 'org.spockframework:spock-core:0.7-groovy-2.0-SNAPSHOT'
     runtime 'com.h2database:h2:1.2.140'
