@@ -36,3 +36,4 @@ log.whoa 'dude, seriously'
 log.rofl "you're kidding, right?"
 log.rofl 'rolling on the floor laughing'
 log.whatever 'heavy sigh'
+log.hi 'hello'
