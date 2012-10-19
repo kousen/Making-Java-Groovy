@@ -19,10 +19,10 @@ import java.util.logging.*
 
 Logger.metaClass.methodMissing = { String name, args ->
     println "inside methodMissing with $name"
-    def impl = { Object... varArgs ->
         int val = Level.WARNING.intValue() +
             (Level.SEVERE.intValue() - Level.WARNING.intValue()) * Math.random()
         def level = new CustomLevel(name.toUpperCase(),val)
+    def impl = { Object... varArgs ->
         delegate.log(level,varArgs[0])
     }
     Logger.metaClass."$name" = impl
