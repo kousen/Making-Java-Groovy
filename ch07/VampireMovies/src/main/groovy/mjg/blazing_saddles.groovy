@@ -2,7 +2,7 @@ package mjg
 
 import groovy.json.*
 
-String apiKey = '3ufhgmk2h9yf4ksn2mh8zahv'
+def apiKey = new File('mjg/rotten_tomatoes_apiKey.txt').text
 def base = "http://api.rottentomatoes.com/api/public/v1.0/movies.json?"
 def qs = [apiKey:apiKey, q: URLEncoder.encode('Blazing Saddles','UTF-8')].collect { it }.join('&')
 def url = "$base$qs"

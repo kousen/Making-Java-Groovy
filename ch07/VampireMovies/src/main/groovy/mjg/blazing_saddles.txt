@@ -1,0 +1,81 @@
+{
+    "total": 1,
+    "movies": [
+        {
+            "id": "13581",
+            "title": "Blazing Saddles",
+            "year": 1974,
+            "mpaa_rating": "R",
+            "runtime": 93,
+            "release_dates": {
+                "theater": "1974-02-07",
+                "dvd": "1997-08-27"
+            },
+            "ratings": {
+                "critics_rating": "Certified Fresh",
+                "critics_score": 89,
+                "audience_rating": "Upright",
+                "audience_score": 89
+            },
+            "synopsis": "",
+            "posters": {
+                "thumbnail": "http://content6.flixster.com/movie/98/44/27/9844276_mob.jpg",
+                "profile": "http://content6.flixster.com/movie/98/44/27/9844276_pro.jpg",
+                "detailed": "http://content6.flixster.com/movie/98/44/27/9844276_det.jpg",
+                "original": "http://content6.flixster.com/movie/98/44/27/9844276_ori.jpg"
+            },
+            "abridged_cast": [
+                {
+                    "name": "Cleavon Little",
+                    "id": "162693977",
+                    "characters": [
+                        "Bart"
+                    ]
+                },
+                {
+                    "name": "Gene Wilder",
+                    "id": "162658425",
+                    "characters": [
+                        "Jim the Waco Kid"
+                    ]
+                },
+                {
+                    "name": "Slim Pickens",
+                    "id": "326300352",
+                    "characters": [
+                        "Taggart"
+                    ]
+                },
+                {
+                    "name": "Harvey Korman",
+                    "id": "348588758",
+                    "characters": [
+                        "Hedley Lamarr"
+                    ]
+                },
+                {
+                    "name": "David Huddleston",
+                    "id": "167963972",
+                    "characters": [
+                        "Olson Johnson"
+                    ]
+                }
+            ],
+            "alternate_ids": {
+                "imdb": "0071230"
+            },
+            "links": {
+                "self": "http://api.rottentomatoes.com/api/public/v1.0/movies/13581.json",
+                "alternate": "http://www.rottentomatoes.com/m/blazing_saddles/",
+                "cast": "http://api.rottentomatoes.com/api/public/v1.0/movies/13581/cast.json",
+                "clips": "http://api.rottentomatoes.com/api/public/v1.0/movies/13581/clips.json",
+                "reviews": "http://api.rottentomatoes.com/api/public/v1.0/movies/13581/reviews.json",
+                "similar": "http://api.rottentomatoes.com/api/public/v1.0/movies/13581/similar.json"
+            }
+        }
+    ],
+    "links": {
+        "self": "http://api.rottentomatoes.com/api/public/v1.0/movies.json?q=Blazing+Saddles&page_limit=30&page=1"
+    },
+    "link_template": "http://api.rottentomatoes.com/api/public/v1.0/movies.json?q={search-term}&page_limit={results-per-page}&page={page-number}"
+}
