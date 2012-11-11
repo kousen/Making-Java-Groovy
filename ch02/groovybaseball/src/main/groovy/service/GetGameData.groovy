@@ -24,12 +24,12 @@ class GetGameData {
     def day
     def month
     def year
-    def base = 'http://gd2.mlb.com/components/game/mlb/'
-    def stadiumMap = [:]
+    String base = 'http://gd2.mlb.com/components/game/mlb/'
+    Map stadiumMap = [:]
     
     private static Logger logger = Logger.getLogger(GetGameData.class.name)
 
-    def abbrevs = [
+    Map abbrevs = [
         ana:"Los Angeles (A)",ari:"Arizona",atl:"Atlanta",
         bal:"Baltimore",bos:"Boston",cha:"Chicago (A)",
         chn:"Chicago (N)",cin:"Cincinnati",cle:"Cleveland",
@@ -46,15 +46,13 @@ class GetGameData {
             'jdbc:h2:build/baseball',
             'org.h2.Driver'
         )
-        logger.info "Value of db after newInstance is $db"
         db.eachRow("select * from stadium") { row ->
-            def home = row.team
-            stadiumMap[home] =
-            new Stadium(name:row.name,
-                team:home,
-                latitude:row.latitude,
-                longitude:row.longitude
+            println row
+            Stadium stadium = new Stadium(
+                name:row.name, team:row.team,
+                latitude:row.latitude, longitude:row.longitude
             )
+            stadiumMap[stadium.team] = stadium
         }
         db.close()
     }
@@ -63,7 +61,7 @@ class GetGameData {
         println "${abbrevs[away]} at ${abbrevs[home]} on ${month}/${day}/${year}"
         def url = base + "year_${year}/month_${month}/day_${day}/"
         def game = "gid_${year}_${month}_${day}_${away}mlb_${home}mlb_${num}/boxscore.xml"
-        def boxscore = new XmlParser().parse(url + game)
+        def boxscore = new XmlSlurper().parse(url + game)
         def awayName = boxscore.@away_fname
         def awayScore = boxscore.linescore[0].@away_team_runs
         def homeName = boxscore.@home_fname
@@ -103,8 +101,7 @@ class GetGameData {
                     def gr = this.getGame(away,home,num)
                     gameResults << gr
                 } catch (Exception e) {
-                    println abbrevs[away] + " at " +
-                    abbrevs[home] + " not started yet"
+                    println "${abbrevs[away]} at ${abbrevs[home]} not started yet"
                 }
             }
         }

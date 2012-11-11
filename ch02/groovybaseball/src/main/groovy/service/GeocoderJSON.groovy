@@ -30,9 +30,7 @@ class GeocoderJSON {
             address: urlEncodedAddress].collect {k,v -> "$k=$v"}.join('&')
         println url
         def response = new JsonSlurper().parseText(url.toURL().text)
-        String latitude = response.results.geometry.location.lat[0] ?: "0.0"
-        String longitude = response.results.geometry.location.lng[0] ?: "0.0"
-        stadium.latitude = latitude.toDouble()
-        stadium.longitude = longitude.toDouble()
+        stadium.latitude = response.results[0].geometry.location.lat.toDouble()
+        stadium.longitude = response.results[0].geometry.location.lng.toDouble()
     }
 }

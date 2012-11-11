@@ -29,9 +29,7 @@ class Geocoder {
             address: urlEncodedAddress].collect {k,v -> "$k=$v"}.join('&')
         println url
         def response = new XmlSlurper().parse(url)
-        String latitude = response.result.geometry.location.lat[0] ?: "0.0"
-        String longitude = response.result.geometry.location.lng[0] ?: "0.0"
-        stadium.latitude = latitude.toDouble()
-        stadium.longitude = longitude.toDouble()
+        stadium.latitude = response.result[0].geometry.location.lat.toDouble()
+        stadium.longitude = response.result[0].geometry.location.lng.toDouble()
     }
 }

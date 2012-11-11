@@ -37,24 +37,24 @@ class GetGameDataTest {
 		ggd.fillInStadiumMap()
 		def stadiums = ggd.stadiumMap.values()
 		stadiums.each { Stadium stadium ->
-			assertTrue stadium.latitude > 25 && stadium.latitude < 48
-			assertTrue stadium.longitude > -123 && stadium.longitude < -71
+			assert stadium.latitude > 25 && stadium.latitude < 48
+			assert stadium.longitude > -123 && stadium.longitude < -71
 		}
 	}
 
 	@Test
 	public void testGetGame() {
 		GameResult gr = ggd.getGame 'bos','col','1'
-		assertEquals 'Boston Red Sox', gr.away
-		assertEquals 'Colorado Rockies', gr.home
-		assertEquals 4, gr.aScore.toInteger()
-		assertEquals 3, gr.hScore.toInteger()
+		assert 'Boston Red Sox' == gr.away
+		assert 'Colorado Rockies' == gr.home
+		assert 4 == gr.aScore.toInteger()
+		assert 3 == gr.hScore.toInteger()
 	}
 
 	@Test
 	public void testGetGames() {
 		def gameResults = ggd.getGames()
-		assertEquals 1, gameResults.size()
+		assert 1 == gameResults.size()
 	}
 
 }

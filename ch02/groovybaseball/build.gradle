@@ -6,7 +6,6 @@ apply plugin:'eclipse-wtp'
 
 repositories {
     mavenCentral()
-    maven { url "http://oss.sonatype.org/content/repositories/snapshots" }
 }
 
 sourceSets {
@@ -53,10 +52,9 @@ task wrapper(type:Wrapper) {
 }
 
 dependencies {
-    groovy 'org.codehaus.groovy:groovy-all:2.0.1'
+    groovy 'org.codehaus.groovy:groovy-all:2.0.4'
 
-//    testCompile 'junit:junit:4.10'
-    testCompile 'org.spockframework:spock-core:0.7-groovy-2.0-SNAPSHOT'
+    testCompile 'org.spockframework:spock-core:0.7-groovy-2.0'
     testRuntime "cglib:cglib-nodep:2.2"
     runtime 'com.h2database:h2:1.2.140'
 
