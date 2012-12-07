@@ -20,16 +20,16 @@ class SqlProductDAO implements ProductDAO {
     }
 
     List<Product> getAllProducts() {
-        List<Product> products = []
-        sql.eachRow('select * from product') { row ->
-            products << new Product(id:row.id,name:row.name,price:row.price)        
-        } 
-        return products;
+        sql.rows('select * from product').collect { row ->
+            new Product(
+                row.collectEntries { k,v -> [k.toLowerCase(), v] }   
+            )
+        }
     }
 
     Product findProductById(int id) {
         def row = sql.firstRow('select * from product where id=?', id)
-        return new Product(id:row.id,name:row.name,price:row.price);
+        return new Product( row.collectEntries { k,v -> [k.toLowerCase(), v] } );
 	}
 
     void insertProduct(Product p) {
