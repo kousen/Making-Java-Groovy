@@ -21,7 +21,7 @@
     <bean id="entityManagerFactory"
         class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
         <property name="dataSource" ref="dataSource" />
-        <property name="persistenceUnitName" value="jpaTest" />
+        <property name="persistenceUnitName" value="jpaDemo" />
         <property name="packagesToScan">
             <list>
                 <value>mjg</value>
@@ -29,7 +29,7 @@
         </property>
         <property name="jpaVendorAdapter">
             <bean class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter">
-                <property name="database" value="HSQL" />
+                <property name="database" value="H2" />
             </bean>
         </property>
     </bean>
