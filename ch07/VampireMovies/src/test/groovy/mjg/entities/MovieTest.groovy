@@ -6,8 +6,6 @@ import groovy.json.JsonSlurper;
 import org.junit.Test;
 
 class MovieTest {
-    def key = new File('src/main/groovy/mjg/rotten_tomatoes_apiKey.txt').text
-    
     @Test
     public void testFromJSON() {
         def data = new JsonSlurper().parseText(
