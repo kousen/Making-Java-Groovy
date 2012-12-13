@@ -4,6 +4,8 @@ import java.text.NumberFormat
 
 class Order {
     String number
+    Date dateCreated
+    Date lastUpdated
     
     static hasMany = [orderLines:OrderLine]
     static belongsTo = [customer:Customer]
