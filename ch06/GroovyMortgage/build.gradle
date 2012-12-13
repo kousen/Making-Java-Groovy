@@ -3,7 +3,6 @@ apply plugin:'eclipse'
 
 repositories {
     mavenCentral()
-    maven { url "http://oss.sonatype.org/content/repositories/snapshots" }
 }
 
 sourceSets {
@@ -18,14 +17,13 @@ sourceSets {
     }
 }
 
-def springVersion = '3.1.1.RELEASE'
-def spockVersion = '0.7-groovy-2.0-SNAPSHOT'
+def springVersion = '3.2.0.RELEASE'
+def spockVersion = '0.7-groovy-2.0'
 
 dependencies {
-    groovy "org.codehaus.groovy:groovy-all:2.0.1"
+    groovy "org.codehaus.groovy:groovy-all:2.0.4"
     compile "org.springframework:spring-context:$springVersion"
     compile "org.springframework:spring-jdbc:$springVersion"
-    runtime "cglib:cglib:2.2"
     
     testCompile "org.springframework:spring-test:$springVersion"
     testCompile "org.spockframework:spock-core:$spockVersion"
