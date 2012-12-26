@@ -12,6 +12,6 @@ task wrapper(type:Wrapper) {
 
 dependencies {
     groovy 'org.codehaus.groovy:groovy-all:2.0.4'
-    compile 'com.gmongo:gmongo:0.9.5'
+    compile 'com.gmongo:gmongo:1.0'
     testCompile 'junit:junit:4.10'
 }
