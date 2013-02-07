@@ -9,5 +9,10 @@ class UrlMappings {
 
 		"/"(view:"/index")
 		"500"(view:'/error')
+
+        "/product/$id?"(resource: "product")
+        "/customer/$id?"(resource: "customer")
+        "/order/$id"(resource: "order")
+        "/orderLine/$id"(resource: "orderLine")
 	}
 }
