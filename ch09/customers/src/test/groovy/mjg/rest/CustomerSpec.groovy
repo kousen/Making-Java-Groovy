@@ -26,4 +26,15 @@ class CustomerSpec extends Specification {
         expect: 'convert customer to JSON'
         c.toJson() == [id:null, first:'Johnathan', last:'Archer']
     }
+    
+    def 'transform customer into XML'() {
+        given: 'a customer with a first and last name'
+        Customer c = new Customer(id:99, first:'Johnathan', last:'Archer')
+        
+        expect: 'convert customer to XML'
+        def xml = new XmlSlurper().parseText(c.toXML())
+        xml.@id.toLong() == c.id
+        xml.first == c.first
+        xml.last == c.last
+    }
 }

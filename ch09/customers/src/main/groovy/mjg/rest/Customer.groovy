@@ -1,7 +1,8 @@
 package mjg.rest
 
 import groovy.json.JsonBuilder
-import groovy.transform.EqualsAndHashCode;
+import groovy.transform.EqualsAndHashCode
+import groovy.xml.MarkupBuilder
 
 import javax.xml.bind.annotation.XmlRootElement
 
@@ -14,6 +15,16 @@ class Customer {
 
     String toString() {
         "$first $last"
+    }
+    
+    String toXML() {
+        StringWriter writer = new StringWriter()
+        def builder = new MarkupBuilder(writer)
+        builder.customer(id:id) {
+            first first
+            last last
+        }
+        writer.toString()
     }
 
     Map toJson() {
