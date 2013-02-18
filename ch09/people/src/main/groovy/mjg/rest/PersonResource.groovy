@@ -14,21 +14,21 @@ import javax.ws.rs.core.Response;
 import javax.ws.rs.core.UriBuilder;
 import javax.ws.rs.core.UriInfo;
 
-@Path('/customers')
-class CustomerResource {
+@Path('/people')
+class PersonResource {
     @Context 
     private UriInfo uriInfo
     
-    CustomerDAO dao = new JdbcCustomerDAO()
+    PersonDAO dao = new JdbcPersonDAO()
 
     @GET @Produces( [MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML] )
-    List<Customer> findAll() {
+    List<Person> findAll() {
         dao.findAll();
     }
 
-    @GET @Path("search/{query}")
+    @GET @Path("finder/{query}")
     @Produces([MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML])
-    List<Customer> findByName(@PathParam("query") String query) {
+    List<Person> findByName(@PathParam("query") String query) {
         dao.findByLastName(query);
     }
 
@@ -42,7 +42,7 @@ class CustomerResource {
     @POST
     @Consumes([MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML])
     @Produces([MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML])
-    Response create(Customer customer) {
+    Response create(Person customer) {
         dao.create(customer);
         UriBuilder builder = UriBuilder.fromUri(uriInfo.requestUri).path("{id}")
         Response.created(builder.build(customer.id))
@@ -53,7 +53,7 @@ class CustomerResource {
     @PUT @Path("{id}")
     @Consumes([MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML])
     @Produces([MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML])
-    Customer update(Customer customer) {
+    Person update(Person customer) {
         dao.update(customer);
         customer;
     }

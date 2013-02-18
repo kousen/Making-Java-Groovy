@@ -8,7 +8,7 @@ import javax.xml.bind.annotation.XmlRootElement
 
 @XmlRootElement
 @EqualsAndHashCode
-class Customer {
+class Person {
     Long id
     String first
     String last

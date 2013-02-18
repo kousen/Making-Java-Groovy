@@ -4,30 +4,30 @@ import groovy.sql.Sql
 import spock.lang.Shared;
 import spock.lang.Specification
 
-class CustomerDAOSpec extends Specification {
-    @Shared CustomerDAO dao = new JdbcCustomerDAO()
+class PersonDAOSpec extends Specification {
+    @Shared PersonDAO dao = new JdbcPersonDAO()
 
-    def 'findAll returns all customers'() {
+    def 'findAll returns all people'() {
         expect:
-        def customers = dao.findAll()
-        5 == customers.size()
+        def people = dao.findAll()
+        5 == people.size()
         ['Archer', 'Picard', 'Kirk', 'Sisko', 'Janeway'].each {
-            customers*.last.contains(it)
+            people*.last.contains(it)
         }
     }
 
     def 'sample data works with findById'() {
         expect:
-        Customer c = dao.findById(id)
-        c.first == first
-        c.last == last
+        Person p = dao.findById(id)
+        p.first == first
+        p.last == last
 
         where:
-        [id, first, last] << JdbcCustomerDAO.sql.rows('select * from customers')
+        [id, first, last] << JdbcPersonDAO.sql.rows('select * from people')
     }
 
-    def 'insert and delete a new customer'() {
-        Customer pike = new Customer(first:'Christopher', last:'Pike')
+    def 'insert and delete a new person'() {
+        Person pike = new Person(first:'Christopher', last:'Pike')
  
         when:
         dao.create(pike)
@@ -43,7 +43,7 @@ class CustomerDAOSpec extends Specification {
         dao.findAll().size() == old(dao.findAll().size()) - 1
     }
 
-    def 'findByName returns correct customer'() {
+    def 'findByName returns correct person'() {
         expect:
         dao.findByLastName('a').size() == 3
     }
