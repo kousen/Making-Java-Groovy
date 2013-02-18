@@ -49,9 +49,9 @@ class PersonResourceSpec extends Specification {
         5  | 'Kathryn Janeway'	
     }
 
-    def "people/finder/name searches for last names that include given string"() {
+    def 'people/lastname/{like} searches for last names that include given string'() {
         when:
-        def response = client.get(path: "people/finder/a")
+        def response = client.get(path: "people/lastname/a")
 
         then:
         response.data.size() == 3

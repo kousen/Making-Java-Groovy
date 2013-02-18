@@ -27,17 +27,17 @@ class PersonDAOSpec extends Specification {
     }
 
     def 'insert and delete a new person'() {
-        Person pike = new Person(first:'Christopher', last:'Pike')
+        Person taggart = new Person(first:'Peter Quincy', last:'Taggart')
  
         when:
-        dao.create(pike)
+        dao.create(taggart)
 
         then:
         dao.findAll().size() == old(dao.findAll().size()) + 1
-        pike.id
+        taggart.id
 
         when:
-        dao.delete(pike.id)
+        dao.delete(taggart.id)
 
         then:
         dao.findAll().size() == old(dao.findAll().size()) - 1

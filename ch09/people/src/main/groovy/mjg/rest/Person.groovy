@@ -20,7 +20,7 @@ class Person {
     String toXML() {
         StringWriter writer = new StringWriter()
         def builder = new MarkupBuilder(writer)
-        builder.customer(id:id) {
+        builder.person(id:id) {
             first first
             last last
         }

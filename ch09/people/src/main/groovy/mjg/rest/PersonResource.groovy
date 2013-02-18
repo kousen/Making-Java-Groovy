@@ -26,10 +26,10 @@ class PersonResource {
         dao.findAll();
     }
 
-    @GET @Path("finder/{query}")
+    @GET @Path("lastname/{like}")
     @Produces([MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML])
-    List<Person> findByName(@PathParam("query") String query) {
-        dao.findByLastName(query);
+    List<Person> findByName(@PathParam("like") String like) {
+        dao.findByLastName(like);
     }
 
     @GET @Path("{id}")
@@ -42,20 +42,20 @@ class PersonResource {
     @POST
     @Consumes([MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML])
     @Produces([MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML])
-    Response create(Person customer) {
-        dao.create(customer);
+    Response create(Person person) {
+        dao.create(person);
         UriBuilder builder = UriBuilder.fromUri(uriInfo.requestUri).path("{id}")
-        Response.created(builder.build(customer.id))
-            .entity(customer)
+        Response.created(builder.build(person.id))
+            .entity(person)
             .build()
     }
 
     @PUT @Path("{id}")
     @Consumes([MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML])
     @Produces([MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML])
-    Person update(Person customer) {
-        dao.update(customer);
-        customer;
+    Person update(Person person) {
+        dao.update(person);
+        person;
     }
 
     @DELETE @Path("{id}")
