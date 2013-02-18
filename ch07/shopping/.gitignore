@@ -1,4 +1,8 @@
 *.iws
+<<<<<<< HEAD
+=======
+*.iml
+>>>>>>> rest
 *Db.properties
 *Db.script
 *.h2.db
@@ -14,7 +18,15 @@ target
 /web-app/WEB-INF/classes
 build
 bin
+<<<<<<< HEAD
+=======
+out
+>>>>>>> rest
 .gradle
 .project
 .classpath
 .settings
+<<<<<<< HEAD
+=======
+.idea
+>>>>>>> rest

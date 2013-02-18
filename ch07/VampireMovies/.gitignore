@@ -1,7 +1,27 @@
+<<<<<<< HEAD
+=======
+*.iws
+*Db.properties
+*Db.script
+*.h2.db
+*.h2.data
+eclipse
+target-eclipse
+plugin.xml
+site-config.groovy
+stacktrace.log
+target
+/plugins
+/web-app/plugins
+/web-app/WEB-INF/classes
+>>>>>>> rest
 build
 bin
 .gradle
 .project
 .classpath
 .settings
+<<<<<<< HEAD
 /src/main/groovy/mjg/rotten_tomatoes_apiKey.txt
+=======
+>>>>>>> rest

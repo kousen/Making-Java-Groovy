@@ -1,6 +1,25 @@
+<<<<<<< HEAD
 build
 bin
 target
+=======
+*.iws
+*Db.properties
+*Db.script
+*.h2.db
+*.h2.data
+eclipse
+target-eclipse
+plugin.xml
+site-config.groovy
+stacktrace.log
+target
+/plugins
+/web-app/plugins
+/web-app/WEB-INF/classes
+build
+bin
+>>>>>>> rest
 .gradle
 .project
 .classpath
