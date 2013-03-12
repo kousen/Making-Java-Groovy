@@ -5,11 +5,14 @@ import spock.lang.Shared;
 import spock.lang.Specification
 
 class PersonDAOSpec extends Specification {
-    @Shared PersonDAO dao = new JdbcPersonDAO()
-
+    @Shared PersonDAO dao = JdbcPersonDAO.instance
+    @Shared Sql sql = Sql.newInstance(url:'jdbc:h2:db', driver:'org.h2.Driver')
+    
     def 'findAll returns all people'() {
-        expect:
+        when:
         def people = dao.findAll()
+        
+        then:
         5 == people.size()
         ['Archer', 'Picard', 'Kirk', 'Sisko', 'Janeway'].each {
             people*.last.contains(it)
@@ -23,7 +26,7 @@ class PersonDAOSpec extends Specification {
         p.last == last
 
         where:
-        [id, first, last] << JdbcPersonDAO.sql.rows('select * from people')
+        [id, first, last] << sql.rows('select id, first, last from people')
     }
 
     def 'insert and delete a new person'() {

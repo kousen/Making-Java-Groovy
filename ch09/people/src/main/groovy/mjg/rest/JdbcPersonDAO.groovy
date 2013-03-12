@@ -2,10 +2,13 @@ package mjg.rest
 
 import groovy.sql.Sql
 
+@Singleton
 class JdbcPersonDAO implements PersonDAO {
-    static Sql sql = Sql.newInstance(url:'jdbc:h2:mem:', driver:'org.h2.Driver')
+    static Sql sql = Sql.newInstance(url:'jdbc:h2:db', driver:'org.h2.Driver')
 
     static {
+        sql.execute 'drop table if exists people'
+        
         sql.execute '''
             create table people(
                 id int auto_increment,

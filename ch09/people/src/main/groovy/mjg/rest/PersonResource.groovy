@@ -19,7 +19,7 @@ class PersonResource {
     @Context 
     private UriInfo uriInfo
     
-    PersonDAO dao = new JdbcPersonDAO()
+    PersonDAO dao = JdbcPersonDAO.instance
 
     @GET @Produces( [MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML] )
     List<Person> findAll() {
