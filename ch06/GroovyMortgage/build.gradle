@@ -17,11 +17,11 @@ sourceSets {
     }
 }
 
-def springVersion = '3.2.0.RELEASE'
+def springVersion = '3.2.2.RELEASE'
 def spockVersion = '0.7-groovy-2.0'
 
 dependencies {
-    groovy "org.codehaus.groovy:groovy-all:2.0.4"
+    groovy "org.codehaus.groovy:groovy-all:2.1.1"
     compile "org.springframework:spring-context:$springVersion"
     compile "org.springframework:spring-jdbc:$springVersion"
     
