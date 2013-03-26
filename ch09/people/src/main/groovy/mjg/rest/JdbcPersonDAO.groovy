@@ -46,17 +46,17 @@ class JdbcPersonDAO implements PersonDAO {
         customers
     }
 
-    Person create(Person c) {
+    Person create(Person p) {
         String txt = 'insert into people(id, first, last) values(?, ?, ?)'
-        def keys = sql.executeInsert txt, [null, c.first, c.last]
-        c.id = keys[0][0]
-        return c
+        def keys = sql.executeInsert txt, [null, p.first, p.last]
+        p.id = keys[0][0]
+        return p
     }
 
-    Person update(Person c) {
+    Person update(Person p) {
         String txt = 'update people set first=?, last=? where id=?'
-        sql.execute txt, [c.first, c.last, c.id]
-        return c
+        sql.execute txt, [p.first, p.last, p.id]
+        return p
     }
 
     boolean delete(long id) {

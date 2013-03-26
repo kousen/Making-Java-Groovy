@@ -3,6 +3,7 @@ package mjg.rest
 import groovy.sql.Sql
 import spock.lang.Shared;
 import spock.lang.Specification
+import spock.lang.Unroll;
 
 class PersonDAOSpec extends Specification {
     @Shared PersonDAO dao = JdbcPersonDAO.instance
@@ -19,7 +20,8 @@ class PersonDAOSpec extends Specification {
         }
     }
 
-    def 'sample data works with findById'() {
+    @Unroll
+    def 'findById returns #first #last with id #id'() {
         expect:
         Person p = dao.findById(id)
         p.first == first

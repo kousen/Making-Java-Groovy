@@ -34,8 +34,8 @@ class PersonResource {
 
     @GET @Path("{id}")
     @Produces([MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML])
-    Response findById(@PathParam("id") String id) {
-        Response.ok(dao.findById(Integer.parseInt(id)))
+    Response findById(@PathParam("id") long id) {
+        Response.ok(dao.findById(id))
             .build()
     }
 
@@ -59,8 +59,7 @@ class PersonResource {
     }
 
     @DELETE @Path("{id}")
-    @Produces([MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML])
-    Response remove(@PathParam("id") int id) {
+    Response remove(@PathParam("id") long id) {
         dao.delete(id);
         Response.noContent().build()
     }
