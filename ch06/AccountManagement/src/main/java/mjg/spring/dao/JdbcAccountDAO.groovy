@@ -22,6 +22,8 @@ import org.springframework.jdbc.core.RowMapper
 import org.springframework.stereotype.Repository
 
 import java.sql.ResultSet
+import java.sql.SQLException;
+
 import javax.sql.DataSource
 
 @Repository
@@ -44,6 +46,13 @@ class JdbcAccountDAO implements AccountDAO {
         String sql = "select * from accounts where id=?"
         jdbcTemplate.queryForObject(sql, accountMapper as RowMapper<Account>, id)
     }
+    
+//    class AccountMapper implements RowMapper<Account> {
+//        @Override
+//        public Account mapRow(ResultSet rs, int rowNum) throws SQLException {
+//            return new Account(); // create Account from rs
+//        }
+//    }
 
     public List<Account> findAllAccounts() {
         String sql = "select * from accounts"
