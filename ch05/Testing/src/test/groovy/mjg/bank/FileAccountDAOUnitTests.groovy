@@ -38,7 +38,7 @@ class FileAccountDAOUnitTests {
         int id = dao.createNewAccount(100.0)
         Account local = new Account(id:id,balance:100.0)
         Account fromDao = dao.findAccountById(id)
-        assertEquals local.id, fromDao.id
+        assert local.id == fromDao.id
         assertEquals local.balance, fromDao.balance, 0.01
     }
     
@@ -46,7 +46,7 @@ class FileAccountDAOUnitTests {
     void testFindAllAccounts() {
         (1..10).each { num -> dao.createNewAccount(num*100) }
         def accounts = dao.findAllAccounts()
-        assertEquals 10, accounts.size()
+        assert 10 == accounts.size()
         accounts*.balance.each { it in (100..1000) }
     }
     
@@ -54,8 +54,8 @@ class FileAccountDAOUnitTests {
     void testDeleteAccount() {
         (1..10).each { num -> dao.createNewAccount(num*100) }
         def accounts = dao.findAllAccounts()
-        assertEquals 10, accounts.size()
+        assert 10 == accounts.size()
         accounts.each { account -> dao.deleteAccount(account.id) }
-        assertEquals 0, dao.findAllAccounts().size()
+        assert 0 == dao.findAllAccounts().size()
     }
 }
