@@ -27,13 +27,13 @@ task integrationTest(type: Test, dependsOn: jettyRun) {
 check.dependsOn integrationTest
 
 task wrapper(type:Wrapper) {
-    gradleVersion = '1.0'
+    gradleVersion = '1.6'
 }
 
-def springVersion = '3.1.1.RELEASE'
+def springVersion = '3.2.2.RELEASE'
 
 dependencies {
-    groovy "org.codehaus.groovy:groovy-all:1.8.6"
+    compile "org.codehaus.groovy:groovy-all:2.1.3"
     providedCompile 'javax.servlet:servlet-api:2.5'
     
     testCompile "org.springframework:spring-context:$springVersion"

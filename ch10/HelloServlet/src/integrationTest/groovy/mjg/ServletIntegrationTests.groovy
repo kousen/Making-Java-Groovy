@@ -20,7 +20,7 @@ import static org.junit.Assert.*;
 import org.junit.Test;
 
 class ServletIntegrationTests {
-    def httpPort = 8163
+    def httpPort = 8080
     
     @Test
     void testHelloServlet() {
