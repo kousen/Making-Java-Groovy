@@ -37,5 +37,7 @@ public class Demo {
                 ie.printStackTrace();
             }
         }
+        
+        ((FileSystemXmlApplicationContext) ctx).close();
     }
 }

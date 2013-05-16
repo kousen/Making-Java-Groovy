@@ -15,7 +15,7 @@
     <aop:aspectj-autoproxy />
 
     <bean id="updater" class="mjg.aspects.UpdateReporter" />
-    <bean id="tracker" class="mjg.aspects.PropertyChangeTracker" />
+    <bean id="tracker" class="mjg.aspects.ChangeLogger" />
 
 	<lang:groovy id="aspectScript">
 		<lang:inline-script>
@@ -26,7 +26,7 @@ import java.util.logging.Logger
 class GroovyAspect {
 	Logger log = Logger.getLogger(GroovyAspect.getClass().getName())
 	
-	def trace(JoinPoint jp) {
+	def audit(JoinPoint jp) {
 		log.info "${jp.signature.name} on ${jp.target.class.name}"
 	}
 }			
@@ -34,16 +34,11 @@ class GroovyAspect {
 		</lang:inline-script>
 	</lang:groovy>
 	
-	<!-- 
-	<lang:groovy id="groovyScript" refresh-check-delay="5000" 
-		script-source="classpath:mjg/aspect_script.groovy" />
-	 -->
-	 
     <bean id="pojo" class="mjg.POJO" p:one="1" p:two="2" p:three="3"/>
 	
 	<aop:config>
 		<aop:aspect ref="aspectScript">
-			<aop:before method="trace" pointcut="execution(* *.*(*))"/>
+			<aop:before method="audit" pointcut="execution(* *.*(*))"/>
 		</aop:aspect>
 	</aop:config>
 </beans>
