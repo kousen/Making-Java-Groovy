@@ -13,25 +13,19 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  * ========================================================== */
-package mjg.immutable;
+package mjg.ast.immutable;
 
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotNull;
-import mjg.ast.immutable.ImmutablePoint;
-import mjg.ast.immutable.ImmutablePointFactory;
 
 import org.junit.Test;
 
-public class ImmutablePointFactoryTest {
-	private ImmutablePoint p;
+public class ImmutablePointJUnitTest {
+    private ImmutablePoint p;
 
-	@Test
-	public void testNewImmutablePoint() {
-//		p = ImmutablePointFactory.instance.newImmutablePoint(2, 3);
-//	    p = new ImmutablePointFactory().newImmutablePoint(2, 3);
-	    p = ImmutablePointFactory.newIP(2, 3);
-		assertNotNull(p);
-		assertEquals(2, p.getX(), 0.0001);
-		assertEquals(3, p.getY(), 0.0001);
-	}
+    @Test
+    public void testImmutablePoint() {
+        p = new ImmutablePoint(3,4);
+        assertEquals(3.0, p.getX(), 0.0001);
+        assertEquals(4.0, p.getY(), 0.0001);
+    }
 }

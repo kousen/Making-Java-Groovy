@@ -14,7 +14,7 @@ class PalindromeCheckerSpec extends Specification {
         "Go hang a salami; I'm a lasagna hog!"]
     
     @Unroll
-    def "these are palindromes"() {
+    def "#str is a palindrome"() {
  
         expect:
         palindromes.every { str -> checker.isPalindrome(str) }

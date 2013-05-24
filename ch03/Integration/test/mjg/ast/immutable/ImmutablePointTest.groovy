@@ -13,24 +13,25 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  * ========================================================== */
-package mjg.ast.delegate;
+package mjg.ast.immutable
 
-public class LocalDeveloper implements Developer {
+import groovy.lang.ReadOnlyPropertyException
+import spock.lang.Specification
 
-    public String writeCode(String specification) {
-        return "lots of code";
-    }
+class ImmutablePointTest extends Specification {
+	ImmutablePoint p = new ImmutablePoint(x:3,y:4)
+	
+	def "can use map ctor for immutables"() {
+		expect: [3,4] == [p.x, p.y]
+	}
+	
+	def "can't change x"() {
+		when: p.x = 5
+		then: thrown(ReadOnlyPropertyException)
+	}
 
-    public boolean runTests() {
-        return true;
-    }
-
-    public int fixBugs() {
-        return 100;
-    }
-    
-    public String whereAreYou() {
-        return "in my office";
-    }
-
+	def "can't change y"() {
+		when: p.y = 5
+		then: thrown(ReadOnlyPropertyException)
+	}
 }

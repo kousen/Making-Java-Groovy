@@ -18,7 +18,7 @@ package mjg.scripting
 class Geocoder {
     def base = 'http://maps.google.com/maps/geo?'
     
-    def fillInLatLong(Location loc) {
+    void fillInLatLong(Location loc) {
         def addressFields = loc.street ? 
             [loc.street,loc.city,loc.state] : [loc.city,loc.state]
         def address = addressFields.collect {
@@ -31,6 +31,5 @@ class Geocoder {
         def (ok,mag,lat,lng) = url.toURL().text.split(',')
         loc.latitude = lat.toDouble()
         loc.longitude = lng.toDouble()
-        return loc
     }
 }

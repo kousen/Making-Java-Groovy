@@ -121,16 +121,9 @@ public class GroovyIntegrationTests {
     @Test
     public void testLatLngJSR223() {
         ScriptEngine engine = new ScriptEngineManager().getEngineByName("groovy");
-//        String script = null;
-//        try {
-//            script = (String) engine.eval("new File('src/geocode.groovy').text");
-//        } catch (ScriptException e) {
-//            e.printStackTrace();
-//            return;
-//        }
-        engine.put("street", "1600 Pennsylvania Avenue");
-        engine.put("city","Washington");
-        engine.put("state", "DC");
+        engine.put("street", "Blackheath Avenue");
+        engine.put("city","Greenwich");
+        engine.put("state", "UK");
         try {
             engine.eval(new FileReader("src/geocode.groovy"));
         } catch (ScriptException e) {
@@ -138,9 +131,9 @@ public class GroovyIntegrationTests {
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         }
-        assertEquals(38.898,
+        assertEquals(51.4752654,
             Double.parseDouble((String) engine.get("lat")),0.01);
-        assertEquals(-77.037,
+        assertEquals(0.0014342,
             Double.parseDouble((String) engine.get("lng")),0.01);
     }
     

@@ -16,5 +16,5 @@
 package mjg.ast.delegate;
 
 public class Phone {
-    public boolean makeCall(String number) { return true; }
+    public String dial(String number) { return "dialing " + number; }
 }
