@@ -15,7 +15,7 @@ class PersonDAOSpec extends Specification {
         
         then:
         5 == people.size()
-        ['Archer', 'Picard', 'Kirk', 'Sisko', 'Janeway'].each {
+        ['Archer', 'Picard', 'Kirk', 'Sisko', 'Janeway'].every {
             people*.last.contains(it)
         }
     }

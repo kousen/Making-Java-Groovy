@@ -12,7 +12,7 @@ class TribbleSpec extends Specification {
 
         then:
         result.size() == 11
-        result.each {
+        result.every {
             it instanceof Tribble
         }
     }
