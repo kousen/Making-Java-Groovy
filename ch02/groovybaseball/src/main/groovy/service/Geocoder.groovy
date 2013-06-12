@@ -24,7 +24,7 @@ class Geocoder {
         String urlEncodedAddress = 
             [stadium.street, stadium.city, stadium.state].collect { 
                 URLEncoder.encode(it,'UTF-8')
-            }.join(',+') 
+            }.join(',') 
         String url = base + [sensor:false,
             address: urlEncodedAddress].collect {k,v -> "$k=$v"}.join('&')
         println url
