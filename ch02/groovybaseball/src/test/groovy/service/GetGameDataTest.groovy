@@ -24,17 +24,10 @@ import beans.GameResult;
 import beans.Stadium;
 
 class GetGameDataTest {
-	GetGameData ggd
+	GetGameData ggd = new GetGameData(month:10,day:28,year:2007)
 	
-	@Before
-	public void setUp() throws Exception {
-		ggd = new GetGameData(month:10,day:28,year:2007)
-	}
-
 	@Test
 	public void testFillInStadiumMap() {
-		assertEquals 0, ggd.stadiumMap.size()
-		ggd.fillInStadiumMap()
 		def stadiums = ggd.stadiumMap.values()
 		stadiums.each { Stadium stadium ->
 			assert stadium.latitude > 25 && stadium.latitude < 48
@@ -53,7 +46,7 @@ class GetGameDataTest {
 
 	@Test
 	public void testGetGames() {
-		def gameResults = ggd.getGames()
+		def gameResults = ggd.games
 		assert 1 == gameResults.size()
 	}
 

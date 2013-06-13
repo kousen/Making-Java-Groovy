@@ -48,11 +48,11 @@ task removeDb(type:Delete) {
 clean.dependsOn removeDb
 
 task wrapper(type:Wrapper) {
-    gradleVersion = '1.5'
+    gradleVersion = '1.6'
 }
 
 dependencies {
-    groovy 'org.codehaus.groovy:groovy-all:2.1.1'
+    compile 'org.codehaus.groovy:groovy-all:2.1.4'
 
     testCompile 'org.spockframework:spock-core:0.7-groovy-2.0'
     testRuntime "cglib:cglib-nodep:2.2"
