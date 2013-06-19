@@ -1,0 +1,58 @@
+apply plugin:'groovy'
+apply plugin:'eclipse'
+
+repositories {
+    mavenCentral()
+    maven { url "http://download.java.net/maven/1"
+            url "http://download.java.net/maven/2" 
+            url 'http://oss.sonatype.org/content/repositories/snapshots' }
+}
+
+configurations {
+    jaxws
+}
+
+sourceSets {
+    main {
+        java { srcDirs = [] }
+        groovy { srcDir 'src' }
+    }
+    test {
+        java { srcDirs = [] }
+        groovy { srcDir 'test' }
+        resources { srcDir 'resources' }
+    }
+}
+
+task wsgen(dependsOn: compileGroovy)  {
+    doLast{
+        ant {
+            taskdef(name:'wsgen',
+                classname:'com.sun.tools.ws.ant.WsGen',
+                classpath:configurations.jaxws.asPath)
+            wsgen(keep:true,
+                destdir: 'bin',
+                sourcedestdir:'src',
+                resourcedestdir:'resources',
+                genwsdl:'true',
+                classpath:"${configurations.compile.asPath}:${sourceSets.main.output.classesDir}",
+                sei:'mjg.pp.service.HogwartsWizard')
+        }
+    }
+}
+wsgen.onlyIf { !(new File('src/mjg/pp/service/jaxws')).exists() }
+classes.dependsOn wsgen
+
+task wrapper(type:Wrapper) {
+    gradleVersion = '1.0'
+}
+
+def groovyVersion = '2.0.0'
+def spockVersion = '0.7-groovy-2.0-SNAPSHOT'
+
+dependencies {
+    groovy "org.codehaus.groovy:groovy-all:$groovyVersion"
+    jaxws 'com.sun.xml.ws:jaxws-tools:2.1.4'
+
+    testCompile "org.spockframework:spock-core:$spockVersion"
+}

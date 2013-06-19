@@ -1,0 +1,53 @@
+apply plugin:'groovy'
+apply plugin:'eclipse'
+
+repositories {
+    mavenCentral()
+    maven { url 'http://download.java.net/maven/1' }
+    maven { url 'http://download.java.net/maven/2' }
+}
+
+configurations {
+    jaxws
+}
+
+sourceSets {
+    main {
+        java { srcDirs = [] }
+        groovy { srcDir 'src' }
+    }
+    test {
+        java { srcDirs = [] }
+        groovy { srcDir 'test' }
+        resources { srcDir 'resources' }
+    }
+}
+
+task wsimport(dependsOn: processResources)  {
+    genDir = 'build/generated-sources/java'
+    doLast{
+        new File(genDir).mkdirs()
+        sourceSets.main.output.classesDir.mkdirs()
+        ant {
+            taskdef(name:'wsimport',
+                classname:'com.sun.tools.ws.ant.WsImport',
+                classpath:configurations.jaxws.asPath)
+            wsimport(keep:true,
+                destdir: sourceSets.main.output.classesDir,
+                sourcedestdir:genDir,
+                wsdl:'http://www.webservicex.net/GlobalWeather.asmx?wsdl')
+        }
+    }
+}
+wsimport.onlyIf { !(new File('build/generated-sources/java/net/webservicex')).exists() }
+compileJava.dependsOn(wsimport)
+
+def groovyVersion = '1.8.6'
+def spockVersion = '0.6-groovy-1.8'
+
+dependencies {
+    groovy "org.codehaus.groovy:groovy-all:$groovyVersion"
+    jaxws 'com.sun.xml.ws:jaxws-tools:2.1.4'
+
+    testCompile "org.spockframework:spock-core:$spockVersion"
+}

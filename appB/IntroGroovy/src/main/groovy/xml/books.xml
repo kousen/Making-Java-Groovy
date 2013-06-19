@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<library
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+    xmlns="http://www.kousenit.com/books"
+    xsi:schemaLocation="
+        http://www.kousenit.com/books 
+        books.xsd">
+	<book isbn="9781935182443">
+		<title>Groovy in Action</title>
+		<author>Dierk Koenig</author>
+		<price>39.99</price>
+	</book>
+	<book isbn="9781935182948">
+		<title>Making Java Groovy</title>
+		<author>Ken Kousen</author>
+		<price>35.99</price>
+	</book>
+	<book isbn="9781935182238">
+		<title>Griffon in Action</title>
+		<author>Andres Almiray</author>
+		<price>35.99</price>
+	</book>
+	<book isbn="1933988932">
+		<title>Grails in Action</title>
+		<author>Glen Smith</author>
+		<price>27.50</price>
+	</book>
+</library>
