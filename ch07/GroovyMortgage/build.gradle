@@ -1,0 +1,31 @@
+apply plugin:'groovy'
+apply plugin:'eclipse'
+
+repositories {
+    mavenCentral()
+}
+
+sourceSets {
+    main {
+        java { srcDirs = [] }
+        groovy { srcDir 'src' }
+        resources { srcDir 'resources' }
+    }
+    test {
+        java { srcDirs = [] }
+        groovy { srcDir 'test' }
+    }
+}
+
+def springVersion = '3.2.2.RELEASE'
+def spockVersion = '0.7-groovy-2.0'
+
+dependencies {
+    compile "org.codehaus.groovy:groovy-all:2.1.3"
+    compile "org.springframework:spring-context:$springVersion"
+    compile "org.springframework:spring-jdbc:$springVersion"
+    
+    testCompile "org.springframework:spring-test:$springVersion"
+    testCompile "org.spockframework:spock-core:$spockVersion"
+    testCompile "org.spockframework:spock-spring:$spockVersion"
+}

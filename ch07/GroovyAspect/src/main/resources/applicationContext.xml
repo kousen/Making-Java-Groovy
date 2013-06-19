@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:p="http://www.springframework.org/schema/p"
+    xmlns:lang="http://www.springframework.org/schema/lang"
+    xmlns:aop="http://www.springframework.org/schema/aop"
+    xsi:schemaLocation="
+        http://www.springframework.org/schema/beans 
+        http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/lang
+        http://www.springframework.org/schema/lang/spring-lang.xsd
+        http://www.springframework.org/schema/aop
+        http://www.springframework.org/schema/aop/spring-aop.xsd">
+
+    <aop:aspectj-autoproxy />
+
+    <bean id="updater" class="mjg.aspects.UpdateReporter" />
+    <bean id="tracker" class="mjg.aspects.ChangeLogger" />
+
+	<lang:groovy id="aspectScript">
+		<lang:inline-script>
+			<![CDATA[
+import org.aspectj.lang.JoinPoint
+import java.util.logging.Logger
+
+class GroovyAspect {
+	Logger log = Logger.getLogger(GroovyAspect.getClass().getName())
+	
+	def audit(JoinPoint jp) {
+		log.info "${jp.signature.name} on ${jp.target.class.name}"
+	}
+}			
+			]]>
+		</lang:inline-script>
+	</lang:groovy>
+	
+    <bean id="pojo" class="mjg.POJO" p:one="1" p:two="2" p:three="3"/>
+	
+	<aop:config>
+		<aop:aspect ref="aspectScript">
+			<aop:before method="audit" pointcut="execution(* *.*(*))"/>
+		</aop:aspect>
+	</aop:config>
+</beans>
