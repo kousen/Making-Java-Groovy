@@ -13,23 +13,25 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  * ========================================================== */
-package builders
+package mjg.pojo
 
-import groovy.swing.SwingBuilder
-import java.awt.BorderLayout as BL
-import javax.swing.WindowConstants as WC
+def buffy = new Person(name:'Buffy')
+assert buffy.id == 0
+assert buffy.name == 'Buffy'
 
-def builder = new SwingBuilder()
-builder.edt {
-	frame(title:'Hello, Groovy!', visible: true,
-		size:[200,100],	defaultCloseOperation:WC.EXIT_ON_CLOSE) {
-			panel(layout:new BL()) {
-				def txt = textField(constraints:BL.NORTH,'Enter text here')
-				def lab = label(constraints:BL.CENTER,'Text')
-				button(constraints: BL.SOUTH, 'Move Text',
-					actionPerformed: { lab.text = txt.text })
-				txt.actionPerformed = { lab.text = txt.text }
-			}
-	}
-}
+def faith = new Person(name:'Faith',id:1)
+assert faith.id == 1
+assert faith.name == 'Faith'
 
+def willow = [name:'Willow',id:2] as Person
+assert willow.id == 2
+assert willow.name == 'Willow'
+
+def slayers = [buffy, faith]
+assert ['Buffy','Faith'] == slayers*.name
+assert slayers.class == java.util.ArrayList
+
+def characters = slayers + willow
+assert ['Buffy','Faith','Willow'] == characters*.name
+def doubles = characters.findAll { it.name =~ /([a-z])\1/ }
+assert ['Buffy','Willow'] == doubles*.name

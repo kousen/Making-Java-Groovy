@@ -13,23 +13,13 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  * ========================================================== */
-package builders
-
-import groovy.swing.SwingBuilder
-import java.awt.BorderLayout as BL
-import javax.swing.WindowConstants as WC
-
-def builder = new SwingBuilder()
-builder.edt {
-	frame(title:'Hello, Groovy!', visible: true,
-		size:[200,100],	defaultCloseOperation:WC.EXIT_ON_CLOSE) {
-			panel(layout:new BL()) {
-				def txt = textField(constraints:BL.NORTH,'Enter text here')
-				def lab = label(constraints:BL.CENTER,'Text')
-				button(constraints: BL.SOUTH, 'Move Text',
-					actionPerformed: { lab.text = txt.text })
-				txt.actionPerformed = { lab.text = txt.text }
-			}
-	}
-}
-
+def address = [street,city,state].collect {
+	URLEncoder.encode(it,'UTF-8')
+}.join(',+')
+def params = [q:address,sensor:false,
+	output:'csv',
+	key:'ABQIAAAAaUTtvoQeYKO5TqAv0hl2QxT2yXp_ZAY8_ufC3CFXhHIE1NvwkxTU9rH8s89rxCtRwCKUkQ3Q6sYsNg']
+def base = 'http://maps.google.com/maps/geo?'
+def url = base + params.collect { k,v -> "$k=$v" }.join('&')
+(code,level,lat,lng) = url.toURL().text.split(',')
+//println "($code,$level,$lat,$lng)"

@@ -45,7 +45,7 @@ class ScriptTests {
     
     @Test
     void testHelloGroovy() {
-        shell.evaluate(new File('src/mjg/scripting/hello_groovy.groovy'))
+        shell.evaluate(new File('src/mjg/scripting/hello_world.groovy'))
         assertEquals 'Hello, Groovy!', out.toString().trim()
     }
     

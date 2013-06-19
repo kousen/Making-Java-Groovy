@@ -13,23 +13,23 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  * ========================================================== */
-package builders
+package mjg.ast.immutable;
 
-import groovy.swing.SwingBuilder
-import java.awt.BorderLayout as BL
-import javax.swing.WindowConstants as WC
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
 
-def builder = new SwingBuilder()
-builder.edt {
-	frame(title:'Hello, Groovy!', visible: true,
-		size:[200,100],	defaultCloseOperation:WC.EXIT_ON_CLOSE) {
-			panel(layout:new BL()) {
-				def txt = textField(constraints:BL.NORTH,'Enter text here')
-				def lab = label(constraints:BL.CENTER,'Text')
-				button(constraints: BL.SOUTH, 'Move Text',
-					actionPerformed: { lab.text = txt.text })
-				txt.actionPerformed = { lab.text = txt.text }
-			}
+import org.junit.Test;
+
+public class ImmutablePointFactoryTest {
+	private ImmutablePoint p;
+
+	@Test
+	public void testNewImmutablePoint() {
+//		p = ImmutablePointFactory.instance.newImmutablePoint(2, 3);
+//	    p = new ImmutablePointFactory().newImmutablePoint(2, 3);
+	    p = ImmutablePointFactory.newIP(2, 3);
+		assertNotNull(p);
+		assertEquals(2, p.getX(), 0.0001);
+		assertEquals(3, p.getY(), 0.0001);
 	}
 }
-

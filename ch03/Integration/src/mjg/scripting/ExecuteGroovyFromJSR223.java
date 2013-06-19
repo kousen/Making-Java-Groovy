@@ -30,7 +30,7 @@ public class ExecuteGroovyFromJSR223 {
         ScriptEngine engine = new ScriptEngineManager().getEngineByName("groovy");
         try {
             engine.eval("println 'Hello, Groovy!'");
-            engine.eval(new FileReader("src/mjg/scripting/hello_groovy.groovy"));
+            engine.eval(new FileReader("src/mjg/scripting/hello_world.groovy"));
             
             engine.put("street","Blackheath Avenue");
             engine.put("city","Greenwich");

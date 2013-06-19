@@ -13,23 +13,25 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  * ========================================================== */
-package builders
+package mjg.ast.immutable
 
-import groovy.swing.SwingBuilder
-import java.awt.BorderLayout as BL
-import javax.swing.WindowConstants as WC
+import groovy.lang.ReadOnlyPropertyException
+import spock.lang.Specification
 
-def builder = new SwingBuilder()
-builder.edt {
-	frame(title:'Hello, Groovy!', visible: true,
-		size:[200,100],	defaultCloseOperation:WC.EXIT_ON_CLOSE) {
-			panel(layout:new BL()) {
-				def txt = textField(constraints:BL.NORTH,'Enter text here')
-				def lab = label(constraints:BL.CENTER,'Text')
-				button(constraints: BL.SOUTH, 'Move Text',
-					actionPerformed: { lab.text = txt.text })
-				txt.actionPerformed = { lab.text = txt.text }
-			}
+class ImmutablePointTest extends Specification {
+	ImmutablePoint p = new ImmutablePoint(x:3,y:4)
+	
+	def "can use map ctor for immutables"() {
+		expect: [3,4] == [p.x, p.y]
+	}
+	
+	def "can't change x"() {
+		when: p.x = 5
+		then: thrown(ReadOnlyPropertyException)
+	}
+
+	def "can't change y"() {
+		when: p.y = 5
+		then: thrown(ReadOnlyPropertyException)
 	}
 }
-

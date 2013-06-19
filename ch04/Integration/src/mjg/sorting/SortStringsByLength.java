@@ -13,23 +13,28 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  * ========================================================== */
-package builders
+package mjg.sorting;
 
-import groovy.swing.SwingBuilder
-import java.awt.BorderLayout as BL
-import javax.swing.WindowConstants as WC
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 
-def builder = new SwingBuilder()
-builder.edt {
-	frame(title:'Hello, Groovy!', visible: true,
-		size:[200,100],	defaultCloseOperation:WC.EXIT_ON_CLOSE) {
-			panel(layout:new BL()) {
-				def txt = textField(constraints:BL.NORTH,'Enter text here')
-				def lab = label(constraints:BL.CENTER,'Text')
-				button(constraints: BL.SOUTH, 'Move Text',
-					actionPerformed: { lab.text = txt.text })
-				txt.actionPerformed = { lab.text = txt.text }
+import java.util.List;
+
+public class SortStringsByLength {
+	public static void main(String[] args) {
+		List<String> strings = new ArrayList<String>();
+		strings.add("this");
+		strings.add("is");
+		strings.add("a");
+		strings.add("list");
+		strings.add("of");
+		strings.add("strings");
+		Collections.sort(strings, new Comparator<String>() {
+			public int compare(String s1, String s2) {
+				return s1.length() - s2.length();
 			}
+		});
+		System.out.println(strings);
 	}
 }
-

@@ -13,23 +13,14 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  * ========================================================== */
-package builders
+package mjg.jdk
 
-import groovy.swing.SwingBuilder
-import java.awt.BorderLayout as BL
-import javax.swing.WindowConstants as WC
-
-def builder = new SwingBuilder()
-builder.edt {
-	frame(title:'Hello, Groovy!', visible: true,
-		size:[200,100],	defaultCloseOperation:WC.EXIT_ON_CLOSE) {
-			panel(layout:new BL()) {
-				def txt = textField(constraints:BL.NORTH,'Enter text here')
-				def lab = label(constraints:BL.CENTER,'Text')
-				button(constraints: BL.SOUTH, 'Move Text',
-					actionPerformed: { lab.text = txt.text })
-				txt.actionPerformed = { lab.text = txt.text }
-			}
-	}
-}
-
+def u = 'username'
+def p = 'password'
+def encoded = "$u:$p".getBytes().encodeBase64().toString()
+println "$u:$p -> $encoded"
+assert encoded == 'dXNlcm5hbWU6cGFzc3dvcmQ='
+def (user,pass) = new String(encoded.decodeBase64()).split(':')
+println "(user,pass) = ($user,$pass)"
+assert user == u
+assert pass == p

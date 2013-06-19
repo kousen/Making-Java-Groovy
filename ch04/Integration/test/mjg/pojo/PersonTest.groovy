@@ -13,23 +13,39 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  * ========================================================== */
-package builders
+package mjg.pojo;
 
-import groovy.swing.SwingBuilder
-import java.awt.BorderLayout as BL
-import javax.swing.WindowConstants as WC
+import static org.junit.Assert.*;
 
-def builder = new SwingBuilder()
-builder.edt {
-	frame(title:'Hello, Groovy!', visible: true,
-		size:[200,100],	defaultCloseOperation:WC.EXIT_ON_CLOSE) {
-			panel(layout:new BL()) {
-				def txt = textField(constraints:BL.NORTH,'Enter text here')
-				def lab = label(constraints:BL.CENTER,'Text')
-				button(constraints: BL.SOUTH, 'Move Text',
-					actionPerformed: { lab.text = txt.text })
-				txt.actionPerformed = { lab.text = txt.text }
-			}
-	}
+import org.junit.Test;
+
+class PersonTest {
+    Person p
+    
+    @Test
+    public void testPerson() {
+        p = new Person()
+        assertEquals 0, p.id
+        assertNull p.name
+    }
+
+    @Test
+    public void testPersonIntString() {
+        p = new Person(1,'Buffy')
+        assertEquals 1, p.id
+        assertEquals "Buffy", p.name
+    }
+
+    @Test
+    public void testGetId() {
+        p = new Person(id:99)
+        assertEquals 99, p.id
+    }
+
+    @Test
+    public void testGetName() {
+        p = new Person(id:86,name:'Maxwell Smart')
+        assertEquals 86, p.id
+        assertEquals 'Maxwell Smart', p.name
+    }
 }
-

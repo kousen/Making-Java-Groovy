@@ -13,23 +13,22 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  * ========================================================== */
-package builders
+package mjg.xml
 
-import groovy.swing.SwingBuilder
-import java.awt.BorderLayout as BL
-import javax.swing.WindowConstants as WC
+import mjg.scripting.Location;
 
-def builder = new SwingBuilder()
-builder.edt {
-	frame(title:'Hello, Groovy!', visible: true,
-		size:[200,100],	defaultCloseOperation:WC.EXIT_ON_CLOSE) {
-			panel(layout:new BL()) {
-				def txt = textField(constraints:BL.NORTH,'Enter text here')
-				def lab = label(constraints:BL.CENTER,'Text')
-				button(constraints: BL.SOUTH, 'Move Text',
-					actionPerformed: { lab.text = txt.text })
-				txt.actionPerformed = { lab.text = txt.text }
-			}
+class GeocoderV3 {
+	def base = 'http://maps.google.com/maps/api/geocode/xml?'
+
+	def fillInLatLng(Location loc) {
+        def address = loc.street ? [loc.street, loc.city, loc.state] : [loc.city, loc.state]
+		def url = base + [sensor:false,
+			address:address.collect { v ->
+				URLEncoder.encode(v,'UTF-8')
+			}.join(',+')].collect {k,v -> "$k=$v"}.join('&')
+		def response = new XmlSlurper().parse(url)
+		loc.latitude = response.result.geometry.location.lat.toDouble()
+		loc.longitude = response.result.geometry.location.lng.toDouble()
+        return loc
 	}
 }
-
