@@ -23,8 +23,8 @@ class YahooParserTest {
     
     @Test
     void testCityState() {
-        yp.woeid = '2445916'
-        Weather w = yp.weather
+        String woeid = '2445916'
+        Weather w = yp.getWeather(woeid)
         assert 'Marlborough' == w.city
         assert 'CT' == w.region
         assert 'United States' == w.country

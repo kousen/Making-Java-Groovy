@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project name="Groovy Ant" default="info">
+<project name="Groovy Ant" basedir="." default="info">
     <property environment="env" />
 
    	<path id="groovy.classpath">

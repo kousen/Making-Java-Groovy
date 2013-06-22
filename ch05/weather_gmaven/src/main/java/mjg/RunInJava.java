@@ -22,7 +22,6 @@ public class RunInJava {
             woeid = args[0];
         }
         YahooParser yp = new YahooParser();
-        yp.setWoeid(woeid);
-        System.out.println(yp.getWeather());
+        System.out.println(yp.getWeather(woeid));
     }
 }

@@ -18,9 +18,7 @@ package mjg
 class YahooParser {
     final static String BASE = 'http://weather.yahooapis.com/forecastrss?'
     
-    String woeid
-    
-    Weather getWeather() {
+    Weather getWeather(String woeid) {
         def root = new XmlSlurper().parse(BASE + "w=$woeid")
         Weather w = new Weather(
             city:root.channel.location.@city,

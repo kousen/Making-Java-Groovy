@@ -24,4 +24,4 @@ package mjg
 // Brisbane, AU   :  1100661
 
 def woeid = args.size() ? args[0] : '2367105'
-println new YahooParser(woeid:woeid).weather
+println new YahooParser().getWeather(woeid)
