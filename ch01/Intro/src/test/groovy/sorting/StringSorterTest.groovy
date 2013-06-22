@@ -18,13 +18,8 @@ package sorting;
 import spock.lang.Specification;
 
 class StringSorterTest extends Specification {
-    StringSorter sorter
-    def strings
-    
-    def setup() {
-        sorter = new StringSorter()
-        strings = ['this','is','a','list','of','strings']
-    }
+    StringSorter sorter = new StringSorter()
+    def strings = ['this', 'is', 'a', 'list', 'of', 'strings']
     
     def "lexicographical sort returns alphabetical"() {
         when:
