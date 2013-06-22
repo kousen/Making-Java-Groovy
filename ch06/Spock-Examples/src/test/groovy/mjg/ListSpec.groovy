@@ -1,5 +1,6 @@
 package mjg
 
+import spock.lang.Ignore;
 import spock.lang.Specification;
 
 class ListSpec extends Specification {
@@ -20,6 +21,23 @@ class ListSpec extends Specification {
         
         then:
         strings.size() == old(strings.size()) + 2
+    }
+    
+    def "NPE if I don't instantiate the list"() {
+        when:
+        List empty
+        empty << 'data'
+        
+        then:
+        thrown(NullPointerException)
+    }
+    
+    def 'no exception if I stay inside string'() {
+        when:
+        (0..5).each { strings[it] }
+        
+        then:
+        notThrown()
     }
     
     def "list is still the same"() {

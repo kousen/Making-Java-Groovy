@@ -13,9 +13,7 @@ class PalindromeCheckerSpec extends Specification {
         "Madam, in Eden, I'm Adam",
         "Go hang a salami; I'm a lasagna hog!"]
     
-    @Unroll
-    def "#str is a palindrome"() {
- 
+    def "all the listed strings are palindromes"() {
         expect:
         palindromes.every { str -> checker.isPalindrome(str) }
     }
