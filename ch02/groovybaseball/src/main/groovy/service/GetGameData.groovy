@@ -95,9 +95,9 @@ class GetGameData {
         Matcher m = gamePage =~ pattern
         if (m) {
             m.count.times { line ->
-                def away = m[line][1]
-                def home = m[line][2]
-                def num = m[line][3]
+                String away = m[line][1]
+                String home = m[line][2]
+                String num = m[line][3]
                 try {
                     GameResult gr = this.getGame(away,home,num)
                     gameResults << gr
