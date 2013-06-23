@@ -13,12 +13,12 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  * ========================================================== */
-package mjg.dev
+package mjg
 
 class GroovyUtilityMethods implements UtilityMethods {
 
     @Override
-    int[] getPositives(int[] values) {
+    int[] getPositives(int... values) {
         values.findAll { it > 0 }
     }
 
@@ -26,16 +26,18 @@ class GroovyUtilityMethods implements UtilityMethods {
     boolean isPrime(int x) {
         if (x < 0) throw new IllegalArgumentException('argument must be > 0')
         if (x == 2) return true
-        for (int i = 2; i < Math.sqrt(x) + 1; i++) {
-            if (x % i == 0) return false
+        
+        for (num in 2..< Math.sqrt(x) + 1) {
+            if (x % num == 0) {
+                return false
+            }
         }
-        return true
+        return true        
     }
     
     @Override
     boolean isPalindrome(String s) {
         String str = s.toLowerCase().replaceAll(/\W/,'')
-        return str.reverse() == str
+        str.reverse() == str
     }
-
 }

@@ -13,14 +13,14 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  * ========================================================== */
-package mjg.dev;
+package mjg;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class JavaUtilityMethods implements UtilityMethods {
 
-    public int[] getPositives(int[] values) {
+    public int[] getPositives(int... values) {
         List<Integer> results = new ArrayList<Integer>();
         for (Integer i : values) {
             if (i > 0) results.add(i);

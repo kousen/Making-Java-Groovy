@@ -18,7 +18,6 @@ import spock.lang.Unroll;
  */
 //@Unroll
 class HelloSpock extends spock.lang.Specification {
-    // @Unroll({"$name should be $length"})
 	@Unroll
 	def "#name should have #length"() {
 		expect:

@@ -13,10 +13,10 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  * ========================================================== */
-package mjg.dev;
+package mjg;
 
 public interface UtilityMethods {
-    int[] getPositives(int[] values);
+    int[] getPositives(int... values);
     boolean isPrime(int x);
     boolean isPalindrome(String s);
 }
