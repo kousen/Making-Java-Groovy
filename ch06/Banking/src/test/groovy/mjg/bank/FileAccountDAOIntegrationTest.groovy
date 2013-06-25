@@ -17,6 +17,7 @@ package mjg.bank
 
 import static org.junit.Assert.*
 
+import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -25,10 +26,14 @@ class FileAccountDAOIntegrationTest {
     
     @Before
     void setUp() {
-        File f = new File('accounts.txt')
-        if (f.exists()) f.delete()
         dao = new FileAccountDAO(accountsFile:new File('accounts.txt'))
         dao.accounts = [:]
+    }
+    
+    @After
+    void tearDown() {
+        File f = new File('accounts.txt')
+        if (f.exists()) f.delete()
     }
     
     @Test
@@ -81,7 +86,11 @@ class FileAccountDAOIntegrationTest {
         (1..10).each { num -> dao.createNewAccount(num*100) }
         def accounts = dao.findAllAccounts()
         assert 10 == accounts.size()
-        accounts.each { account -> dao.deleteAccount(account.id) }
+        
+        // Concurrent modification issues -- this works but need to fix it later
+        Collection accountsCopy = []
+        accounts.each { accountsCopy << it }
+        accountsCopy.each { account -> dao.deleteAccount(account.id) }
         assert 0 == dao.findAllAccounts().size()
     }
 }

@@ -15,14 +15,16 @@
  * ========================================================== */
 package mjg.bank
 
+import java.util.concurrent.ConcurrentHashMap;
+
 
 class FileAccountDAO implements AccountDAO {
     def accountsFile
-    Map<Integer, Account> accounts = [:]
+    Map<Integer, Account> accounts = [:] as ConcurrentHashMap<Integer, Account>
     private static int nextId
     boolean dirty
 
-    void readAccountsFromFile() {
+    private void readAccountsFromFile() {
         accountsFile.splitEachLine(',') { line ->
             int id = line[0].toInteger()
             double balance = line[1].toDouble()
@@ -34,7 +36,7 @@ class FileAccountDAO implements AccountDAO {
         dirty = false
     }
     
-    void writeAccountsToFile() {
+    private void writeAccountsToFile() {
         accountsFile.withWriter { w -> 
             accounts.each { id, account ->
                 w.println("$id,$account.balance")
@@ -44,19 +46,19 @@ class FileAccountDAO implements AccountDAO {
     }
     
     @Override
-    public Account findAccountById(int id) {
+    Account findAccountById(int id) {
         if (dirty) readAccountsFromFile()
         return accounts[id]
     }
 
     @Override
-    public Collection<Account> findAllAccounts() {
+    Collection<Account> findAllAccounts() {
         if (dirty) readAccountsFromFile()
-        return accounts.values() as List
+        return accounts.values()
     }
 
     @Override
-    public int createNewAccount(double balance) {
+    int createNewAccount(double balance) {
         int newId = nextId++
         accounts[newId] = new Account(id:newId,balance:balance)
         writeAccountsToFile()
@@ -64,9 +66,8 @@ class FileAccountDAO implements AccountDAO {
     }
 
     @Override
-    public void deleteAccount(int id) {
+    void deleteAccount(int id) {
         accounts.remove(id)
         writeAccountsToFile()
     }
-
 }
