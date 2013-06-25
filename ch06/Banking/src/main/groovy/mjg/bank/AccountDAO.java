@@ -15,11 +15,11 @@
  * ========================================================== */
 package mjg.bank;
 
-import java.util.List;
+import java.util.Collection;
 
 public interface AccountDAO {
     Account findAccountById(int id);
-    List<Account> findAllAccounts();
+    Collection<Account> findAllAccounts();
     int createNewAccount(double balance);
     void deleteAccount(int id);
 }

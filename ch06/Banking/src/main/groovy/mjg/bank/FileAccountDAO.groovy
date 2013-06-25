@@ -15,7 +15,6 @@
  * ========================================================== */
 package mjg.bank
 
-import java.util.List;
 
 class FileAccountDAO implements AccountDAO {
     def accountsFile
@@ -51,7 +50,7 @@ class FileAccountDAO implements AccountDAO {
     }
 
     @Override
-    public List<Account> findAllAccounts() {
+    public Collection<Account> findAllAccounts() {
         if (dirty) readAccountsFromFile()
         return accounts.values() as List
     }

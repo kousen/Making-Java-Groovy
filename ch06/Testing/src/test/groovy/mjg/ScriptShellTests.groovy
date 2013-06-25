@@ -26,7 +26,7 @@ class ScriptShellTests extends GroovyShellTestCase {
         def content = new StringWriter()
         withBinding([out:new PrintWriter(content)]) {
             shell.evaluate(new File("$base/mjg/hello_world.groovy"))
-            assertEquals "Hello, World!", content.toString().trim()
+            assert "Hello, World!" == content.toString().trim()
         } 
     }
 
@@ -34,7 +34,7 @@ class ScriptShellTests extends GroovyShellTestCase {
         def content = new StringWriter()
         withBinding([out:new PrintWriter(content), name:'Dolly']) {
             shell.evaluate(new File("$base/mjg/hello_name.groovy"))
-            assertEquals "Hello, Dolly!", content.toString().trim()
+            assert "Hello, Dolly!" == content.toString().trim()
         } 
     }
 }

@@ -23,7 +23,7 @@ class ScriptTests {
     String base = 'src/main/groovy'
 
     @Test
-    void testChuckNorris() {
+    void testChuckNorrisScript() {
         GroovyShell shell = new GroovyShell()
         shell.evaluate(new File("$base/mjg/chuck_norris.groovy"))
     }
@@ -35,7 +35,7 @@ class ScriptTests {
         def content = new StringWriter()
         binding.out = new PrintWriter(content)
         shell.evaluate(new File("$base/mjg/hello_world.groovy"))
-        assertEquals "Hello, World!", content.toString().trim() 
+        assert "Hello, World!" == content.toString().trim() 
     }
 
     @Test
@@ -46,6 +46,6 @@ class ScriptTests {
         binding.out = new PrintWriter(content)
         GroovyShell shell = new GroovyShell(binding)
         shell.evaluate(new File("$base/mjg/hello_name.groovy"))
-        assertEquals "Hello, Dolly!", content.toString().trim() 
+        assert "Hello, Dolly!" == content.toString().trim() 
     }
 }

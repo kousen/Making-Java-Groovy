@@ -22,6 +22,6 @@ class CalcTests extends GroovyShellTestCase {
             shell.evaluate(new File('src/main/groovy/mjg/calc.groovy'))
             shell.context.z
         }
-        assertEquals 7, result
+        assert 7 == result
     }
 }
