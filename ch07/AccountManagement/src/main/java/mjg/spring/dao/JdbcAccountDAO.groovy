@@ -15,19 +15,22 @@
  * ========================================================== */
 package mjg.spring.dao
 
+import java.sql.ResultSet
+import java.util.logging.Logger;
+
+import javax.sql.DataSource
+
 import mjg.spring.entities.Account
+
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.jdbc.core.JdbcTemplate
 import org.springframework.jdbc.core.RowMapper
 import org.springframework.stereotype.Repository
 
-import java.sql.ResultSet
-import java.sql.SQLException;
-
-import javax.sql.DataSource
-
 @Repository
 class JdbcAccountDAO implements AccountDAO {
+	Logger log = Logger.getLogger(JdbcAccountDAO.class.name)
+
     static int nextId = 3
     JdbcTemplate jdbcTemplate
 
@@ -35,11 +38,12 @@ class JdbcAccountDAO implements AccountDAO {
         jdbcTemplate = new JdbcTemplate(dataSource)
     }
 
-    public int createAccount(double initialBalance) {
+    public int createAccount(BigDecimal initialBalance) {
         String sql = "insert into accounts(id,balance) values(?,?)"
-        Account account = new Account(id: nextId++, balance: initialBalance)
-        jdbcTemplate.update(sql, account.id, account.balance)
-        return account.id;
+		int id = nextId++
+        int uc = jdbcTemplate.update(sql, id, initialBalance)
+		log.fine uc == 1 ? "account inserted with id=$id" : 'problem inserting account'
+        return id;
     }
 
     public Account findAccountById(int id) {
@@ -70,6 +74,6 @@ class JdbcAccountDAO implements AccountDAO {
     }
 
     def accountMapper = { ResultSet rs, int row ->
-        new Account(id: rs.getInt('id'), balance: rs.getDouble('balance'))
+        new Account(id: rs.getInt('id'), balance: rs.getBigDecimal('balance'))
     }
 }

@@ -16,7 +16,7 @@
 package mjg.spring
 
 class MortgageApplication {
-    double amount
-    double rate
+    BigDecimal amount
+    BigDecimal rate
     int years
 }

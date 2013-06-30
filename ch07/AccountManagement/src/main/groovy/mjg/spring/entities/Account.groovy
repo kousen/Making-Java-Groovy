@@ -15,15 +15,20 @@
  * ========================================================== */
 package mjg.spring.entities
 
+import groovy.transform.EqualsAndHashCode;
+import groovy.transform.ToString;
+
+@EqualsAndHashCode(includes=['id'])
+@ToString(includeNames=true)
 class Account {
     Integer id
-    Double balance
+    BigDecimal balance
     
-    double deposit(double amount) {
+    def deposit(amount) {
         balance += amount
     }
     
-    double withdraw(double amount) {
+    def withdraw(amount) {
         balance -= amount
     }
 }

@@ -27,7 +27,7 @@ import spock.lang.Specification;
 @Transactional
 class JdbcAccountDAOSpec extends Specification {
     @Autowired
-    JdbcAccountDAO dao
+    AccountDAO dao
     
     def "dao is injected properly"() {
         expect: dao

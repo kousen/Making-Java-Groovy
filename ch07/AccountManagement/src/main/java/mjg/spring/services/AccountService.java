@@ -15,6 +15,8 @@
  * ========================================================== */
 package mjg.spring.services;
 
+import java.math.BigDecimal;
+
 import mjg.spring.dao.AccountDAO;
 import mjg.spring.entities.Account;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,26 +31,26 @@ public class AccountService {
     private AccountDAO dao;
 
     @Transactional(readOnly = true, propagation = Propagation.SUPPORTS)
-    public double getAccountBalance(int id) {
+    public BigDecimal getAccountBalance(int id) {
         Account account = dao.findAccountById(id);
         return account.getBalance();
     }
 
-    public double depositIntoAccount(int id, double amount) {
+    public BigDecimal depositIntoAccount(int id, BigDecimal amount) {
         Account account = dao.findAccountById(id);
         account.deposit(amount);
         dao.updateAccount(account);
         return account.getBalance();
     }
 
-    public double withdrawFromAccount(int id, double amount) {
+    public BigDecimal withdrawFromAccount(int id, BigDecimal amount) {
         Account account = dao.findAccountById(id);
         account.withdraw(amount);
         dao.updateAccount(account);
         return account.getBalance();
     }
 
-    public boolean transferFunds(int fromId, int toId, double amount) {
+    public boolean transferFunds(int fromId, int toId, BigDecimal amount) {
         Account from = dao.findAccountById(fromId);
         Account to = dao.findAccountById(toId);
         from.withdraw(amount);

@@ -47,7 +47,6 @@ def palindromes = '''
 '''
 palindromes.eachLine {
 	String str = it.trim().replaceAll(/[ ,\'!?]/,'').toLowerCase()
-	println str
 	assert str.reverse() == str
 }
 

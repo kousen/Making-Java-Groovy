@@ -20,7 +20,7 @@ import org.springframework.test.context.ContextConfiguration;
 
 import spock.lang.Specification;
 
-@ContextConfiguration("/applicationContext.xml")
+@ContextConfiguration("classpath:applicationContext.xml")
 class POJOIntegrationSpec extends Specification {
     @Autowired
     POJO pojo

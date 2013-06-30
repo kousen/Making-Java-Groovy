@@ -7,11 +7,11 @@ repositories {
 }
 
 task wrapper(type:Wrapper) {
-    gradleVersion = '1.2'
+    gradleVersion = '1.6'
 }
 
 dependencies {
-    groovy 'org.codehaus.groovy:groovy-all:2.0.4'
-    compile 'com.gmongo:gmongo:1.0'
+    compile 'org.codehaus.groovy:groovy-all:2.1.5'
+    compile 'com.gmongo:gmongo:1.2'
     testCompile 'junit:junit:4.10'
 }
