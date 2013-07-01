@@ -32,9 +32,9 @@ task wrapper(type:Wrapper) {
 }
 
 dependencies {
-    compile "org.codehaus.groovy:groovy-all:2.1.3"
+    compile "org.codehaus.groovy:groovy-all:2.1.5"
     
-    testCompile "junit:junit:4.9"
+    testCompile "junit:junit:4.10"
     
     integrationTestCompile configurations.testCompile
     integrationTestRuntime configurations.testRuntime
