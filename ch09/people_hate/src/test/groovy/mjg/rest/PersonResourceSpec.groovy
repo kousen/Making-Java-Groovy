@@ -93,7 +93,7 @@ class PersonResourceSpec extends Specification {
         response.headers.Location == "http://localhost:1234/people/${response.data.id}"
 	
         when: 'delete the new JSON object'
-        client.delete(path: "people/${response.data.id}")
+        client.delete(path: response.headers.Location)
 
         then: 'number of stored objects goes down by one'
         getAll().size() == old(getAll().size()) - 1

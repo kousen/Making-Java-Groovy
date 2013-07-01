@@ -28,10 +28,13 @@ class StringSpec extends Specification {
         notThrown(IndexOutOfBoundsException)
     }
 
-	@FailsWith(IndexOutOfBoundsException)
-    def "Access before the start of the string throws exception"() {
+	@FailsWith(NullPointerException)
+    def "Access inside null string throws exception"() {
+        given:
+        llap = null
+        
         expect:
-        llap[-llap.size() -1]        
+        llap[0]
     }
 
 	def "Access beyond the end of the string throws exception"() {
