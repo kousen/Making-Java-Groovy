@@ -19,7 +19,7 @@ class GeocoderService {
 
     String base = 'http://maps.googleapis.com/maps/api/geocode/xml?'
     
-    def mapColumns = [['number','Lat'],['number','Lon'],['string','Name']]
+    def columns = [['number','Lat'],['number','Lon'],['string','Name']]
 
     def fillInLatLng(Castle castle) {
         def encodedAddress =
@@ -36,10 +36,8 @@ class GeocoderService {
     }
     
     def getMarkers() {
-        def results = []
-        Castle.list().each { c ->
-            results << [c.latitude, c.longitude, c.name]
+        Castle.list().collect { c ->
+            [c.latitude, c.longitude, c.toString()]
         }
-        results
     }
 }

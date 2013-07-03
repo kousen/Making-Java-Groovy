@@ -29,7 +29,7 @@ class CastleController {
     def list() {
         params.max = Math.min(params.max ? params.int('max') : 10, 100)
         [castleInstanceList: Castle.list(params), castleInstanceTotal: Castle.count(),
-         mapColumns:geocoderService.mapColumns, mapData:geocoderService.markers]
+         mapColumns:geocoderService.columns, mapData:geocoderService.markers]
     }
 
     def create() {
