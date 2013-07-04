@@ -42,20 +42,19 @@ println total
 println total.class.name
 [5,10,15,20].each { println "$it: ${total[it]}" }
 
-def sdf = new SimpleDateFormat("MMM dd, yyyy", Locale.US)
 def cal = Calendar.instance
-cal.set(2011,Calendar.FEBRUARY,27)
+cal.set(2013, Calendar.FEBRUARY, 27)
 def now = cal.time
-cal.set(2011,Calendar.MARCH,2)
+cal.set(2013, Calendar.MARCH, 2)
 def then = cal.time
 
 def days = []
 (now..then).each { day ->
-    days << sdf.format(day)
+    days << day.format('MMM dd, yyyy')
 }
 assert days == [
-    'Feb 27, 2011',
-    'Feb 28, 2011',
-    'Mar 01, 2011',
-    'Mar 02, 2011'
+    'Feb 27, 2013',
+    'Feb 28, 2013',
+    'Mar 01, 2013',
+    'Mar 02, 2013'
 ]
