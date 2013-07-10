@@ -42,7 +42,7 @@ task wrapper(type:Wrapper) {
 def springVersion = '3.2.2.RELEASE'
 
 dependencies {
-    compile "org.codehaus.groovy:groovy-all:2.1.5"
+    compile "org.codehaus.groovy:groovy-all:2.1.6"
     providedCompile 'javax.servlet:servlet-api:2.5'
     
     testCompile "junit:junit:4.10"

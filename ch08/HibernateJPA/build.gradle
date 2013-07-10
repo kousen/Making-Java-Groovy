@@ -8,7 +8,7 @@ repositories {
 def springVersion = '3.2.2.RELEASE'
 
 dependencies {
-    groovy "org.codehaus.groovy:groovy-all:2.1.5"
+    compile "org.codehaus.groovy:groovy-all:2.1.6"
     compile "org.springframework:spring-context:$springVersion"
     compile "org.springframework:spring-jdbc:$springVersion"
     compile "org.springframework:spring-orm:$springVersion"
