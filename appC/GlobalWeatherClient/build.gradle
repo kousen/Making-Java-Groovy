@@ -42,8 +42,8 @@ task wsimport(dependsOn: processResources)  {
 wsimport.onlyIf { !(new File('build/generated-sources/java/net/webservicex')).exists() }
 compileJava.dependsOn(wsimport)
 
-def groovyVersion = '1.8.6'
-def spockVersion = '0.6-groovy-1.8'
+def groovyVersion = '2.1.6'
+def spockVersion = '0.7-groovy-2.0'
 
 dependencies {
     groovy "org.codehaus.groovy:groovy-all:$groovyVersion"

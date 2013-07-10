@@ -42,8 +42,8 @@ task wsgen(dependsOn: compileGroovy)  {
 wsgen.onlyIf { !(new File('src/mjg/calc/service')).exists() }
 classes.dependsOn wsgen
 
-def groovyVersion = '1.8.6'
-def spockVersion = '0.6-groovy-1.8'
+def groovyVersion = '2.1.6'
+def spockVersion = '0.7-groovy-2.0'
 
 dependencies {
     groovy "org.codehaus.groovy:groovy-all:$groovyVersion"

@@ -5,7 +5,7 @@ repositories {
     mavenCentral()
     maven { url "http://download.java.net/maven/1"
             url "http://download.java.net/maven/2" 
-            url 'http://oss.sonatype.org/content/repositories/snapshots' }
+            }
 }
 
 configurations {
@@ -47,11 +47,11 @@ task wrapper(type:Wrapper) {
     gradleVersion = '1.0'
 }
 
-def groovyVersion = '2.0.0'
-def spockVersion = '0.7-groovy-2.0-SNAPSHOT'
+def groovyVersion = '2.1.6'
+def spockVersion = '0.7-groovy-2.0'
 
 dependencies {
-    groovy "org.codehaus.groovy:groovy-all:$groovyVersion"
+    compile "org.codehaus.groovy:groovy-all:$groovyVersion"
     jaxws 'com.sun.xml.ws:jaxws-tools:2.1.4'
 
     testCompile "org.spockframework:spock-core:$spockVersion"
