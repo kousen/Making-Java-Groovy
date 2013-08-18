@@ -29,10 +29,12 @@ class PersonResourceSpec extends Specification {
         def response = client.get(path: 'people')
 
         then:
-		response.status == 200
-        response.contentType == 'application/json'
-        response.data.size() == 5
-        response.headers.Link == '<http://localhost:1234/people>; rel="self"'
+		with(response) {
+			status == 200
+        	contentType == 'application/json'
+        	data.size() == 5
+        	headers.Link == '<http://localhost:1234/people>; rel="self"'
+		}
     }
 
     def 'structural and transitional links for kirk are correct'() {
@@ -41,10 +43,12 @@ class PersonResourceSpec extends Specification {
         
         then:
         'James Kirk' == "$response.data.first $response.data.last"
-        response.getHeaders('Link').each { println it }
-        assert response.data.prev.href == 'http://localhost:1234/people/2'
-        assert response.data.self.href == 'http://localhost:1234/people/3'
-        assert response.data.next.href == 'http://localhost:1234/people/4'
+		with(response) {
+        	getHeaders('Link').each { println it }
+        	assert data.prev.href == 'http://localhost:1234/people/2'
+        	assert data.self.href == 'http://localhost:1234/people/3'
+        	assert data.next.href == 'http://localhost:1234/people/4'
+		}
     }
     
     
@@ -86,11 +90,13 @@ class PersonResourceSpec extends Specification {
 
         then: 'number of stored objects goes up by one'
         getAll().size() == old(getAll().size()) + 1
-        response.data.first == 'Peter Quincy'
-        response.data.last == 'Taggart'
-        response.status == 201
-        response.contentType == 'application/json'
-        response.headers.Location == "http://localhost:1234/people/${response.data.id}"
+		with(response) {
+        	data.first == 'Peter Quincy'
+        	data.last == 'Taggart'
+        	status == 201
+        	contentType == 'application/json'
+        	headers.Location == "http://localhost:1234/people/${response.data.id}"
+		}
 	
         when: 'delete the new JSON object'
         client.delete(path: response.headers.Location)
