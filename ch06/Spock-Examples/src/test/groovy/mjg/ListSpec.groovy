@@ -29,12 +29,15 @@ class ListSpec extends Specification {
         empty << 'data'
         
         then:
-        thrown(NullPointerException)
+        // thrown(NullPointerException)
+        NullPointerException e = thrown()
+        println e.message
     }
     
-    def 'no exception if I stay inside string'() {
+    def 'no exception if I stay inside list'() {
         when:
         (0..5).each { strings[it] }
+        strings[6]
         
         then:
         notThrown()

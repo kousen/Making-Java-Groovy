@@ -48,9 +48,10 @@ class JdbcAccountDAO implements AccountDAO {
 
     public Account findAccountById(int id) {
         String sql = "select * from accounts where id=?"
-        jdbcTemplate.queryForObject(sql, accountMapper as RowMapper<Account>, id)
+        jdbcTemplate.queryForObject(sql, accountMapper, id)
     }
-    
+ 
+//    Java approach: inner class   
 //    class AccountMapper implements RowMapper<Account> {
 //        @Override
 //        public Account mapRow(ResultSet rs, int rowNum) throws SQLException {
@@ -60,7 +61,7 @@ class JdbcAccountDAO implements AccountDAO {
 
     public List<Account> findAllAccounts() {
         String sql = "select * from accounts"
-        jdbcTemplate.query(sql, accountMapper as RowMapper<Account>)
+        jdbcTemplate.query(sql, accountMapper)
     }
 
     void updateAccount(Account account) {
@@ -75,5 +76,5 @@ class JdbcAccountDAO implements AccountDAO {
 
     def accountMapper = { ResultSet rs, int row ->
         new Account(id: rs.getInt('id'), balance: rs.getBigDecimal('balance'))
-    }
+    } as RowMapper<Account>
 }

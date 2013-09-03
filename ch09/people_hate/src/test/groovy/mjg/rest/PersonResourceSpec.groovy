@@ -31,9 +31,9 @@ class PersonResourceSpec extends Specification {
         then:
 		with(response) {
 			status == 200
-        	contentType == 'application/json'
-        	data.size() == 5
-        	headers.Link == '<http://localhost:1234/people>; rel="self"'
+        	    contentType == 'application/json'
+            data.size() == 5
+            headers.Link == '<http://localhost:1234/people>; rel="self"'
 		}
     }
 

@@ -28,7 +28,8 @@ class UpdateReporter {
     @Before("execution(void set*(*))")
     void reportOnSet(JoinPoint jp) {
         String method = jp.signature.name
-        String property = (method - 'set')[0].toLowerCase() + (method - 'set')[1..-1]
+        String property = (method - 'set')[0].toLowerCase() + 
+            (method - 'set')[1..-1]
         def current = jp.target."$property"
         log.info "About to change $property from $current to ${jp.args[0]}"
     }

@@ -19,7 +19,7 @@ import spock.lang.Unroll;
 //@Unroll
 class HelloSpock extends spock.lang.Specification {
 	@Unroll
-	def "#name should have #length"() {
+	def "#name should have #length"(String name, int length) {
 		expect:
 		name.size() == length
 
