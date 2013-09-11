@@ -75,6 +75,15 @@ class JdbcAccountDAO implements AccountDAO {
     }
 
     def accountMapper = { ResultSet rs, int row ->
-        new Account(id: rs.getInt('id'), balance: rs.getBigDecimal('balance'))
+        new Account(id: rs.getInt('id'), 
+            balance: rs.getBigDecimal('balance'))
     } as RowMapper<Account>
 }
+
+
+
+
+
+
+
+

@@ -13,10 +13,12 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  * ========================================================== */
+import groovy.transform.CompileStatic;
 import mjg.spring.*
 
+@CompileStatic
 class GroovyEvaluator implements Evaluator {
     boolean approve(MortgageApplication application) { 
-		false 
+		true 
 	}
 }

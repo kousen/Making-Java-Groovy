@@ -4,7 +4,7 @@ import spock.lang.Ignore;
 import spock.lang.Specification;
 
 class ListSpec extends Specification {
-    def strings
+    List strings
     
     def setup() {
         strings = ['this','is','a','list','of','strings']

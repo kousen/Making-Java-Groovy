@@ -41,7 +41,7 @@ class AccountProcessorSpec extends Specification {
         
         then:
         result == 3.0
-        accounts.each { account ->
+        accounts.every { account ->
              account.balance.toString().endsWith "9"   
         }
     }
