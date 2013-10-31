@@ -15,6 +15,9 @@
  * ========================================================== */
 package tasks
 
+import groovy.transform.EqualsAndHashCode;
+
+@EqualsAndHashCode
 class GroovyTask {
     String name
     int priority
