@@ -29,13 +29,14 @@ class FileAccountDAOUnitTests {
         ex.data = ''
         ex.splitEachLine = { pattern, clos -> data.splitEachLine(pattern, clos) }
         ex.withWriter = { new StringWriter() }
-        ex.println = { data.append(it) }
+//        ex.println = { data.append(it) }
         dao = new FileAccountDAO(accountsFile:ex)
     }
     
     @Test
     void testCreateAndFindNewAccount() {
         int id = dao.createNewAccount(100.0)
+        println dao.accountsFile
         Account local = new Account(id:id,balance:100.0)
         Account fromDao = dao.findAccountById(id)
         assert local.id == fromDao.id
@@ -45,6 +46,7 @@ class FileAccountDAOUnitTests {
     @Test
     void testFindAllAccounts() {
         (1..10).each { num -> dao.createNewAccount(num*100) }
+        println dao.accountsFile
         def accounts = dao.findAllAccounts()
         assert 10 == accounts.size()
         accounts*.balance.each { it in (100..1000) }

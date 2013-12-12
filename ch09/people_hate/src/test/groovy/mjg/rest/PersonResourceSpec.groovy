@@ -58,9 +58,6 @@ class PersonResourceSpec extends Specification {
         def response = client.get(path: "people/$id")
         name == "$response.data.first $response.data.last"
         response.status == 200
-//        println response.data.prev
-//        println response.data.self
-//        println response.data.next
 
         where:
         id |       name 

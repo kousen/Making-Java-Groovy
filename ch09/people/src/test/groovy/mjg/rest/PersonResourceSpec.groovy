@@ -12,25 +12,31 @@ import spock.lang.Unroll
 
 class PersonResourceSpec extends Specification {
     @Shared static HttpServer server
-    RESTClient client = new RESTClient('http://localhost:1234/', ContentType.JSON)
+    @Shared RESTClient client = new RESTClient('http://localhost:1234/', ContentType.JSON)
 
     void setupSpec() {
         server = GrizzlyHttpServerFactory.createHttpServer(
-            'http://localhost:1234/'.toURI(), new MyApplication())
+                'http://localhost:1234/'.toURI(), new MyApplication())
     }
 
     def 'server is running'() {
         expect: server.started
     }
-	
+
     def 'get request returns all people'() {
         when:
         def response = client.get(path: 'people')
 
         then:
-		response.status == 200
-        response.contentType == 'application/json'
-        response.data.size() == 5
+		with(response) {
+			status == 200
+			contentType == 'application/json'
+			data.size() == 5
+		}
+		
+//        response.status == 200
+//        response.contentType == 'application/json'
+//        response.data.size() == 5
     }
 
     @Unroll
@@ -41,12 +47,12 @@ class PersonResourceSpec extends Specification {
         response.status == 200
 
         where:
-        id |       name 
+        id |       name
         1  | 'Jean-Luc Picard'
-        2  | 'Johnathan Archer'	
+        2  | 'Johnathan Archer'
         3  | 'James Kirk'
         4  | 'Benjamin Sisko'
-        5  | 'Kathryn Janeway'	
+        5  | 'Kathryn Janeway'
     }
 
     def 'people/lastname/{like} searches for last names that include given string'() {
@@ -55,7 +61,7 @@ class PersonResourceSpec extends Specification {
 
         then:
         response.data.size() == 3
-        response.data*.last ==~ /.*[aA].*/ 
+        response.data*.last ==~ /.*[aA].*/
     }
 
     def 'insert and delete a person'() {
@@ -63,17 +69,19 @@ class PersonResourceSpec extends Specification {
         def json = [first: 'Peter Quincy', last: 'Taggart']
 
         when: 'post the JSON object'
-        def response = client.post(path: 'people', 
-            contentType: ContentType.JSON, body: json)
+        def response = client.post(path: 'people',
+        contentType: ContentType.JSON, body: json)
 
         then: 'number of stored objects goes up by one'
         getAll().size() == old(getAll().size()) + 1
-        response.data.first == 'Peter Quincy'
-        response.data.last == 'Taggart'
-        response.status == 201
-        response.contentType == 'application/json'
-        response.headers.Location == "http://localhost:1234/people/${response.data.id}"
-	
+        with(response) {
+            data.first == 'Peter Quincy'
+            data.last == 'Taggart'
+            status == 201
+            contentType == 'application/json'
+            headers.Location == "http://localhost:1234/people/${response.data.id}"
+        }
+
         when: 'delete the new JSON object'
         client.delete(path: response.headers.Location)
 
@@ -87,8 +95,8 @@ class PersonResourceSpec extends Specification {
         def json = [id: 3, first:'James T.', last: 'Kirk']
 
         when:
-        def response = client.put(path: "people/${kirk.data.id}", 
-            contentType: ContentType.JSON, body: json)
+        def response = client.put(path: "people/${kirk.data.id}",
+        contentType: ContentType.JSON, body: json)
 
         then:
         "$response.data.first $response.data.last" == 'James T. Kirk'

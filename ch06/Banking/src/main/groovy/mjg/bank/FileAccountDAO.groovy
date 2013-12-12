@@ -34,6 +34,7 @@ class FileAccountDAO implements AccountDAO {
         nextId++
         
         dirty = false
+        println accounts
     }
     
     private void writeAccountsToFile() {

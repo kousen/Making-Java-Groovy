@@ -42,10 +42,6 @@ class ScriptTests extends GroovyTestCase {
 		shell.evaluate(new File("$baseDir/io/files.groovy"))
 	}
     
-	void testOop() {
-		shell.evaluate(new File("$baseDir/oop/givenctor.groovy"))
-	}
-    
     void testDb() {
         shell.evaluate(new File("$baseDir/db/products.groovy"))
     }
