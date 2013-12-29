@@ -15,14 +15,12 @@
  * ========================================================== */
 package tasks
 
-import groovy.transform.EqualsAndHashCode;
+import groovy.transform.Canonical
 
-@EqualsAndHashCode
+@Canonical
 class GroovyTask {
     String name
     int priority
     Date startDate
     Date endDate
-    
-    String toString() { "($name,$priority,$startDate,$endDate)" }
 }
