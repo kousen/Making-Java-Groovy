@@ -1,4 +1,4 @@
-subprojects{
+subprojects {
     apply plugin:'groovy'
     apply plugin:'eclipse'
 

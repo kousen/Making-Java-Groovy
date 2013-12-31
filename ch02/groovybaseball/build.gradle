@@ -16,7 +16,7 @@ httpPort = 8080
 stopPort = 9451
 stopKey = 'foo'
 
-[jettyRun, jettyRunWar]*.daemon = true
+jettyRun.daemon = true
 
 task intTest(type:Test, dependsOn:jettyRun) {
 	testClassesDir = sourceSets.integrationTest.output.classesDir
