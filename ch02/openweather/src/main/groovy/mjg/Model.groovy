@@ -30,8 +30,8 @@ class Model {
     def getLatitude() { coord.lat }
     def getLongitude() { coord.lon }
     def getTemperature() { convertTemp main.temp }
-    def getLow() { convertTemp main.temp_min }
-    def getHigh() { convertTemp main.temp_max }
+    def getLow() { Math.floor(convertTemp(main.temp_min)) }
+    def getHigh() { Math.ceil(convertTemp(main.temp_max)) }
     def getSunrise() { convertTime sys.sunrise }
     def getSunset() { convertTime sys.sunset }
     def getSpeed() { convertSpeed wind.speed }
