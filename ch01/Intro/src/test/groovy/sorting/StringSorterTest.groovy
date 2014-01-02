@@ -23,17 +23,17 @@ class StringSorterTest extends Specification {
     
     def "lexicographical sort returns alphabetical"() {
         when:
-        sorter.sortLexicographically strings
+        def sorted = sorter.sortLexicographically(strings)
         
         then:
-        strings == ['a','is','list','of','strings','this']
+        sorted == ['a','is','list','of','strings','this']
     }
     
     def "reverse sort by length should be decreasing size"() {
         when:
-        sorter.sortByDecreasingLength strings
+        def sorted = sorter.sortByDecreasingLength(strings)
         
         then:
-        strings*.size() == [7, 4, 4, 2, 2, 1]
+        sorted*.size() == [7, 4, 4, 2, 2, 1]
     }
 }
