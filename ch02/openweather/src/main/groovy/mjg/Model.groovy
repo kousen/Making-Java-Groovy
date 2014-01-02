@@ -27,8 +27,6 @@ class Model {
     }
     
     def getTime() { convertTime dt }
-    def getLatitude() { coord.lat }
-    def getLongitude() { coord.lon }
     def getTemperature() { convertTemp main.temp }
     def getLow() { Math.floor(convertTemp(main.temp_min)) }
     def getHigh() { Math.ceil(convertTemp(main.temp_max)) }
@@ -37,11 +35,16 @@ class Model {
     def getSpeed() { convertSpeed wind.speed }
     
     String toString() {
-        """
+        String result = """
         Name         : $name
         Time         : $time
-        Location     : ($latitude, $longitude)
-        Weather      : ${weather[0].main} (${weather[0].description})
+        Location     : $coord"""
+        
+        weather.each { w ->
+            result += "\n        Weather      : ${w.main} (${w.description})"
+        }
+        
+        result += """
         Icon         : http://openweathermap.org/img/w/${weather[0].icon}.png
         Current Temp : $temperature F (high: $high F, low: $low F)
         Humidity     : ${main.humidity}%
@@ -50,6 +53,7 @@ class Model {
         Wind         : $speed mph at ${wind.deg} deg
         Cloudiness   : ${clouds.all}%
         """
+        return result
     }
 }
 
@@ -64,6 +68,8 @@ class Main {
 class Coordinates {
     BigDecimal lat
     BigDecimal lon
+    
+    String toString() { "($lat, $lon)" }
 }
 
 class Weather {
