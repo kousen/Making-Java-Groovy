@@ -8,12 +8,8 @@ import javax.swing.WindowConstants as WC
 
 String base = 'https://chart.googleapis.com/chart?'
 def params = [cht:'p3', chs:'250x100', chd:'t:60,40', chl:'Hello|World']
-String qs = params.collect { it }.join('&')
+String qs = params.collect { k,v -> "$k=$v" }.join('&')
 println "$base$qs"
-
-params.each { k,v ->
-    assert qs.contains("$k=$v")
-}
 
 new SwingBuilder().edt {
     frame(title:'Hello, Chart!', visible: true, pack: true,
