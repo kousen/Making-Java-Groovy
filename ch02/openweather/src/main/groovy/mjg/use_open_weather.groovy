@@ -11,10 +11,12 @@ println ow.getWeather('Brisbane','Australia')
 println ow.getWeather('Paris','France')
 
 // Have to check the weather in Java, right?
-println ow.getWeather('Java','Indonesia')
+// println ow.getWeather('Java','Indonesia')
 
 // Any weather stations in Antarctica?
 println ow.getWeather('', 'Antarctica')
 
 // Is it colder in Winnipeg than in Antarctica?
 println ow.getWeather('Winnipeg', 'Manitoba')
+
+println ow.getWeather('St. Cloud', 'Minnesota')
