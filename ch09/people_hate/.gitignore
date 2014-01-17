@@ -1,7 +1,9 @@
 build
 bin
 .gradle
+.idea
 .project
 .classpath
 .settings
 db.h2.db
+db.trace.db
