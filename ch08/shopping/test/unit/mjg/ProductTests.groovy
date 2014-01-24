@@ -1,20 +1,5 @@
 package mjg
 
-<<<<<<< HEAD
-
-
-import grails.test.mixin.*
-import org.junit.*
-
-/**
- * See the API for {@link grails.test.mixin.domain.DomainClassUnitTestMixin} for usage instructions
- */
-@TestFor(Product)
-class ProductTests {
-
-    void testSomething() {
-       fail "Implement me"
-=======
 import grails.test.mixin.*
 import org.junit.*
 
@@ -41,6 +26,5 @@ class ProductTests {
         p.price = -1
         assert !p.validate()
         assert 'min' == p.errors.price
->>>>>>> rest
     }
 }

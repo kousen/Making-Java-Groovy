@@ -12,10 +12,6 @@ import org.junit.*
 class CustomerControllerTests {
 
     void testSomething() {
-<<<<<<< HEAD
-       fail "Implement me"
-=======
         assert 'scaffolded'
->>>>>>> rest
     }
 }

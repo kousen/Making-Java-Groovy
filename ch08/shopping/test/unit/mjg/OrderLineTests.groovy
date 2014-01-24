@@ -5,13 +5,6 @@ import org.junit.*
 
 @TestFor(OrderLine)
 class OrderLineTests {
-<<<<<<< HEAD
-
-    void testGetPrice() {
-        Product p = new Product(name:'n1', price:2.0)
-        OrderLine ol = new OrderLine(product:p, quantity:2)
-        assert ol.price == p.price * ol.quantity
-=======
     OrderLine line
 
     @Before
@@ -33,6 +26,5 @@ class OrderLineTests {
         line.quantity = -1
         assert !line.validate()
         assert 'min' == line.errors['quantity']
->>>>>>> rest
     }
 }
