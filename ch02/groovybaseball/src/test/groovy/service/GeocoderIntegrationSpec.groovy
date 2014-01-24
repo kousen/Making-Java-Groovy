@@ -15,6 +15,8 @@
  * ========================================================== */
 package service;
 
+import static spock.util.matcher.HamcrestMatchers.closeTo
+
 import spock.lang.Specification
 import beans.Stadium
 
@@ -39,8 +41,10 @@ class GeocoderIntegrationSpec extends Specification {
         geocoderXml.fillInLatLng(stadium)
 
         then:
-        Math.abs(stadium.latitude - google_lat) < 0.01
-        Math.abs(stadium.longitude - google_lng) < 0.01
+//        Math.abs(stadium.latitude - google_lat) < 0.01
+//        Math.abs(stadium.longitude - google_lng) < 0.01
+		google_lat closeTo(stadium.latitude, 0.01)
+		google_lng closeTo(stadium.longitude, 0.01)
     }
 
     def "fill in lat,lng using JSON parsing"() {
