@@ -5,7 +5,7 @@ repositories {
     mavenCentral()
 }
 
-def springVersion = '3.2.2.RELEASE'
+def springVersion = '4.0.1.RELEASE'
 def spockVersion = '0.7-groovy-2.0'
 
 dependencies {
