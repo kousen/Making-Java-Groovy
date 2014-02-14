@@ -20,9 +20,6 @@ import groovy.lang.Binding;
 import groovy.lang.GroovyShell;
 import groovy.util.Eval;
 
-import mjg.scripting.Geocoder;
-import mjg.scripting.Location;
-
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
@@ -76,7 +73,7 @@ public class GroovyIntegrationTests {
         binding.setVariable("state", "DC");
         GroovyShell shell = new GroovyShell(binding);
         try {
-            shell.evaluate(new File("src/geocode.groovy"));
+            shell.evaluate(new File("src/geocodeV3.groovy"));
             assertEquals(38.898,
                 Double.parseDouble((String) binding.getVariable("lat")),0.01);
             assertEquals(-77.037,
@@ -96,7 +93,7 @@ public class GroovyIntegrationTests {
         binding.setVariable("state", "DC");
         GroovyShell shell = new GroovyShell(binding);
         try {
-            shell.evaluate(new File("src/geocode.groovy"));
+            shell.evaluate(new File("src/geocodeV3.groovy"));
             assertEquals(38.898,
                 Double.parseDouble((String) binding.getVariable("lat")),0.01);
             assertEquals(-77.037,
@@ -105,7 +102,7 @@ public class GroovyIntegrationTests {
             binding.setVariable("street", "Blackheath Avenue");
             binding.setVariable("city","Greenwich");
             binding.setVariable("state","UK");
-            shell.evaluate(new File("src/geocode.groovy"));
+            shell.evaluate(new File("src/geocodeV3.groovy"));
             assertEquals(51.476,
                     Double.parseDouble((String) binding.getVariable("lat")),0.01);
                 assertEquals(0.001,
@@ -125,7 +122,7 @@ public class GroovyIntegrationTests {
         engine.put("city","Greenwich");
         engine.put("state", "UK");
         try {
-            engine.eval(new FileReader("src/geocode.groovy"));
+            engine.eval(new FileReader("src/geocodeV3.groovy"));
         } catch (ScriptException e) {
             e.printStackTrace();
         } catch (FileNotFoundException e) {
@@ -143,9 +140,9 @@ public class GroovyIntegrationTests {
         loc.setState("1600 Pennsylvania Avenue");
         loc.setCity("Washington");
         loc.setState("DC");
-        Geocoder geocoder = new Geocoder();
+        GeocoderV3 geocoder = new GeocoderV3();
         geocoder.fillInLatLong(loc);
-        assertEquals(38.895,loc.getLatitude(),0.01);
+        assertEquals(38.907,loc.getLatitude(),0.01);
         assertEquals(-77.037,loc.getLongitude(),0.01);
     }
 }

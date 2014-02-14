@@ -35,7 +35,7 @@ public class ExecuteGroovyFromJSR223 {
             engine.put("street","Blackheath Avenue");
             engine.put("city","Greenwich");
             engine.put("state","UK");
-            engine.eval(new FileReader("src/geocode.groovy"));
+            engine.eval(new FileReader("src/geocodeV3.groovy"));
             double latitude = Double.parseDouble((String) engine.get("lat"));
             double longitude = Double.parseDouble((String) engine.get("lng"));
             log.info("latitude = " + latitude);

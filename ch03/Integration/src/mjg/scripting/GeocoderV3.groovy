@@ -13,14 +13,21 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  * ========================================================== */
-def address = [street,city,state].collect {
-	URLEncoder.encode(it,'UTF-8')
-}.join(',+')
-def params = [q:address,sensor:false,
-	output:'csv',
-	key:'ABQIAAAAaUTtvoQeYKO5TqAv0hl2QxT2yXp_ZAY8_ufC3CFXhHIE1NvwkxTU9rH8s89rxCtRwCKUkQ3Q6sYsNg']
-def base = 'http://maps.google.com/maps/geo?'
-def url = base + params.collect { k,v -> "$k=$v" }.join('&')
-println url
-(code,level,lat,lng) = url.toURL().text.split(',')
-//println "($code,$level,$lat,$lng)"
+package mjg.scripting
+
+class GeocoderV3 {
+    def base = 'http://maps.googleapis.com/maps/api/geocode/xml?'
+    
+    void fillInLatLong(Location loc) {
+        def addressFields = loc.street ? 
+            [loc.street,loc.city,loc.state] : [loc.city,loc.state]
+        def encoded = addressFields.collect {
+            URLEncoder.encode(it,'UTF-8')
+        }.join(',')
+        def params = [address: encoded, sensor: false]
+        def url = base + params.collect { k,v -> "$k=$v" }.join('&')
+        def root = new XmlSlurper().parse(url)
+		loc.latitude = root.result[0].geometry.location.lat.toDouble()
+        loc.longitude = root.result[0].geometry.location.lng.toDouble()
+    }
+}
