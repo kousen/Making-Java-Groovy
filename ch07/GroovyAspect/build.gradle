@@ -5,11 +5,11 @@ repositories {
     mavenCentral()
 }
 
-def springVersion = '4.0.1.RELEASE'
+def springVersion = '4.0.2.RELEASE'
 def spockVersion = '0.7-groovy-2.0'
 
 dependencies {
-    compile group:'org.codehaus.groovy', name:'groovy-all', version:'2.1.6'
+    compile group:'org.codehaus.groovy', name:'groovy-all', version:'2.2.1'
     compile "org.springframework:spring-context:$springVersion"
     compile "aopalliance:aopalliance:1.0"
     compile "org.aspectj:aspectjrt:1.6.10"
