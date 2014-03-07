@@ -17,7 +17,7 @@ class PalindromeCheckerSpec extends Specification {
 //		given: "a string that isn't a palindrome"
 //		palindromes << 'this is NOT a palindrome'
 		
-		expect: 'one of these should fail'
+		expect:
         palindromes.every { str -> checker.isPalindrome(str) }
 //		palindromes.each { str ->
 //			assert checker.isPalindrome(str)

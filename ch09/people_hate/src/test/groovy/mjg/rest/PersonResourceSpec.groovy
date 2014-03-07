@@ -11,7 +11,7 @@ import spock.lang.Specification
 import spock.lang.Unroll
 
 class PersonResourceSpec extends Specification {
-    @Shared static HttpServer server
+    @Shared HttpServer server
     RESTClient client = new RESTClient('http://localhost:1234/', 
         ContentType.JSON)
 
