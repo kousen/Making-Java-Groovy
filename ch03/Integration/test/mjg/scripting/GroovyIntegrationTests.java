@@ -78,9 +78,7 @@ public class GroovyIntegrationTests {
                 Double.parseDouble((String) binding.getVariable("lat")),0.01);
             assertEquals(-77.037,
                 Double.parseDouble((String) binding.getVariable("lng")),0.01);
-        } catch (CompilationFailedException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
+        } catch (CompilationFailedException | IOException e) {
             e.printStackTrace();
         }
     }
@@ -108,9 +106,7 @@ public class GroovyIntegrationTests {
                 assertEquals(0.001,
                     Double.parseDouble((String) binding.getVariable("lng")),0.01);
                 
-        } catch (CompilationFailedException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
+        } catch (CompilationFailedException | IOException e) {
             e.printStackTrace();
         }
     }
@@ -123,9 +119,7 @@ public class GroovyIntegrationTests {
         engine.put("state", "UK");
         try {
             engine.eval(new FileReader("src/geocodeV3.groovy"));
-        } catch (ScriptException e) {
-            e.printStackTrace();
-        } catch (FileNotFoundException e) {
+        } catch (ScriptException | FileNotFoundException e) {
             e.printStackTrace();
         }
         assertEquals(51.4752654,
