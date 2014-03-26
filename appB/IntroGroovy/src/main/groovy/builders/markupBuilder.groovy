@@ -19,13 +19,13 @@ import groovy.xml.MarkupBuilder;
 
 def writer = new StringWriter()
 def builder = new MarkupBuilder(writer)
-def department = builder.'department' {
+def department = builder.department {
 	deptName "Construction"
 	employee(id:1) {
-		empName "Fred"
+		name "Fred"
 	}
 	employee(id:2) {
-		empName "Barney"
+		name "Barney"
 	}
 }
 println writer

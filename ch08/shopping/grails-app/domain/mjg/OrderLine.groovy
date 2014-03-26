@@ -10,6 +10,8 @@ class OrderLine {
         "$quantity $product @ $product.price = $price"
     }
 
+    static belongsTo = Order
+
     static constraints = {
         quantity min:0
     }

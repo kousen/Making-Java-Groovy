@@ -30,7 +30,7 @@ class StadiumLocationsSpec extends Specification {
     }
     
     @Unroll
-    def "#name: #lat and #lng in range"() {
+    def "#name: #lat and #lng in range"(String name, double lat, double lng) {
         expect:
         lat > 25 && lat < 48
         lng > -123 && lng < -71
