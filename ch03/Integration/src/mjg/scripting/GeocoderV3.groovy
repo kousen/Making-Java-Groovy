@@ -15,6 +15,8 @@
  * ========================================================== */
 package mjg.scripting
 
+import groovy.util.slurpersupport.GPathResult
+
 class GeocoderV3 {
     def base = 'http://maps.googleapis.com/maps/api/geocode/xml?'
     
@@ -26,7 +28,7 @@ class GeocoderV3 {
         }.join(',')
         def params = [address: encoded, sensor: false]
         def url = base + params.collect { k,v -> "$k=$v" }.join('&')
-        def root = new XmlSlurper().parse(url)
+        GPathResult root = new XmlSlurper().parse(url)
 		loc.latitude = root.result[0].geometry.location.lat.toDouble()
         loc.longitude = root.result[0].geometry.location.lng.toDouble()
     }

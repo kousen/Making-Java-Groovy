@@ -40,9 +40,7 @@ public class ExecuteGroovyFromJSR223 {
             double longitude = Double.parseDouble((String) engine.get("lng"));
             log.info("latitude = " + latitude);
             log.info("longitude = " + longitude);
-        } catch (ScriptException e) {
-            e.printStackTrace();
-        } catch (FileNotFoundException e) {
+        } catch (ScriptException | FileNotFoundException e) {
             e.printStackTrace();
         }
     }
