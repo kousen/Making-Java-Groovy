@@ -18,7 +18,7 @@ package mjg.hr;
 import static org.junit.Assert.*
 import spock.lang.Specification
 
-class DepartmentTest extends Specification {
+class DepartmentSpec extends Specification {
     private Department dept;
     
     def setup() {

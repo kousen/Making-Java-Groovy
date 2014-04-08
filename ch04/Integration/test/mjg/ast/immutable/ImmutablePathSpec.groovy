@@ -17,7 +17,7 @@ package mjg.ast.immutable;
 
 import spock.lang.Specification
 
-class ImmutablePathTest extends Specification {
+class ImmutablePathSpec extends Specification {
     ImmutablePath path
     
     def setup() {

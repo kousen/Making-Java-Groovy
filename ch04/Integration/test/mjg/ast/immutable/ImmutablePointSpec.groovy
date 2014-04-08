@@ -18,7 +18,7 @@ package mjg.ast.immutable
 import groovy.lang.ReadOnlyPropertyException
 import spock.lang.Specification
 
-class ImmutablePointTest extends Specification {
+class ImmutablePointSpec extends Specification {
 	ImmutablePoint p = new ImmutablePoint(x:3,y:4)
 	
 	def "can use map ctor for immutables"() {

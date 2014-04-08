@@ -17,7 +17,7 @@ package mjg.ast.immutable;
 
 import spock.lang.Specification
 
-class ImmutableLineTest extends Specification {
+class ImmutableLineSpec extends Specification {
     ImmutableLine line
     
     def setup() {
