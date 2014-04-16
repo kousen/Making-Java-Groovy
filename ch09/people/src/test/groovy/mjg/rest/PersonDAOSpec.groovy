@@ -32,6 +32,7 @@ class PersonDAOSpec extends Specification {
     }
 
     def 'insert and delete a new person'() {
+        given:
         Person taggart = new Person(first:'Peter Quincy', last:'Taggart')
  
         when:

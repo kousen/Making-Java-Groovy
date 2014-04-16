@@ -9,3 +9,4 @@ def jsonTxt = url.toURL().text
 println JsonOutput.prettyPrint(jsonTxt)
 Gson gson = new Gson()
 println gson.fromJson(jsonTxt, Model)
+

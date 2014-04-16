@@ -29,8 +29,8 @@ class ListSpec extends Specification {
         empty << 'data'
         
         then:
-        // thrown(NullPointerException)
-        NullPointerException e = thrown()
+        def e = thrown(NullPointerException)
+        //NullPointerException e = thrown()
         println e.message
     }
     

@@ -86,6 +86,8 @@ public class GroovyIntegrationTests {
     @Test
     public void testLatLngWithModifiedBinding() {
         Binding binding = new Binding();
+
+        // The White House, Washington, DC
         binding.setVariable("street", "1600 Pennsylvania Avenue");
         binding.setVariable("city", "Washington");
         binding.setVariable("state", "DC");
@@ -96,7 +98,8 @@ public class GroovyIntegrationTests {
                 Double.parseDouble((String) binding.getVariable("lat")),0.01);
             assertEquals(-77.037,
                 Double.parseDouble((String) binding.getVariable("lng")),0.01);
-            
+
+            // Greenwich Observatory, Greenwich, England
             binding.setVariable("street", "Blackheath Avenue");
             binding.setVariable("city","Greenwich");
             binding.setVariable("state","UK");
@@ -123,9 +126,9 @@ public class GroovyIntegrationTests {
             e.printStackTrace();
         }
         assertEquals(51.4752654,
-            Double.parseDouble((String) engine.get("lat")),0.01);
+            Double.parseDouble((String) engine.get("lat")),0.000001);
         assertEquals(0.0014342,
-            Double.parseDouble((String) engine.get("lng")),0.01);
+            Double.parseDouble((String) engine.get("lng")),0.000001);
     }
     
     @Test

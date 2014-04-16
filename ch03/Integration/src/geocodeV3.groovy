@@ -10,3 +10,4 @@ def root = new XmlSlurper().parse("$base$qs")
 // undeclared lat, lng part of binding
 lat = root.result[0].geometry.location.lat.toString()
 lng = root.result[0].geometry.location.lng.toString()
+println "($lat,$lng)"
