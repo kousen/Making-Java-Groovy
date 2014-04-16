@@ -41,7 +41,7 @@ boolean isPrime3(int x) {
 
 assert (2..20).findAll { isPrime3(it) } == [2, 3, 5, 7, 11, 13, 17, 19] // works
 
-Integer.metaClass.isPrime = { ->
+Number.metaClass.isPrime = { ->
     Integer x = delegate as Integer
     if (x == 2) return true
     boolean result = true
