@@ -1,5 +1,9 @@
 package closures
 
+boolean checkImplementation(Closure c) {
+    (2..20).findAll { c(it) } == [2, 3, 5, 7, 11, 13, 17, 19]
+}
+
 // THIS DOESN'T WORK
 boolean isPrime1(int x) {
     if (x == 2) return true
@@ -28,7 +32,7 @@ boolean isPrime2(int x) {
     return result
 }
 
-assert (2..20).findAll { isPrime2(it)} == [2, 3, 5, 7, 11, 13, 17, 19] // works, but no break
+assert checkImplementation(this.&isPrime2)
 
 // use for-in loop instead, and it works
 boolean isPrime3(int x) {
@@ -44,7 +48,7 @@ boolean isPrime3(int x) {
     return result
 }
 
-assert (2..20).findAll { isPrime3(it) } == [2, 3, 5, 7, 11, 13, 17, 19] // works
+assert checkImplementation(this.&isPrime3)
 
 // of course, if you use for-in, you can use return
 boolean isPrime4(int x) {
@@ -56,7 +60,7 @@ boolean isPrime4(int x) {
     return true
 }
 
-assert (2..20).findAll { isPrime4(it) } == [2, 3, 5, 7, 11, 13, 17, 19] // works
+assert checkImplementation(this.&isPrime4)
 
 // don't forget about the find method, though
 // (Elegant implementation courtesy of Tim Yates, @tim_yates)
@@ -65,7 +69,7 @@ boolean isPrime5(int x) {
     x == 2 || !(2..limit).find { n -> x % n == 0 }
 }
 
-assert (2..20).findAll { isPrime5(it) } == [2, 3, 5, 7, 11, 13, 17, 19] // works
+assert checkImplementation(this.&isPrime5)
 
 Number.metaClass.isPrime = { ->
     Integer x = delegate as Integer
