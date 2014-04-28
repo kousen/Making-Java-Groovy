@@ -46,6 +46,7 @@ class PersonDAOSpec extends Specification {
 
         then:
         dao.findAll().size() == old(dao.findAll().size()) - 1
+        !dao.findById(taggart.id)
     }
 
     def 'findByName returns correct person'() {

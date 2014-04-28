@@ -53,7 +53,7 @@ class PersonResourceSpec extends Specification {
     
     
     @Unroll
-    def "people/#id gives #name"() {
+    def "people/#id gives #name"(Long id, String name) {
         expect:
         def response = client.get(path: "people/$id")
         name == "$response.data.first $response.data.last"

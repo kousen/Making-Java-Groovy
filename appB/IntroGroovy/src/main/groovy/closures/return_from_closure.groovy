@@ -16,7 +16,7 @@ boolean isPrime1(int x) {
     return true
 }
 
-assert (2..20).findAll { isPrime1(it)} == (2..20) // See?
+assert !checkImplementation(this.&isPrime1) // See?
 
 // can set a variable, but can't break out of the loop
 boolean isPrime2(int x) {

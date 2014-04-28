@@ -36,7 +36,8 @@ class JdbcPersonDAO implements PersonDAO {
     Person findById(long id) {
         String txt = 'select * from people where id=?'
         def row = sql.firstRow(txt, [id])
-        new Person(id:row.id, first:row.first, last:row.last)
+        
+        row ? new Person(id:row.id, first:row.first, last:row.last) : null
     }
 
 	List<Person> findByLastName(String name) {
