@@ -16,9 +16,9 @@ task collectJars(type: Copy) {
 }
 
 dependencies {
-    compile 'org.codehaus.groovy:groovy-all:2.1.6'
+    compile 'org.codehaus.groovy:groovy-all:2.3.1'
     compile 'org.apache.commons:commons-math3:3.0'
     testCompile 'org.spockframework:spock-core:0.7-groovy-2.0'
     runtime 'com.h2database:h2:1.2.140'
-    runtime 'org.apache.ant:ant:1.8.1'
+    compile 'org.apache.ant:ant:1.9.4'
 }
