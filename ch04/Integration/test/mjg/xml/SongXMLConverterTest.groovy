@@ -21,22 +21,17 @@ import org.junit.Before;
 import org.junit.Test;
 
 class SongXMLConverterTest {
-    SongXMLConverter s2x
+    SongXMLConverter s2x = new SongXMLConverter()
 
-    @Before
-    void setUp() {
-        s2x = new SongXMLConverter()
-    }
-    
     @Test
     void testSong2XmlAndBack() {
         def s1 = new Song(id:1,title:'title',artist:'artist',year:'year')
         def s2 = s2x.xml2song(s2x.song2xml(s1))
 
-        assertEquals s1.id, s2.id
-        assertEquals s1.title, s2.title
-        assertEquals s1.artist, s2.artist
-        assertEquals s1.year, s2.year
+        assert s1.id == s2.id
+        assert s1.title == s2.title
+        assert s1.artist == s2.artist
+        assert s1.year == s2.year
     }
 
     @Test
@@ -50,13 +45,13 @@ class SongXMLConverterTest {
         xml += '</songs>'
         
         def root = new XmlSlurper().parseText(s2x.songlist2xml(songs))
-        assertEquals 2, root.song.size()
+        assert 2 == root.song.size()
         
         def ids = root.song.@id*.text()
-        assertTrue ids.contains('1')
-        assertTrue ids.contains('2')
-        assertTrue root.song.title*.text().contains('title1')
-        assertTrue root.song.year*.text().contains('year2')
+        assert ids.contains('1')
+        assert ids.contains('2')
+        assert root.song.title*.text().contains('title1')
+        assert root.song.year*.text().contains('year2')
     }
 
     @Test
@@ -69,7 +64,7 @@ class SongXMLConverterTest {
             year 'year'
         }
         def xml = sw.toString()
-        assertEquals xml, s2x.song2xml(s2x.xml2song(xml))
+        assert xml == s2x.song2xml(s2x.xml2song(xml))
     }
 
     @Test
@@ -84,9 +79,9 @@ class SongXMLConverterTest {
         xml += '</songs>'
         
         def reply = s2x.xml2songlist(xml)
-        assertTrue songs*.@id.contains(reply[0].@id)
-        assertTrue songs*.title.contains(reply[1].title)
-        assertTrue songs*.artist.contains(reply[0].artist)
-        assertTrue songs*.year.contains(reply[1].year)
+        assert songs*.@id.contains(reply[0].@id)
+        assert songs*.title.contains(reply[1].title)
+        assert songs*.artist.contains(reply[0].artist)
+        assert songs*.year.contains(reply[1].year)
     }
 }

@@ -1,15 +1,15 @@
 <books>
-	<book isbn="">
+	<book isbn="9781935182443">
 		<title>Groovy in Action</title>
 		<author>Dierk Koenig</author>
 	</book>
-	<book isbn="">
+	<book isbn="9781617290961">
 		<title>Grails in Action</title>
 		<author>Glen Smith</author>
 		<author>Peter Ledbrook</author>
 	</book>
-	<book isbn="">
-		<title>Java and Groovy: the Sweet Spots</title>
+	<book isbn="9781935182948">
+		<title>Making Java Groovy</title>
 		<author>Ken Kousen</author>
 	</book>
 </books>
