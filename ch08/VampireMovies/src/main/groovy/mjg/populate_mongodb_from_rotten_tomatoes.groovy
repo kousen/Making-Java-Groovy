@@ -9,7 +9,7 @@ db.vampireMovies.drop()
 
 def slurper = new JsonSlurper()
 
-String key = new File('mjg/rotten_tomatoes_apiKey.txt').text
+String key = new File('rotten_tomatoes_apiKey.txt').text
 String base = "http://api.rottentomatoes.com/api/public/v1.0/movies.json?"
 String qs = [apiKey:key, q:'vampire'].collect { it }.join('&')
 String url = "$base$qs"
