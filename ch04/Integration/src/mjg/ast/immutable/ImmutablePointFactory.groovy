@@ -15,8 +15,6 @@
  * ========================================================== */
 package mjg.ast.immutable
 
-import groovy.lang.Singleton;
-
 @Singleton
 class ImmutablePointFactory {
 	ImmutablePoint newImmutablePoint(xval,yval) {
