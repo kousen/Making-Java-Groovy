@@ -19,12 +19,8 @@ import static org.junit.Assert.*
 import spock.lang.Specification
 
 class DepartmentSpec extends Specification {
-    private Department dept;
-    
-    def setup() {
-        dept = new Department(name:'IT')
-    }
-    
+    Department dept = new Department(name:'IT');
+
     def "add employee to dept should increase total by 1"() {
         given:
         Employee fred = new Employee(name:'Fred',id:1)
