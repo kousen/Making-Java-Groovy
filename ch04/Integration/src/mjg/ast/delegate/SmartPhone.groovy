@@ -15,8 +15,6 @@
  * ========================================================== */
 package mjg.ast.delegate
 
-import groovy.lang.Delegate;
-
 class SmartPhone {
     @Delegate Camera camera = new Camera()
     @Delegate Phone phone = new Phone()
