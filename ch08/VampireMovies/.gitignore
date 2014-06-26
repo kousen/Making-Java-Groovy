@@ -1,6 +1,7 @@
 *.iws
 build
 bin
+classes
 .gradle
 .project
 .classpath

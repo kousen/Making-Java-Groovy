@@ -9,7 +9,7 @@ class MovieTest {
     @Test
     public void testFromJSON() {
         def data = new JsonSlurper().parseText(
-			new File('src/main/groovy/mjg/blazing_saddles.txt').text)
+			new File('src/main/groovy/mjg/blazing_saddles.json').text)
         Movie.fromJSON(data.movies[0]).with {
 			assert id == 13581
 			assert title == 'Blazing Saddles'

@@ -8,7 +8,13 @@ GMongo mongo = new GMongo()
 def db = mongo.getDB('movies')
 
 println db.vampireMovies.find().count()
-db.vampireMovies.find([critics_consensus : ~/.*/]).each { movie ->
+db.vampireMovies.find(critics_consensus : ~/.*/).each { movie ->
     //println "$movie.id $movie.title : $movie.critics_consensus"
     println Movie.fromJSON(movie)
 }
+
+// Twilight series: Twilight, New Moon, Eclipse, Breaking Dawn
+def results = db.vampireMovies.find().findAll {
+    it.title =~ /Twilight|Dawn|Eclipse|Moon/
+}*.title
+println "Twilight series movies in DB: $results"
