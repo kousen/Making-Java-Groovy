@@ -19,10 +19,10 @@ sourceSets {
 }
 
 task wrapper(type:Wrapper) {
-    gradleVersion = '1.11'
+    gradleVersion = '2.0'
 }
 
 dependencies {
-    compile "org.codehaus.groovy:groovy-all:2.2.2"
+    compile "org.codehaus.groovy:groovy-all:2.3.3"
     testCompile "org.spockframework:spock-core:0.7-groovy-2.0"
 }

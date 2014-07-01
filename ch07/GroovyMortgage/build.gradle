@@ -21,7 +21,7 @@ def springVersion = '4.0.2.RELEASE'
 def spockVersion = '0.7-groovy-2.0'
 
 dependencies {
-    compile "org.codehaus.groovy:groovy-all:2.2.1"
+    compile "org.codehaus.groovy:groovy-all:2.3.3"
     compile "org.springframework:spring-context:$springVersion"
     compile "org.springframework:spring-jdbc:$springVersion"
     

@@ -6,11 +6,11 @@ repositories {
 }
 
 task wrapper(type:Wrapper) {
-    gradleVersion = '1.9'
+    gradleVersion = '2.0'
 }
 
 dependencies {
-    compile "org.codehaus.groovy:groovy-all:2.2.1"
+    compile "org.codehaus.groovy:groovy-all:2.3.2"
     
     testCompile "org.spockframework:spock-core:0.7-groovy-2.0"
 }

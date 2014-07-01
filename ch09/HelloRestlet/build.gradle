@@ -9,11 +9,11 @@ repositories {
 }
 
 task wrapper(type:Wrapper) {
-    gradleVersion = '1.0'
+    gradleVersion = '2.0'
 }
 
 dependencies {
-    groovy 'org.codehaus.groovy:groovy-all:2.0.1'
+    compile 'org.codehaus.groovy:groovy-all:2.3.3'
     compile 'org.restlet.jse:org.restlet:2.1-RC6'
     compile 'org.restlet.jse:org.restlet.ext.simple:2.1-RC6'
 

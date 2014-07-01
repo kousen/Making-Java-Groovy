@@ -6,10 +6,10 @@ repositories {
 }
 
 task wrapper(type:Wrapper) {
-    gradleVersion = '1.6'
+    gradleVersion = '2.0'
 }
 
 dependencies {
-    compile "org.codehaus.groovy:groovy-all:2.1.6"
+    compile "org.codehaus.groovy:groovy-all:2.3.3"
     testCompile "junit:junit:4.11"
 }

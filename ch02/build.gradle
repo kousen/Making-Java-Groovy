@@ -7,10 +7,10 @@ subprojects {
     }
 
     task wrapper(type:Wrapper) {
-        gradleVersion = '1.9'
+        gradleVersion = '2.0'
     }
 
     dependencies {
-        compile 'org.codehaus.groovy:groovy-all:2.2.1'
+        compile 'org.codehaus.groovy:groovy-all:2.3.2'
     }
 }

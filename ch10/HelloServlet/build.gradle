@@ -36,13 +36,13 @@ task intTest(type: Test, dependsOn: jettyRun) {
 check.dependsOn intTest
 
 task wrapper(type:Wrapper) {
-    gradleVersion = '1.6'
+    gradleVersion = '2.0'
 }
 
 def springVersion = '3.2.2.RELEASE'
 
 dependencies {
-    compile "org.codehaus.groovy:groovy-all:2.1.6"
+    compile "org.codehaus.groovy:groovy-all:2.3.3"
     providedCompile 'javax.servlet:servlet-api:2.5'
     
     testCompile "junit:junit:4.10"
