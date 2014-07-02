@@ -1,0 +1,13 @@
+# Gradle
+.gradle
+.gradletasknamecache
+build
+
+# Eclipse
+.project
+.classpath
+.settings
+bin
+
+
+.ant_targets
