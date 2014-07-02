@@ -10,6 +10,8 @@
 
 	<property name="main-class" value="mjg.HelloWorld" />
 
+	<path id="application" location="${jar.dir}/${ant.project.name}.jar" />
+
 	<path id="classpath">
 		<fileset dir="${lib.dir}" includes="**/*.jar" />
 	</path>
@@ -20,7 +22,7 @@
 
 	<target name="compile">
 		<mkdir dir="${classes.dir}" />
-		<javac srcdir="${src.dir}" destdir="${classes.dir}" 
+		<javac srcdir="${src.dir}" destdir="${classes.dir}"
 			classpathref="classpath" includeantruntime="false" />
 	</target>
 
@@ -58,7 +60,7 @@
 		<java jar="${jar.dir}/${ant.project.name}.jar" fork="true">
 			<classpath>
 				<path refid="classpath" />
-				<path id="application" location="${jar.dir}/${ant.project.name}.jar" />
+				<path refid="application" />
 			</classpath>
 		</java>
 	</target>

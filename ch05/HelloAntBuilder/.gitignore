@@ -8,3 +8,4 @@ build
 .classpath
 .settings
 bin
+.ant_targets
