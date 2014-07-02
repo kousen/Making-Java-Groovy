@@ -9,15 +9,17 @@
     <property name="lib.dir" value="lib" />
 
     <property name="main-class" value="mjg.HelloWorld" />
-	
+
     <property environment="env" />
+
+    <path id="application" location="${jar.dir}/${ant.project.name}.jar" />
 
     <path id="groovy.classpath">
        <fileset dir="${env.GROOVY_HOME}/embeddable" />
     </path>
 
-    <taskdef name="groovyc" 
-        classname="org.codehaus.groovy.ant.Groovyc" 
+    <taskdef name="groovyc"
+        classname="org.codehaus.groovy.ant.Groovyc"
         classpathref="groovy.classpath" />
 
     <path id="classpath">
@@ -27,7 +29,7 @@
     <target name="clean">
         <delete dir="${build.dir}" />
     </target>
-	
+
     <target name="compile">
         <mkdir dir="${classes.dir}" />
         <groovyc srcdir="${src.dir}" destdir="${classes.dir}"
@@ -70,7 +72,7 @@
         <java jar="${jar.dir}/${ant.project.name}.jar" fork="true">
             <classpath>
                 <path refid="classpath" />
-                <path id="application" location="${jar.dir}/${ant.project.name}.jar" />
+                <path refid="application" />
             </classpath>
         </java>
     </target>
