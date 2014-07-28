@@ -2,6 +2,8 @@ package mjg
 
 import com.google.gson.Gson
 import groovy.transform.ToString
+import mjg.entities.CastMember
+import mjg.entities.MPAARating
 
 @ToString(includeNames = true)
 class Response {
@@ -21,13 +23,13 @@ class Movie {
     int id
     String title
     int year
-    String mpaa_rating
+    MPAARating mpaa_rating
     int runtime
     Dates release_dates
     Ratings ratings
     String synopsis
     Posters posters
-    Cast[] abridged_cast
+    CastMember[] abridged_cast
     MovieLinks links
 }
 
@@ -39,13 +41,6 @@ class MovieLinks {
     String clips
     String reviews
     String similar
-}
-
-@ToString(includeNames = true)
-class Cast {
-    String name
-    Long id
-    String[] characters
 }
 
 @ToString(includeNames = true)
