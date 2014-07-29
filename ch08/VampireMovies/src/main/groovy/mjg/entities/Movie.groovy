@@ -28,7 +28,7 @@ class Movie {
             default :
                 m.mpaaRating = MPAARating.valueOf(data.mpaa_rating)
         }
-        m.runtime = data.runtime
+        m.runtime = data.runtime ?: 0
         m.criticsConsensus = data.critics_consensus ?: ''
         data.release_dates.each { k,v ->
             m.releaseDates["$k"] = v
