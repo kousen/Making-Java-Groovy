@@ -10,6 +10,6 @@ task wrapper(type:Wrapper) {
 }
 
 dependencies {
-    compile "org.codehaus.groovy:groovy-all:2.3.3"
+    compile "org.codehaus.groovy:groovy-all:2.3.6"
     testCompile "org.spockframework:spock-core:0.7-groovy-2.0"
 }
