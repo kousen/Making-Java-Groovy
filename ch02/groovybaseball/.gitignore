@@ -2,6 +2,7 @@
 .gradle
 .gradletasknamecache
 build
+classes
 
 # Eclipse
 .project
