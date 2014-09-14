@@ -4,7 +4,8 @@ import groovy.json.*
 
 String apiKey = new File('rotten_tomatoes_apiKey.txt').text
 String base = "http://api.rottentomatoes.com/api/public/v1.0/movies.json?"
-String qs = [apiKey:apiKey, q: URLEncoder.encode('Blazing Saddles','UTF-8')].collect { it }.join('&')
+String qs = [apiKey:apiKey,
+             q: URLEncoder.encode('Blazing Saddles','UTF-8')].collect { it }.join('&')
 String url = "$base$qs"
 println JsonOutput.prettyPrint(url.toURL().text)
 def json = new JsonSlurper().parseText(url.toURL().text)
@@ -13,4 +14,4 @@ def allCast = new JsonSlurper().parseText("${movie.links.cast}?apiKey=$apiKey".t
 println '---------- All Cast ----------'
 allCast.cast.each { println it }
 println '------------------------------'
-def actor = allCast.cast.find { it.characters =~ /Mongo/ }
+assert allCast.cast.find { it.characters =~ /Mongo/ }
