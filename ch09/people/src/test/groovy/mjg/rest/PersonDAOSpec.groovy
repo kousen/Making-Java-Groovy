@@ -18,6 +18,9 @@ class PersonDAOSpec extends Specification {
         ['Archer', 'Picard', 'Kirk', 'Sisko', 'Janeway'].every {
             people*.last.contains(it)
         }
+//		['Archer','Smith'].each {
+//			assert people.last.contains(it)
+//		}
     }
 
     @Unroll

@@ -15,10 +15,12 @@ class JavaImplGroovyTest {
 	@Test
 	void testIsPrime() {
 		def primes = [2, 3,	5, 7, 11, 13, 17, 19, 23]
-		primes.each { num ->
-			assert impl.isPrime(num)
-		}
+//		primes.each { num ->
+//			assert impl.isPrime(num)
+//		}
 		assert !impl.isPrime(9)
+		assert primes.collect { impl.isPrime(it) }
+					 .every { it }		
 	}
 
 	@Test(expected=IllegalArgumentException)

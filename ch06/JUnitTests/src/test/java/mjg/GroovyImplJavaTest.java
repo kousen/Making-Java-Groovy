@@ -13,12 +13,12 @@ public class GroovyImplJavaTest {
 
 	@Test
 	public void testGetPositives() {
-        int[] testValues = {-3, 1, 4, -1, 5, -2, 6};
+        // int[] testValues = {-3, 1, 4, -1, 5, -2, 6};
         List<Integer> testList = new ArrayList<Integer>();
         testList.add(1);  testList.add(4);
         testList.add(5);  testList.add(5);
         testList.add(6);
-        int[] results = impl.getPositives(testValues);
+        int[] results = impl.getPositives(-3, 1, 4, -1, 5, -2, 6);
         for (int i : results) {
             assertTrue(testList.contains(i));
         }
