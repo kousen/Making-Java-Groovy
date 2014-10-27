@@ -7,14 +7,14 @@ class ListSpec extends Specification {
     List strings
     
     def setup() {
-        strings = ['this','is','a','list','of','strings']
+        strings = ['light', 'light', 'light', 'light']
     }
 
-    def "there are six strings"() {
-        expect: strings.size() == 6
+    def "there are four strings"() {
+        expect: strings.size() == 4
     }
     
-    def "add a string"() {
+    def "add two strings string"() {
         when:
         strings << "plus"
         strings << "two"
@@ -34,7 +34,7 @@ class ListSpec extends Specification {
         println e.message
     }
     
-    def 'no exception if I stay inside list'() {
+    def 'no exception using the getAt method'() {
         when:
         (0..5).each { strings[it] }
         strings[6]
@@ -43,11 +43,8 @@ class ListSpec extends Specification {
         notThrown()
     }
     
-    def "list is still the same"() {
-        when:
-        def newList = strings - 'this' + 'stuff'
-        
-        then:
-        newList.size() == 6
+    def "There Are Four Lights!"() {
+        expect:
+        strings.findAll { it ==~ /light/ }.size() == 4
     }
 }
