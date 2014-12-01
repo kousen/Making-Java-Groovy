@@ -39,32 +39,32 @@ public class GroovyIntegrationTests {
         String result = (String) Eval.me("'abc' - 'b'");
         assertEquals("ac",result);
     }
-    
+
     @Test
     public void testEvalOneParam() {
         String result = (String) Eval.x("a", "'abc' - x");
         assertEquals("bc",result);
     }
-    
+
     @Test
     public void testEvalTwoParams() {
         String result = (String) Eval.xy("a", "b", "'abc' - x - y");
         assertEquals("c",result);
     }
-    
+
     @Test
     public void testEvalThreeParams() {
         String result = (String) Eval.xyz("a", "b", "d", "'abc' - x - y + z");
         assertEquals("cd",result);
     }
-    
+
     @Test
     public void testEvaluateString() {
         GroovyShell shell = new GroovyShell();
         Object result = shell.evaluate("3+4");
         assertEquals(7, result);
     }
-    
+
     @Test
     public void testLatLng() {
         Binding binding = new Binding();
@@ -74,15 +74,15 @@ public class GroovyIntegrationTests {
         GroovyShell shell = new GroovyShell(binding);
         try {
             shell.evaluate(new File("src/geocodeV3.groovy"));
-            assertEquals(38.898,
+            assertEquals(38.879,
                 Double.parseDouble((String) binding.getVariable("lat")),0.01);
-            assertEquals(-77.037,
+            assertEquals(-76.98,
                 Double.parseDouble((String) binding.getVariable("lng")),0.01);
         } catch (CompilationFailedException | IOException e) {
             e.printStackTrace();
         }
     }
-    
+
     @Test
     public void testLatLngWithModifiedBinding() {
         Binding binding = new Binding();
@@ -94,9 +94,9 @@ public class GroovyIntegrationTests {
         GroovyShell shell = new GroovyShell(binding);
         try {
             shell.evaluate(new File("src/geocodeV3.groovy"));
-            assertEquals(38.898,
+            assertEquals(38.878,
                 Double.parseDouble((String) binding.getVariable("lat")),0.01);
-            assertEquals(-77.037,
+            assertEquals(-76.98,
                 Double.parseDouble((String) binding.getVariable("lng")),0.01);
 
             // Greenwich Observatory, Greenwich, England
@@ -108,12 +108,12 @@ public class GroovyIntegrationTests {
                     Double.parseDouble((String) binding.getVariable("lat")),0.01);
                 assertEquals(0.001,
                     Double.parseDouble((String) binding.getVariable("lng")),0.01);
-                
+
         } catch (CompilationFailedException | IOException e) {
             e.printStackTrace();
         }
     }
-    
+
     @Test
     public void testLatLngJSR223() {
         ScriptEngine engine = new ScriptEngineManager().getEngineByName("groovy");
@@ -130,7 +130,7 @@ public class GroovyIntegrationTests {
         assertEquals(0.0014342,
             Double.parseDouble((String) engine.get("lng")),0.000001);
     }
-    
+
     @Test
     public void testGeocoder() {
         Location loc = new Location();
