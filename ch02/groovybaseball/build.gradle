@@ -1,27 +1,28 @@
+buildscript {
+    repositories {
+       jcenter()
+    }
+                
+    dependencies {
+        classpath 'org.akhikhl.gretty:gretty:+'
+    } 
+}
+                        
 apply plugin:'groovy'
 apply plugin:'war'
-apply plugin:'jetty'
+apply plugin: 'org.akhikhl.gretty'
 apply plugin:'eclipse'
 apply plugin:'eclipse-wtp'
 
 repositories {
-    mavenCentral()
+    jcenter()
 }
 
-sourceSets {
-	integrationTest
+gretty {
+    integrationTestTask = 'intTest'
 }
 
-httpPort = 8080
-stopPort = 9451
-stopKey = 'foo'
-
-jettyRun.daemon = true
-
-task intTest(type:Test, dependsOn:jettyRun) {
-	testClassesDir = sourceSets.integrationTest.output.classesDir
-	classpath = sourceSets.integrationTest.runtimeClasspath
-	jettyStop.execute()
+task intTest(type:Test) {
 }
 
 check.dependsOn intTest
@@ -52,12 +53,8 @@ task wrapper(type:Wrapper) {
 }
 
 dependencies {
-    compile 'org.codehaus.groovy:groovy-all:2.3.3'
-
+    compile 'org.codehaus.groovy:groovy-all:2.3.8'
     testCompile 'org.spockframework:spock-core:0.7-groovy-2.0'
     testRuntime "cglib:cglib-nodep:2.2"
     runtime 'com.h2database:h2:1.2.140'
-
-	integrationTestCompile configurations.testCompile
-	integrationTestRuntime configurations.testRuntime
 }
