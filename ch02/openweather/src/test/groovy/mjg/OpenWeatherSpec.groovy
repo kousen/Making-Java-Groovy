@@ -12,8 +12,8 @@ class OpenWeatherSpec extends Specification {
         
         then:
         result
-        result.contains('41.63')
-        result.contains('-72.46')
+        result.contains('41.6')
+        result.contains('-72.4')
     }
     
     def 'Boston, MA works'() {
