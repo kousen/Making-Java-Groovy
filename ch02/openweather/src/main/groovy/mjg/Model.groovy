@@ -28,8 +28,8 @@ class Model {
     
     def getTime() { convertTime dt }
     def getTemperature() { convertTemp main.temp }
-    def getLow() { Math.floor(convertTemp(main.temp_min)) }
-    def getHigh() { Math.ceil(convertTemp(main.temp_max)) }
+    def getLow() { Math.floor(convertTemp(main.tempMin)) }
+    def getHigh() { Math.ceil(convertTemp(main.tempMax)) }
     def getSunrise() { convertTime sys.sunrise }
     def getSunset() { convertTime sys.sunset }
     def getSpeed() { convertSpeed wind.speed }
@@ -61,8 +61,8 @@ class Main {
     BigDecimal temp
     BigDecimal humidity
     BigDecimal pressure
-    BigDecimal temp_min
-    BigDecimal temp_max
+    BigDecimal tempMin
+    BigDecimal tempMax
 }
 
 class Coordinates {

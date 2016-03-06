@@ -15,6 +15,18 @@ class OpenWeatherSpec extends Specification {
         result.contains('41.6')
         result.contains('-72.4')
     }
+
+    def 'automatically encodes city, state'() {
+        when:
+        String result = ow.getWeather('San Diego', 'CA')
+        println result
+
+        then:
+        result
+        result.contains('32.7')
+        result.contains('-117.1')
+
+    }
     
     def 'Boston, MA works'() {
         when:
