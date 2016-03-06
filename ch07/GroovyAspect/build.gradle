@@ -1,15 +1,16 @@
 apply plugin:'groovy'
 apply plugin:'eclipse'
+apply plugin:'idea'
 
 repositories {
-    mavenCentral()
+    jcenter()
 }
 
-def springVersion = '4.0.2.RELEASE'
-def spockVersion = '0.7-groovy-2.0'
+def springVersion = '4.1.6.RELEASE'
+def spockVersion = '1.0-groovy-2.4'
 
 dependencies {
-    compile group:'org.codehaus.groovy', name:'groovy-all', version:'2.3.3'
+    compile group:'org.codehaus.groovy', name:'groovy-all', version:'2.4.3'
     compile "org.springframework:spring-context:$springVersion"
     compile "aopalliance:aopalliance:1.0"
     compile "org.aspectj:aspectjrt:1.6.10"

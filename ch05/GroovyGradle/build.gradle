@@ -2,14 +2,14 @@ apply plugin:'groovy'
 apply plugin:'eclipse'
 
 repositories {
-    mavenCentral()
+    jcenter()
 }
 
 task wrapper(type:Wrapper) {
-    gradleVersion = 2.1
+    gradleVersion = 2.3
 }
 
 dependencies {
-    compile 'org.codehaus.groovy:groovy-all:2.3.6'
+    compile 'org.codehaus.groovy:groovy-all:2.4.3'
     testCompile 'junit:junit:4.10'
 }

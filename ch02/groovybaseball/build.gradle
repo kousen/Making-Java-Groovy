@@ -1,18 +1,12 @@
-buildscript {
-    repositories {
-       jcenter()
-    }
-                
-    dependencies {
-        classpath 'org.akhikhl.gretty:gretty:+'
-    } 
+plugins {
+    id 'org.akhikhl.gretty' version "1.2.4"
 }
                         
-apply plugin:'groovy'
-apply plugin:'war'
+apply plugin: 'groovy'
+apply plugin: 'war'
 apply plugin: 'org.akhikhl.gretty'
-apply plugin:'eclipse'
-apply plugin:'eclipse-wtp'
+apply plugin: 'eclipse-wtp'
+apply plugin: 'idea'
 
 repositories {
     jcenter()

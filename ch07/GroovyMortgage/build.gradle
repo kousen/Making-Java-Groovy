@@ -1,27 +1,16 @@
 apply plugin:'groovy'
 apply plugin:'eclipse'
+apply plugin:'idea'
 
 repositories {
-    mavenCentral()
+    jcenter()
 }
 
-sourceSets {
-    main {
-        java { srcDirs = [] }
-        groovy { srcDir 'src' }
-        resources { srcDir 'resources' }
-    }
-    test {
-        java { srcDirs = [] }
-        groovy { srcDir 'test' }
-    }
-}
-
-def springVersion = '4.0.2.RELEASE'
-def spockVersion = '0.7-groovy-2.0'
+def springVersion = '4.1.6.RELEASE'
+def spockVersion = '1.0-groovy-2.4'
 
 dependencies {
-    compile "org.codehaus.groovy:groovy-all:2.3.3"
+    compile "org.codehaus.groovy:groovy-all:2.4.3"
     compile "org.springframework:spring-context:$springVersion"
     compile "org.springframework:spring-jdbc:$springVersion"
     

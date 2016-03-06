@@ -12,7 +12,9 @@ import spock.lang.Unroll
 
 class PersonResourceSpec extends Specification {
     @Shared HttpServer server
-    @Shared RESTClient client = new RESTClient('http://localhost:1234/', ContentType.JSON)
+    @Shared RESTClient client =
+            new RESTClient('http://localhost:1234/',
+                    ContentType.JSON)
 
     void setupSpec() {
         server = GrizzlyHttpServerFactory.createHttpServer(

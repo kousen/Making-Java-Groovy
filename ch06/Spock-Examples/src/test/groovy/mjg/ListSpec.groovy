@@ -10,7 +10,7 @@ class ListSpec extends Specification {
         strings = ['light', 'light', 'light', 'light']
     }
 
-    def "there are four strings"() {
+    def "there are four lights"() {
         expect: strings.size() == 4
     }
     

@@ -3,10 +3,16 @@
   <component name="GradleSettings">
     <option name="linkedExternalProjectsSettings">
       <GradleProjectSettings>
-        <option name="distributionType" value="LOCAL" />
+        <option name="distributionType" value="DEFAULT_WRAPPED" />
         <option name="externalProjectPath" value="$PROJECT_DIR$" />
-        <option name="gradleHome" value="$USER_HOME$/.gvm/gradle/current" />
+        <option name="gradleHome" value="$USER_HOME$/.sdkman/gradle/current" />
+        <option name="gradleJvm" value="#JAVA_HOME" />
         <option name="modules">
+          <set>
+            <option value="$PROJECT_DIR$" />
+          </set>
+        </option>
+        <option name="myModules">
           <set>
             <option value="$PROJECT_DIR$" />
           </set>
@@ -15,4 +21,3 @@
     </option>
   </component>
 </project>
-

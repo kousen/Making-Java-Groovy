@@ -25,7 +25,7 @@ class TribbleSpec extends Specification {
 
         then:
         reaction == "purr, purr"
-        1*spock.soothe()
+        1 * spock.soothe()
     }
 
     def "reacts badly to Klingons"() {

@@ -41,7 +41,6 @@ class AccountProcessorSpec extends Specification {
         def result = accountProcessor.processAccounts()
         
         then:
-        result == 3.0
         accountProcessor.getAccounts().every { account ->
              account.balance.toString().endsWith "9"   
         }
