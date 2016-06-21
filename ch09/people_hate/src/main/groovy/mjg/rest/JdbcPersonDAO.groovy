@@ -21,7 +21,7 @@ class JdbcPersonDAO implements PersonDAO {
 
         sql.execute """
             insert into people values (null, 'Jean-Luc', 'Picard'),
-            (null, 'Johnathan', 'Archer'), (null, 'James', 'Kirk'),
+            (null, 'Jonathan', 'Archer'), (null, 'James', 'Kirk'),
             (null, 'Benjamin', 'Sisko'), (null, 'Kathryn', 'Janeway');
         """
     }

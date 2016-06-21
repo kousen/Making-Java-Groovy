@@ -62,7 +62,7 @@ class PersonResourceSpec extends Specification {
         where:
         id |       name 
         1  | 'Jean-Luc Picard'
-        2  | 'Johnathan Archer'	
+        2  | 'Jonathan Archer'
         3  | 'James Kirk'
         4  | 'Benjamin Sisko'
         5  | 'Kathryn Janeway'	

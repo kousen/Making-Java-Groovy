@@ -22,8 +22,10 @@ class PersonDAOSpec extends Specification {
 
     @Unroll
     def 'findById returns #first #last with id #id'(Integer id, String first, String last) {
-        expect:
+        when:
         Person p = dao.findById(id)
+
+        then:
         p.first == first
         p.last == last
 
