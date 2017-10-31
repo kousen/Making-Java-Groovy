@@ -1,3 +1,12 @@
+plugins {
+    id 'com.gradle.build-scan' version '1.8' 
+}
+
+buildScan {
+    licenseAgreementUrl = 'https://gradle.com/terms-of-service'
+    licenseAgree = 'yes'
+}
+
 subprojects {
     apply plugin:'groovy'
     apply plugin:'eclipse'
