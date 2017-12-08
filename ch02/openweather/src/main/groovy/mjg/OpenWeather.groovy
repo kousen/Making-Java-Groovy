@@ -10,7 +10,7 @@ class OpenWeather {
     Gson gson = new GsonBuilder().setFieldNamingPolicy(
             FieldNamingPolicy.LOWER_CASE_WITH_UNDERSCORES).create()
 
-    String getWeather(city='Marlborough', state='CT') {
+    String getWeather(city='Hartford', state='US') {
         String loc = "$city,$state"
         String jsonTxt = "$base${URLEncoder.encode(loc, 'UTF-8')}".toURL().text
         gson.fromJson(jsonTxt, Model).toString()

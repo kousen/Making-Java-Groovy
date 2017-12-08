@@ -1,1 +1,3 @@
-include 'googlechart', 'chuckgroovy', 'openweather'
+include 'googlechart'
+include 'chuckgroovy'
+include 'openweather'

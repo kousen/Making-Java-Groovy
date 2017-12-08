@@ -1,4 +1,4 @@
 dependencies {
-    compile 'com.google.code.gson:gson:2.6.2'
+    compile 'com.google.code.gson:gson:2.8.2'
     testCompile 'org.spockframework:spock-core:1.0-groovy-2.4'
 }

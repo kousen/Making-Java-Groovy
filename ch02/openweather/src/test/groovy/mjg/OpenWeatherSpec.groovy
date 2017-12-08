@@ -12,13 +12,13 @@ class OpenWeatherSpec extends Specification {
         
         then:
         result
-        result.contains('41.6')
-        result.contains('-72.4')
+        result.contains('41.76')
+        result.contains('-72.69')
     }
 
     def 'automatically encodes city, state'() {
         when:
-        String result = ow.getWeather('San Diego', 'CA')
+        String result = ow.getWeather('San Diego', 'US')
         println result
 
         then:
@@ -30,7 +30,7 @@ class OpenWeatherSpec extends Specification {
     
     def 'Boston, MA works'() {
         when:
-        String result = ow.getWeather('Boston','MA')
+        String result = ow.getWeather('Boston','US')
         println result
         
         then:
@@ -41,7 +41,7 @@ class OpenWeatherSpec extends Specification {
     
     def "The weather is always great in Honolulu"() {
         when:
-        String result = ow.getWeather('Honolulu', 'HI')
+        String result = ow.getWeather('Honolulu', 'US')
         println result
         
         then:

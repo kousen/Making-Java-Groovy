@@ -1,5 +1,5 @@
 plugins {
-    id 'com.gradle.build-scan' version '1.8' 
+    id 'com.gradle.build-scan' version '1.11'
 }
 
 buildScan {
@@ -15,11 +15,7 @@ subprojects {
         jcenter()
     }
 
-    task wrapper(type:Wrapper) {
-        gradleVersion = '2.11'
-    }
-
     dependencies {
-        compile 'org.codehaus.groovy:groovy-all:2.4.6'
+        compile 'org.codehaus.groovy:groovy-all:2.4.12'
     }
 }
