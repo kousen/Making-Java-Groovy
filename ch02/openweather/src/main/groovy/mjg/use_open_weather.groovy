@@ -3,7 +3,7 @@ package mjg
 OpenWeather ow = new OpenWeather()
 println ow.weather  // called Marlborough, CT, but really Hartford
 
-println ow.getWeather('San Diego', 'CA')
+println ow.getWeather('San Diego', 'US')
 
 // Home of Paul King, co-author of _Groovy in Action_ and my personal hero
 println ow.getWeather('Brisbane', 'Australia')
@@ -16,10 +16,10 @@ println ow.getWeather('Paris', 'France')
 println ow.getWeather('Java','Indonesia')
 
 // Is it always sunny in Philadelphia?
-println ow.getWeather('Philadelphia', 'PA')
+println ow.getWeather('Philadelphia', 'US')
 
 // Any weather stations in Antarctica?
 println ow.getWeather('', 'Antarctica')
 
-// Is it colder in Winnipeg than in Antarctica?
-println ow.getWeather('Winnipeg', 'Manitoba')
+// Is it colder in Denver than in Antarctica?
+println ow.getWeather('Denver', 'US')
