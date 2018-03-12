@@ -18,15 +18,17 @@ package service
 import beans.Stadium;
 
 class Geocoder {
-    String base = 'http://maps.google.com/maps/api/geocode/xml?'
+    public static final String BASE =
+            'https://maps.googleapis.com/maps/api/geocode/xml?'
+    private static final String KEY = 'AIzaSyDw_d6dfxDEI7MAvqfGXEIsEMwjC1PWRno'
 
     void fillInLatLng(Stadium stadium) {
         String urlEncodedAddress = 
             [stadium.street, stadium.city, stadium.state].collect { 
                 URLEncoder.encode(it,'UTF-8')
-            }.join(',') 
-        String url = base + [sensor:false,
-            address: urlEncodedAddress].collect {k,v -> "$k=$v"}.join('&')
+            }.join(',')
+        String qs = "address=$urlEncodedAddress&key=$KEY"
+        String url = "$BASE$qs"
         println url
         def response = new XmlSlurper().parse(url)
         stadium.latitude = response.result[0].geometry.location.lat.toDouble()
