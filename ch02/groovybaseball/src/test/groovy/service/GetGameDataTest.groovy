@@ -24,8 +24,8 @@ import beans.GameResult;
 import beans.Stadium;
 
 class GetGameDataTest {
-	GetGameData ggd = new GetGameData(month:10,day:28,year:2007)
-	
+	GetGameData ggd = new GetGameData(month:'03',day:'28',year:'2015')
+
 	@Test
 	public void testFillInStadiumMap() {
 		def stadiums = ggd.stadiumMap.values()
@@ -37,7 +37,7 @@ class GetGameDataTest {
 
 	@Test
 	public void testGetGame() {
-		GameResult gr = ggd.getGame 'bos','col','1'
+		GameResult gr = ggd.getGame('/components/game/mlb/year_2007/month_10/day_28/gid_2007_10_28_bosmlb_colmlb_1')
 		assert 'Boston Red Sox' == gr.away
 		assert 'Colorado Rockies' == gr.home
 		assert 4 == gr.aScore.toInteger()
@@ -47,7 +47,7 @@ class GetGameDataTest {
 	@Test
 	public void testGetGames() {
 		def gameResults = ggd.games
-		assert 1 == gameResults.size()
+		assert 17 == gameResults.size()
 	}
 
 }

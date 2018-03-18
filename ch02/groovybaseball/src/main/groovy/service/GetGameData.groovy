@@ -13,8 +13,9 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  * ========================================================== */
-package service;
+package service
 
+import groovy.json.JsonSlurper;
 import groovy.sql.Sql;
 
 import java.util.logging.Logger;
@@ -27,7 +28,7 @@ class GetGameData {
     def day
     def month
     def year
-    String base = 'http://gd2.mlb.com/components/game/mlb/'
+    String base = 'http://gd.mlb.com/components/game/mlb/'
     Map stadiumMap = [:]
     
     Map abbrevs = [
@@ -63,11 +64,24 @@ class GetGameData {
         db.close()
     }
 
-    GameResult getGame(away, home, num) {
+    GameResult getGame(String game_data_directory) {
+        def gid = game_data_directory[-30..-1]
+        def pattern = /gid_\w{4}_\w{2}_\w{2}_(\w{3})\w{3}_(\w{3})mlb_(\d)/
+        Matcher m = gid =~ pattern
+
+        if (!m) {
+            println "$gid unavailable"
+            return null
+        }
+
+        String away = m[0][1]
+        String home = m[0][2]
+        String num = m[0][3]
+
         println "${abbrevs[away]} at ${abbrevs[home]} on $month/$day/$year"
-        String url = base + "year_$year/month_$month/day_$day/"
-        String game = "gid_${year}_${month}_${day}_${away}mlb_${home}mlb_$num/boxscore.xml"
-        def boxscore = new XmlSlurper().parse("$url$game")
+        String game = "http://gd.mlb.com$game_data_directory"
+        def boxscore = new XmlSlurper().parse("$game/boxscore.xml")
+
         GameResult result = new GameResult(
             home:   boxscore.@home_fname,
             away:   boxscore.@away_fname,
@@ -88,24 +102,33 @@ class GetGameData {
     def getGames() {
         def gameResults = []
         println "Games for ${month}/${day}/${year}"
-        String url = base + "year_$year/month_$month/day_$day/"
-        String gamePage = url.toURL().text
-        def pattern = /\"gid_${year}_${month}_${day}_(\w*)mlb_(\w*)mlb_(\d)/
 
-        Matcher m = gamePage =~ pattern
-        if (m) {
-            m.count.times { line ->
-                String away = m[line][1]
-                String home = m[line][2]
-                String num = m[line][3]
-                try {
-                    GameResult gr = this.getGame(away,home,num)
-                    gameResults << gr
-                } catch (Exception e) {
-                    println "${abbrevs[away]} at ${abbrevs[home]} not started yet"
-                }
-            }
-        }
-        return gameResults
+        String base = 'http://gd.mlb.com/components/game/mlb/'
+        String date = "year_${year}/month_${month}/day_${day}"
+        def master = new JsonSlurper().parse("$base$date/master_scoreboard.json".toURL())
+        def games = master.data.games.game
+
+        return games.collect { getGame(it.game_data_directory) }
+                    .findAll { it }
+
+//        String url = base + "year_$year/month_$month/day_$day/"
+//        String gamePage = url.toURL().text
+//        def pattern = /\"gid_${year}_${month}_${day}_(\w*)mlb_(\w*)mlb_(\d)/
+//
+//        Matcher m = gamePage =~ pattern
+//        if (m) {
+//            m.count.times { line ->
+//                String away = m[line][1]
+//                String home = m[line][2]
+//                String num = m[line][3]
+//                try {
+//                    GameResult gr = this.getGame(away,home,num)
+//                    gameResults << gr
+//                } catch (Exception e) {
+//                    println "${abbrevs[away]} at ${abbrevs[home]} not started yet"
+//                }
+//            }
+//        }
+//        return gameResults
     }
 }

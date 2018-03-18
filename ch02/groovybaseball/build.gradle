@@ -1,23 +1,35 @@
+buildscript {
+    repositories {
+        jcenter()
+    }
+
+    dependencies {
+        classpath 'org.akhikhl.gretty:gretty:2.0.0'
+    }
+}
+
 plugins {
     id 'groovy'
     id 'war'
     id 'eclipse-wtp'
     id 'idea'
-    id 'org.akhikhl.gretty' version '2.0.0'
 }
+
+
+apply plugin: 'org.akhikhl.gretty'
 
 repositories {
     jcenter()
 }
 
-gretty {
-    integrationTestTask = 'intTest'
-}
-
-task intTest(type:Test) {
-}
-
-check.dependsOn intTest
+//gretty {
+//    integrationTestTask = 'intTest'
+//}
+//
+//task intTest(type:Test) {
+//}
+//
+//check.dependsOn intTest
 
 project.ext.db = file("$buildDir/baseball.h2.db")
 
