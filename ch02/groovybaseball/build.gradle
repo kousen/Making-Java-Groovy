@@ -57,7 +57,7 @@ task wrapper(type:Wrapper) {
 }
 
 dependencies {
-    compile 'org.codehaus.groovy:groovy-all:2.4.14'
+    compile 'org.codehaus.groovy:groovy-all:2.4.12'
     testCompile 'org.spockframework:spock-core:1.1-groovy-2.4'
     testRuntime "cglib:cglib-nodep:2.2"
     runtime 'com.h2database:h2:1.2.140'
