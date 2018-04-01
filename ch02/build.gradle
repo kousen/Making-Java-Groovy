@@ -8,8 +8,9 @@ buildScan {
 }
 
 subprojects {
-    apply plugin:'groovy'
-    apply plugin:'eclipse'
+    apply plugin: 'groovy'
+    apply plugin: 'eclipse'
+    apply plugin: 'idea'
 
     repositories {
         jcenter()

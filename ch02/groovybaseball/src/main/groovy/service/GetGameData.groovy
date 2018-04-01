@@ -15,14 +15,12 @@
  * ========================================================== */
 package service
 
-import groovy.json.JsonSlurper;
-import groovy.sql.Sql;
+import beans.GameResult
+import beans.Stadium
+import groovy.json.JsonSlurper
+import groovy.sql.Sql
 
-import java.util.logging.Logger;
-import java.util.regex.Matcher;
-
-import beans.GameResult;
-import beans.Stadium;
+import java.util.regex.Matcher
 
 class GetGameData {
     def day

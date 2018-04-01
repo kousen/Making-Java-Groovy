@@ -9,3 +9,8 @@ classes
 .classpath
 .settings
 bin
+
+# Idea
+.idea/
+*.iml
+*.ipr

@@ -15,4 +15,10 @@ class OpenWeather {
         String jsonTxt = "$base${URLEncoder.encode(loc, 'UTF-8')}".toURL().text
         gson.fromJson(jsonTxt, Model).toString()
     }
+
+    String getWeather(String zip) {
+        String loc = "$zip"
+        String jsonTxt = "$base${URLEncoder.encode(loc, 'UTF-8')}".toURL().text
+        gson.fromJson(jsonTxt, Model).toString()
+    }
 }
