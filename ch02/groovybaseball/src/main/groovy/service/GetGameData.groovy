@@ -78,23 +78,28 @@ class GetGameData {
 
         println "${abbrevs[away]} at ${abbrevs[home]} on $month/$day/$year"
         String game = "http://gd.mlb.com$game_data_directory"
-        def boxscore = new XmlSlurper().parse("$game/boxscore.xml")
+        try {
+            def boxscore = new XmlSlurper().parse("$game/boxscore.xml")
 
-        GameResult result = new GameResult(
-            home:   boxscore.@home_fname,
-            away:   boxscore.@away_fname,
-            hScore: boxscore.linescore[0].@home_team_runs,
-            aScore: boxscore.linescore[0].@away_team_runs,
-            stadium:stadiumMap[home]
-        )
-        println "$result.away $result.aScore, $result.home $result.hScore (game $num)"
-        def pitchers = boxscore.pitching.pitcher
-        pitchers.each { p ->
-            if (p.@note && p.@note =~ /W|L|S/) {
-                println "  ${p.@name} ${p.@note}"
+            GameResult result = new GameResult(
+                home:   boxscore.@home_fname,
+                away:   boxscore.@away_fname,
+                hScore: boxscore.linescore[0].@home_team_runs,
+                aScore: boxscore.linescore[0].@away_team_runs,
+                stadium:stadiumMap[home]
+            )
+            println "$result.away $result.aScore, $result.home $result.hScore (game $num)"
+            def pitchers = boxscore.pitching.pitcher
+            pitchers.each { p ->
+                if (p.@note && p.@note =~ /[WLS]/) {
+                    println "  ${p.@name} ${p.@note}"
+                }
             }
+            return result
+        } catch (FileNotFoundException e) {
+            println "Boxscore not found"
+            return null;
         }
-        return result
     }
 
     def getGames() {
