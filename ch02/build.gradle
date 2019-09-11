@@ -1,15 +1,31 @@
 subprojects {
     apply plugin: 'groovy'
     apply plugin: 'eclipse'
-    apply plugin: 'idea'
+
+    test {
+        reports.html.enabled = false
+    }
 
     repositories {
         jcenter()
     }
 
     dependencies {
-        compile 'org.codehaus.groovy:groovy:2.5.6'
-        compile 'org.codehaus.groovy:groovy-json:2.5.6'
-        compile 'org.codehaus.groovy:groovy-swing:2.5.6'
+        implementation 'org.codehaus.groovy:groovy:2.5.8'
+        implementation 'org.codehaus.groovy:groovy-json:2.5.8'
+        implementation 'org.codehaus.groovy:groovy-swing:2.5.8'
     }
 }
+
+task generateTestReport(type: TestReport) {
+    destinationDir = file("$buildDir/reports/allTests")
+    reportOn subprojects*.test
+}
+
+//gradle.taskGraph.whenReady { graph ->
+//    if (graph.hasTask('test')) {
+//        test.finalizedBy(generateTestReport)
+//    }
+//}
+
+task('test').finalizedBy(generateTestReport)
