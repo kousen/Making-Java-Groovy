@@ -16,6 +16,17 @@ class OpenWeatherSpec extends Specification {
         result.contains('-72.69')
     }
 
+    def 'Hartford zip returns proper lat/lng'() {
+        when:
+        String result = ow.getWeather('06447')
+        println result
+
+        then:
+        result
+        result.contains('41.63')
+        result.contains('-72.46')
+    }
+
     def 'automatically encodes city, state'() {
         when:
         String result = ow.getWeather('San Diego', 'US')

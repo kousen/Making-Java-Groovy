@@ -1,21 +1,31 @@
-plugins {
-    id 'com.gradle.build-scan' version '1.11'
-}
-
-buildScan {
-    licenseAgreementUrl = 'https://gradle.com/terms-of-service'
-    licenseAgree = 'yes'
-}
-
 subprojects {
-    apply plugin:'groovy'
-    apply plugin:'eclipse'
+    apply plugin: 'groovy'
+    apply plugin: 'eclipse'
+
+    test {
+        reports.html.enabled = false
+    }
 
     repositories {
         jcenter()
     }
 
     dependencies {
-        compile 'org.codehaus.groovy:groovy-all:2.4.12'
+        implementation 'org.codehaus.groovy:groovy:2.5.8'
+        implementation 'org.codehaus.groovy:groovy-json:2.5.8'
+        implementation 'org.codehaus.groovy:groovy-swing:2.5.8'
     }
 }
+
+task generateTestReport(type: TestReport) {
+    destinationDir = file("$buildDir/reports/allTests")
+    reportOn subprojects*.test
+}
+
+//gradle.taskGraph.whenReady { graph ->
+//    if (graph.hasTask('test')) {
+//        test.finalizedBy(generateTestReport)
+//    }
+//}
+
+task('test').finalizedBy(generateTestReport)

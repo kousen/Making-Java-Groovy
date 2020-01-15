@@ -12,3 +12,5 @@ bin
 # Idea
 .idea
 out
+
+.vscode/
